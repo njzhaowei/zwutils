@@ -1,0 +1,2660 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://docs.python.org/3/library/shutil.html
+Subject: =?utf-8?Q?shutil=20=E2=80=94=20High-level=20file=20operations=20=E2=80=94?=
+ =?utf-8?Q?=20Python=203.8.2=20documentation?=
+Date: Thu, 26 Mar 2020 15:56:35 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--7xWz3inVwFWIZGYUEdcIrzHbYxpVg2WdZo438ypLJw----"
+
+
+------MultipartBoundary--7xWz3inVwFWIZGYUEdcIrzHbYxpVg2WdZo438ypLJw----
+Content-Type: text/html
+Content-ID: <frame-AEE585450320221B9D1AC2A6135D433C@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/library/shutil.html
+
+<!DOCTYPE html><html xmlns=3D"http://www.w3.org/1999/xhtml"><head><meta htt=
+p-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8"><link rel=
+=3D"stylesheet" type=3D"text/css" href=3D"cid:css-d7ddc0a6-9834-4955-8879-4=
+a50caef2bef@mhtml.blink" />
+   =20
+    <title>shutil =E2=80=94 High-level file operations =E2=80=94 Python 3.8=
+.2 documentation</title>
+    <link rel=3D"stylesheet" href=3D"https://docs.python.org/3/_static/pydo=
+ctheme.css" type=3D"text/css">
+    <link rel=3D"stylesheet" href=3D"https://docs.python.org/3/_static/pygm=
+ents.css" type=3D"text/css">
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    <link rel=3D"search" type=3D"application/opensearchdescription+xml" tit=
+le=3D"Search within Python 3.8.2 documentation" href=3D"https://docs.python=
+.org/3/_static/opensearch.xml">
+    <link rel=3D"author" title=3D"About these documents" href=3D"https://do=
+cs.python.org/3/about.html">
+    <link rel=3D"index" title=3D"Index" href=3D"https://docs.python.org/3/g=
+enindex.html">
+    <link rel=3D"search" title=3D"Search" href=3D"https://docs.python.org/3=
+/search.html">
+    <link rel=3D"copyright" title=3D"Copyright" href=3D"https://docs.python=
+.org/3/copyright.html">
+    <link rel=3D"next" title=3D"Data Persistence" href=3D"https://docs.pyth=
+on.org/3/library/persistence.html">
+    <link rel=3D"prev" title=3D"linecache =E2=80=94 Random access to text l=
+ines" href=3D"https://docs.python.org/3/library/linecache.html">
+    <link rel=3D"canonical" href=3D"https://docs.python.org/3/library/shuti=
+l.html">
+   =20
+     =20
+     =20
+     =20
+   =20
+
+   =20
+   =20
+
+    <link rel=3D"shortcut icon" type=3D"image/png" href=3D"https://docs.pyt=
+hon.org/3/_static/py.png">
+   =20
+   =20
+   =20
+    =20
+
+
+  </head><body>
+ =20
+    <div class=3D"related" role=3D"navigation" aria-label=3D"related naviga=
+tion">
+      <h3>Navigation</h3>
+      <ul>
+        <li class=3D"right" style=3D"margin-right: 10px">
+          <a href=3D"https://docs.python.org/3/genindex.html" title=3D"Gene=
+ral Index" accesskey=3D"I">index</a></li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/py-modindex.html" title=3D"P=
+ython Module Index">modules</a> |</li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/library/persistence.html" ti=
+tle=3D"Data Persistence" accesskey=3D"N">next</a> |</li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/library/linecache.html" titl=
+e=3D"linecache =E2=80=94 Random access to text lines" accesskey=3D"P">previ=
+ous</a> |</li>
+
+    <li><img src=3D"https://docs.python.org/3/_static/py.png" alt=3D"" styl=
+e=3D"vertical-align: middle; margin-top: -1px"></li>
+    <li><a href=3D"https://www.python.org/">Python</a> =C2=BB</li>
+   =20
+
+    <li>
+      <span class=3D"language_switcher_placeholder"><select><option value=
+=3D"en" selected=3D"selected">English</option><option value=3D"fr">French</=
+option><option value=3D"ja">Japanese</option><option value=3D"ko">Korean</o=
+ption><option value=3D"pt-br">Brazilian Portuguese</option><option value=3D=
+"zh-cn">Simplified Chinese</option></select></span>
+      <span class=3D"version_switcher_placeholder"><select><option value=3D=
+"3.9">dev (3.9)</option><option value=3D"3.8" selected=3D"selected">3.8.2</=
+option><option value=3D"3.7">3.7</option><option value=3D"3.6">3.6</option>=
+<option value=3D"3.5">3.5</option><option value=3D"2.7">2.7</option></selec=
+t></span>
+      <a href=3D"https://docs.python.org/3/index.html">Documentation </a> =
+=C2=BB
+    </li>
+
+          <li class=3D"nav-item nav-item-1"><a href=3D"https://docs.python.=
+org/3/library/index.html">The Python Standard Library</a> =C2=BB</li>
+          <li class=3D"nav-item nav-item-2"><a href=3D"https://docs.python.=
+org/3/library/filesys.html" accesskey=3D"U">File and Directory Access</a> =
+=C2=BB</li>
+    <li class=3D"right">
+       =20
+
+    <div class=3D"inline-search" style=3D"" role=3D"search">
+        <form class=3D"inline-search" action=3D"https://docs.python.org/3/s=
+earch.html" method=3D"get">
+          <input placeholder=3D"Quick search" type=3D"text" name=3D"q">
+          <input type=3D"submit" value=3D"Go">
+         =20
+         =20
+        </form>
+    </div>
+   =20
+         |
+    </li>
+
+      </ul>
+    </div>   =20
+
+    <div class=3D"document">
+      <div class=3D"documentwrapper">
+        <div class=3D"bodywrapper">
+          <div class=3D"body" role=3D"main">
+           =20
+  <div class=3D"section" id=3D"module-shutil">
+<span id=3D"shutil-high-level-file-operations"></span><h1><a class=3D"refer=
+ence internal" href=3D"https://docs.python.org/3/library/shutil.html#module=
+-shutil" title=3D"shutil: High-level file operations, including copying."><=
+code class=3D"xref py py-mod docutils literal notranslate"><span class=3D"p=
+re">shutil</span></code></a> =E2=80=94 High-level file operations<a class=
+=3D"headerlink" href=3D"https://docs.python.org/3/library/shutil.html#modul=
+e-shutil" title=3D"Permalink to this headline">=C2=B6</a></h1>
+<p><strong>Source code:</strong> <a class=3D"reference external" href=3D"ht=
+tps://github.com/python/cpython/tree/3.8/Lib/shutil.py">Lib/shutil.py</a></=
+p>
+<hr class=3D"docutils" id=3D"index-0">
+<p>The <a class=3D"reference internal" href=3D"https://docs.python.org/3/li=
+brary/shutil.html#module-shutil" title=3D"shutil: High-level file operation=
+s, including copying."><code class=3D"xref py py-mod docutils literal notra=
+nslate"><span class=3D"pre">shutil</span></code></a> module offers a number=
+ of high-level operations on files and
+collections of files.  In particular, functions are provided  which support=
+ file
+copying and removal. For operations on individual files, see also the
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/o=
+s.html#module-os" title=3D"os: Miscellaneous operating system interfaces.">=
+<code class=3D"xref py py-mod docutils literal notranslate"><span class=3D"=
+pre">os</span></code></a> module.</p>
+<div class=3D"admonition warning">
+<p class=3D"admonition-title">Warning</p>
+<p>Even the higher-level file copying functions (<a class=3D"reference inte=
+rnal" href=3D"https://docs.python.org/3/library/shutil.html#shutil.copy" ti=
+tle=3D"shutil.copy"><code class=3D"xref py py-func docutils literal notrans=
+late"><span class=3D"pre">shutil.copy()</span></code></a>,
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.copy2" title=3D"shutil.copy2"><code class=3D"xref py py-f=
+unc docutils literal notranslate"><span class=3D"pre">shutil.copy2()</span>=
+</code></a>) cannot copy all file metadata.</p>
+<p>On POSIX platforms, this means that file owner and group are lost as wel=
+l
+as ACLs.  On Mac OS, the resource fork and other metadata are not used.
+This means that resources will be lost and file type and creator codes will
+not be correct. On Windows, file owners, ACLs and alternate data streams
+are not copied.</p>
+</div>
+<div class=3D"section" id=3D"directory-and-files-operations">
+<span id=3D"file-operations"></span><h2>Directory and files operations<a cl=
+ass=3D"headerlink" href=3D"https://docs.python.org/3/library/shutil.html#di=
+rectory-and-files-operations" title=3D"Permalink to this headline">=C2=B6</=
+a></h2>
+<dl class=3D"function">
+<dt id=3D"shutil.copyfileobj">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">copyfileobj</code><span class=3D"sig-paren">(</span><em clas=
+s=3D"sig-param">fsrc</em>, <em class=3D"sig-param">fdst</em><span class=3D"=
+optional">[</span>, <em class=3D"sig-param">length</em><span class=3D"optio=
+nal">]</span><span class=3D"sig-paren">)</span><a class=3D"headerlink" href=
+=3D"https://docs.python.org/3/library/shutil.html#shutil.copyfileobj" title=
+=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Copy the contents of the file-like object <em>fsrc</em> to the file-=
+like object <em>fdst</em>.
+The integer <em>length</em>, if given, is the buffer size. In particular, a=
+ negative
+<em>length</em> value means to copy the data without looping over the sourc=
+e data in
+chunks; by default the data is read in chunks to avoid uncontrolled memory
+consumption. Note that if the current file position of the <em>fsrc</em> ob=
+ject is not
+0, only the contents from the current file position to the end of the file =
+will
+be copied.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.copyfile">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">copyfile</code><span class=3D"sig-paren">(</span><em class=
+=3D"sig-param">src</em>, <em class=3D"sig-param">dst</em>, <em class=3D"sig=
+-param">*</em>, <em class=3D"sig-param">follow_symlinks=3DTrue</em><span cl=
+ass=3D"sig-paren">)</span><a class=3D"headerlink" href=3D"https://docs.pyth=
+on.org/3/library/shutil.html#shutil.copyfile" title=3D"Permalink to this de=
+finition">=C2=B6</a></dt>
+<dd><p>Copy the contents (no metadata) of the file named <em>src</em> to a =
+file named
+<em>dst</em> and return <em>dst</em> in the most efficient way possible.
+<em>src</em> and <em>dst</em> are path-like objects or path names given as =
+strings.</p>
+<p><em>dst</em> must be the complete target file name; look at <a class=3D"=
+reference internal" href=3D"https://docs.python.org/3/library/shutil.html#s=
+hutil.copy" title=3D"shutil.copy"><code class=3D"xref py py-func docutils l=
+iteral notranslate"><span class=3D"pre">copy()</span></code></a>
+for a copy that accepts a target directory path.  If <em>src</em> and <em>d=
+st</em>
+specify the same file, <a class=3D"reference internal" href=3D"https://docs=
+.python.org/3/library/shutil.html#shutil.SameFileError" title=3D"shutil.Sam=
+eFileError"><code class=3D"xref py py-exc docutils literal notranslate"><sp=
+an class=3D"pre">SameFileError</span></code></a> is raised.</p>
+<p>The destination location must be writable; otherwise, an <a class=3D"ref=
+erence internal" href=3D"https://docs.python.org/3/library/exceptions.html#=
+OSError" title=3D"OSError"><code class=3D"xref py py-exc docutils literal n=
+otranslate"><span class=3D"pre">OSError</span></code></a>
+exception will be raised. If <em>dst</em> already exists, it will be replac=
+ed.
+Special files such as character or block devices and pipes cannot be
+copied with this function.</p>
+<p>If <em>follow_symlinks</em> is false and <em>src</em> is a symbolic link=
+,
+a new symbolic link will be created instead of copying the
+file <em>src</em> points to.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.copyfile</span></code> with arguments <code cla=
+ss=3D"docutils literal notranslate"><span class=3D"pre">src</span></code>, =
+<code class=3D"docutils literal notranslate"><span class=3D"pre">dst</span>=
+</code>.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.3: </span><=
+a class=3D"reference internal" href=3D"https://docs.python.org/3/library/ex=
+ceptions.html#IOError" title=3D"IOError"><code class=3D"xref py py-exc docu=
+tils literal notranslate"><span class=3D"pre">IOError</span></code></a> use=
+d to be raised instead of <a class=3D"reference internal" href=3D"https://d=
+ocs.python.org/3/library/exceptions.html#OSError" title=3D"OSError"><code c=
+lass=3D"xref py py-exc docutils literal notranslate"><span class=3D"pre">OS=
+Error</span></code></a>.
+Added <em>follow_symlinks</em> argument.
+Now returns <em>dst</em>.</p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.4: </span>R=
+aise <a class=3D"reference internal" href=3D"https://docs.python.org/3/libr=
+ary/shutil.html#shutil.SameFileError" title=3D"shutil.SameFileError"><code =
+class=3D"xref py py-exc docutils literal notranslate"><span class=3D"pre">S=
+ameFileError</span></code></a> instead of <a class=3D"reference internal" h=
+ref=3D"https://docs.python.org/3/library/shutil.html#shutil.Error" title=3D=
+"shutil.Error"><code class=3D"xref py py-exc docutils literal notranslate">=
+<span class=3D"pre">Error</span></code></a>.  Since the former is
+a subclass of the latter, this change is backward compatible.</p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.8: </span>P=
+latform-specific fast-copy syscalls may be used internally in order to
+copy the file more efficiently. See
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil-platform-dependent-efficient-copy-operations"><span class=
+=3D"std std-ref">Platform-dependent efficient copy operations</span></a> se=
+ction.</p>
+</div>
+</dd></dl>
+
+<dl class=3D"exception">
+<dt id=3D"shutil.SameFileError">
+<em class=3D"property">exception </em><code class=3D"sig-prename descclassn=
+ame">shutil.</code><code class=3D"sig-name descname">SameFileError</code><a=
+ class=3D"headerlink" href=3D"https://docs.python.org/3/library/shutil.html=
+#shutil.SameFileError" title=3D"Permalink to this definition">=C2=B6</a></d=
+t>
+<dd><p>This exception is raised if source and destination in <a class=3D"re=
+ference internal" href=3D"https://docs.python.org/3/library/shutil.html#shu=
+til.copyfile" title=3D"shutil.copyfile"><code class=3D"xref py py-func docu=
+tils literal notranslate"><span class=3D"pre">copyfile()</span></code></a>
+are the same file.</p>
+<div class=3D"versionadded">
+<p><span class=3D"versionmodified added">New in version 3.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.copymode">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">copymode</code><span class=3D"sig-paren">(</span><em class=
+=3D"sig-param">src</em>, <em class=3D"sig-param">dst</em>, <em class=3D"sig=
+-param">*</em>, <em class=3D"sig-param">follow_symlinks=3DTrue</em><span cl=
+ass=3D"sig-paren">)</span><a class=3D"headerlink" href=3D"https://docs.pyth=
+on.org/3/library/shutil.html#shutil.copymode" title=3D"Permalink to this de=
+finition">=C2=B6</a></dt>
+<dd><p>Copy the permission bits from <em>src</em> to <em>dst</em>.  The fil=
+e contents, owner, and
+group are unaffected.  <em>src</em> and <em>dst</em> are path-like objects =
+or path names
+given as strings.
+If <em>follow_symlinks</em> is false, and both <em>src</em> and <em>dst</em=
+> are symbolic links,
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.copymode" title=3D"shutil.copymode"><code class=3D"xref p=
+y py-func docutils literal notranslate"><span class=3D"pre">copymode()</spa=
+n></code></a> will attempt to modify the mode of <em>dst</em> itself (rathe=
+r
+than the file it points to).  This functionality is not available on every
+platform; please see <a class=3D"reference internal" href=3D"https://docs.p=
+ython.org/3/library/shutil.html#shutil.copystat" title=3D"shutil.copystat">=
+<code class=3D"xref py py-func docutils literal notranslate"><span class=3D=
+"pre">copystat()</span></code></a> for more information.  If
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.copymode" title=3D"shutil.copymode"><code class=3D"xref p=
+y py-func docutils literal notranslate"><span class=3D"pre">copymode()</spa=
+n></code></a> cannot modify symbolic links on the local platform, and it
+is asked to do so, it will do nothing and return.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.copymode</span></code> with arguments <code cla=
+ss=3D"docutils literal notranslate"><span class=3D"pre">src</span></code>, =
+<code class=3D"docutils literal notranslate"><span class=3D"pre">dst</span>=
+</code>.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.3: </span>A=
+dded <em>follow_symlinks</em> argument.</p>
+</div>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.copystat">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">copystat</code><span class=3D"sig-paren">(</span><em class=
+=3D"sig-param">src</em>, <em class=3D"sig-param">dst</em>, <em class=3D"sig=
+-param">*</em>, <em class=3D"sig-param">follow_symlinks=3DTrue</em><span cl=
+ass=3D"sig-paren">)</span><a class=3D"headerlink" href=3D"https://docs.pyth=
+on.org/3/library/shutil.html#shutil.copystat" title=3D"Permalink to this de=
+finition">=C2=B6</a></dt>
+<dd><p>Copy the permission bits, last access time, last modification time, =
+and
+flags from <em>src</em> to <em>dst</em>.  On Linux, <a class=3D"reference i=
+nternal" href=3D"https://docs.python.org/3/library/shutil.html#shutil.copys=
+tat" title=3D"shutil.copystat"><code class=3D"xref py py-func docutils lite=
+ral notranslate"><span class=3D"pre">copystat()</span></code></a> also copi=
+es the
+=E2=80=9Cextended attributes=E2=80=9D where possible.  The file contents, o=
+wner, and
+group are unaffected.  <em>src</em> and <em>dst</em> are path-like objects =
+or path
+names given as strings.</p>
+<p>If <em>follow_symlinks</em> is false, and <em>src</em> and <em>dst</em> =
+both
+refer to symbolic links, <a class=3D"reference internal" href=3D"https://do=
+cs.python.org/3/library/shutil.html#shutil.copystat" title=3D"shutil.copyst=
+at"><code class=3D"xref py py-func docutils literal notranslate"><span clas=
+s=3D"pre">copystat()</span></code></a> will operate on
+the symbolic links themselves rather than the files the
+symbolic links refer to=E2=80=94reading the information from the
+<em>src</em> symbolic link, and writing the information to the
+<em>dst</em> symbolic link.</p>
+<div class=3D"admonition note">
+<p class=3D"admonition-title">Note</p>
+<p>Not all platforms provide the ability to examine and
+modify symbolic links.  Python itself can tell you what
+functionality is locally available.</p>
+<ul class=3D"simple">
+<li><p>If <code class=3D"docutils literal notranslate"><span class=3D"pre">=
+os.chmod</span> <span class=3D"pre">in</span> <span class=3D"pre">os.suppor=
+ts_follow_symlinks</span></code> is
+<code class=3D"docutils literal notranslate"><span class=3D"pre">True</span=
+></code>, <a class=3D"reference internal" href=3D"https://docs.python.org/3=
+/library/shutil.html#shutil.copystat" title=3D"shutil.copystat"><code class=
+=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">copys=
+tat()</span></code></a> can modify the permission
+bits of a symbolic link.</p></li>
+<li><p>If <code class=3D"docutils literal notranslate"><span class=3D"pre">=
+os.utime</span> <span class=3D"pre">in</span> <span class=3D"pre">os.suppor=
+ts_follow_symlinks</span></code> is
+<code class=3D"docutils literal notranslate"><span class=3D"pre">True</span=
+></code>, <a class=3D"reference internal" href=3D"https://docs.python.org/3=
+/library/shutil.html#shutil.copystat" title=3D"shutil.copystat"><code class=
+=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">copys=
+tat()</span></code></a> can modify the last access
+and modification times of a symbolic link.</p></li>
+<li><p>If <code class=3D"docutils literal notranslate"><span class=3D"pre">=
+os.chflags</span> <span class=3D"pre">in</span> <span class=3D"pre">os.supp=
+orts_follow_symlinks</span></code> is
+<code class=3D"docutils literal notranslate"><span class=3D"pre">True</span=
+></code>, <a class=3D"reference internal" href=3D"https://docs.python.org/3=
+/library/shutil.html#shutil.copystat" title=3D"shutil.copystat"><code class=
+=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">copys=
+tat()</span></code></a> can modify the flags of
+a symbolic link.  (<code class=3D"docutils literal notranslate"><span class=
+=3D"pre">os.chflags</span></code> is not available on
+all platforms.)</p></li>
+</ul>
+<p>On platforms where some or all of this functionality
+is unavailable, when asked to modify a symbolic link,
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.copystat" title=3D"shutil.copystat"><code class=3D"xref p=
+y py-func docutils literal notranslate"><span class=3D"pre">copystat()</spa=
+n></code></a> will copy everything it can.
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.copystat" title=3D"shutil.copystat"><code class=3D"xref p=
+y py-func docutils literal notranslate"><span class=3D"pre">copystat()</spa=
+n></code></a> never returns failure.</p>
+<p>Please see <a class=3D"reference internal" href=3D"https://docs.python.o=
+rg/3/library/os.html#os.supports_follow_symlinks" title=3D"os.supports_foll=
+ow_symlinks"><code class=3D"xref py py-data docutils literal notranslate"><=
+span class=3D"pre">os.supports_follow_symlinks</span></code></a>
+for more information.</p>
+</div>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.copystat</span></code> with arguments <code cla=
+ss=3D"docutils literal notranslate"><span class=3D"pre">src</span></code>, =
+<code class=3D"docutils literal notranslate"><span class=3D"pre">dst</span>=
+</code>.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.3: </span>A=
+dded <em>follow_symlinks</em> argument and support for Linux extended attri=
+butes.</p>
+</div>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.copy">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">copy</code><span class=3D"sig-paren">(</span><em class=3D"si=
+g-param">src</em>, <em class=3D"sig-param">dst</em>, <em class=3D"sig-param=
+">*</em>, <em class=3D"sig-param">follow_symlinks=3DTrue</em><span class=3D=
+"sig-paren">)</span><a class=3D"headerlink" href=3D"https://docs.python.org=
+/3/library/shutil.html#shutil.copy" title=3D"Permalink to this definition">=
+=C2=B6</a></dt>
+<dd><p>Copies the file <em>src</em> to the file or directory <em>dst</em>. =
+ <em>src</em> and <em>dst</em>
+should be strings.  If <em>dst</em> specifies a directory, the file will be
+copied into <em>dst</em> using the base filename from <em>src</em>.  Return=
+s the
+path to the newly created file.</p>
+<p>If <em>follow_symlinks</em> is false, and <em>src</em> is a symbolic lin=
+k,
+<em>dst</em> will be created as a symbolic link.  If <em>follow_symlinks</e=
+m>
+is true and <em>src</em> is a symbolic link, <em>dst</em> will be a copy of
+the file <em>src</em> refers to.</p>
+<p><a class=3D"reference internal" href=3D"https://docs.python.org/3/librar=
+y/shutil.html#shutil.copy" title=3D"shutil.copy"><code class=3D"xref py py-=
+func docutils literal notranslate"><span class=3D"pre">copy()</span></code>=
+</a> copies the file data and the file=E2=80=99s permission
+mode (see <a class=3D"reference internal" href=3D"https://docs.python.org/3=
+/library/os.html#os.chmod" title=3D"os.chmod"><code class=3D"xref py py-fun=
+c docutils literal notranslate"><span class=3D"pre">os.chmod()</span></code=
+></a>).  Other metadata, like the
+file=E2=80=99s creation and modification times, is not preserved.
+To preserve all file metadata from the original, use
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.copy2" title=3D"shutil.copy2"><code class=3D"xref py py-f=
+unc docutils literal notranslate"><span class=3D"pre">copy2()</span></code>=
+</a> instead.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.copyfile</span></code> with arguments <code cla=
+ss=3D"docutils literal notranslate"><span class=3D"pre">src</span></code>, =
+<code class=3D"docutils literal notranslate"><span class=3D"pre">dst</span>=
+</code>.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.copymode</span></code> with arguments <code cla=
+ss=3D"docutils literal notranslate"><span class=3D"pre">src</span></code>, =
+<code class=3D"docutils literal notranslate"><span class=3D"pre">dst</span>=
+</code>.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.3: </span>A=
+dded <em>follow_symlinks</em> argument.
+Now returns path to the newly created file.</p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.8: </span>P=
+latform-specific fast-copy syscalls may be used internally in order to
+copy the file more efficiently. See
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil-platform-dependent-efficient-copy-operations"><span class=
+=3D"std std-ref">Platform-dependent efficient copy operations</span></a> se=
+ction.</p>
+</div>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.copy2">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">copy2</code><span class=3D"sig-paren">(</span><em class=3D"s=
+ig-param">src</em>, <em class=3D"sig-param">dst</em>, <em class=3D"sig-para=
+m">*</em>, <em class=3D"sig-param">follow_symlinks=3DTrue</em><span class=
+=3D"sig-paren">)</span><a class=3D"headerlink" href=3D"https://docs.python.=
+org/3/library/shutil.html#shutil.copy2" title=3D"Permalink to this definiti=
+on">=C2=B6</a></dt>
+<dd><p>Identical to <a class=3D"reference internal" href=3D"https://docs.py=
+thon.org/3/library/shutil.html#shutil.copy" title=3D"shutil.copy"><code cla=
+ss=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">cop=
+y()</span></code></a> except that <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/shutil.html#shutil.copy2" title=3D"shutil.=
+copy2"><code class=3D"xref py py-func docutils literal notranslate"><span c=
+lass=3D"pre">copy2()</span></code></a>
+also attempts to preserve file metadata.</p>
+<p>When <em>follow_symlinks</em> is false, and <em>src</em> is a symbolic
+link, <a class=3D"reference internal" href=3D"https://docs.python.org/3/lib=
+rary/shutil.html#shutil.copy2" title=3D"shutil.copy2"><code class=3D"xref p=
+y py-func docutils literal notranslate"><span class=3D"pre">copy2()</span><=
+/code></a> attempts to copy all metadata from the
+<em>src</em> symbolic link to the newly-created <em>dst</em> symbolic link.
+However, this functionality is not available on all platforms.
+On platforms where some or all of this functionality is
+unavailable, <a class=3D"reference internal" href=3D"https://docs.python.or=
+g/3/library/shutil.html#shutil.copy2" title=3D"shutil.copy2"><code class=3D=
+"xref py py-func docutils literal notranslate"><span class=3D"pre">copy2()<=
+/span></code></a> will preserve all the metadata
+it can; <a class=3D"reference internal" href=3D"https://docs.python.org/3/l=
+ibrary/shutil.html#shutil.copy2" title=3D"shutil.copy2"><code class=3D"xref=
+ py py-func docutils literal notranslate"><span class=3D"pre">copy2()</span=
+></code></a> never raises an exception because it
+cannot preserve file metadata.</p>
+<p><a class=3D"reference internal" href=3D"https://docs.python.org/3/librar=
+y/shutil.html#shutil.copy2" title=3D"shutil.copy2"><code class=3D"xref py p=
+y-func docutils literal notranslate"><span class=3D"pre">copy2()</span></co=
+de></a> uses <a class=3D"reference internal" href=3D"https://docs.python.or=
+g/3/library/shutil.html#shutil.copystat" title=3D"shutil.copystat"><code cl=
+ass=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">co=
+pystat()</span></code></a> to copy the file metadata.
+Please see <a class=3D"reference internal" href=3D"https://docs.python.org/=
+3/library/shutil.html#shutil.copystat" title=3D"shutil.copystat"><code clas=
+s=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">copy=
+stat()</span></code></a> for more information
+about platform support for modifying symbolic link metadata.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.copyfile</span></code> with arguments <code cla=
+ss=3D"docutils literal notranslate"><span class=3D"pre">src</span></code>, =
+<code class=3D"docutils literal notranslate"><span class=3D"pre">dst</span>=
+</code>.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.copystat</span></code> with arguments <code cla=
+ss=3D"docutils literal notranslate"><span class=3D"pre">src</span></code>, =
+<code class=3D"docutils literal notranslate"><span class=3D"pre">dst</span>=
+</code>.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.3: </span>A=
+dded <em>follow_symlinks</em> argument, try to copy extended
+file system attributes too (currently Linux only).
+Now returns path to the newly created file.</p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.8: </span>P=
+latform-specific fast-copy syscalls may be used internally in order to
+copy the file more efficiently. See
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil-platform-dependent-efficient-copy-operations"><span class=
+=3D"std std-ref">Platform-dependent efficient copy operations</span></a> se=
+ction.</p>
+</div>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.ignore_patterns">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">ignore_patterns</code><span class=3D"sig-paren">(</span><em =
+class=3D"sig-param">*patterns</em><span class=3D"sig-paren">)</span><a clas=
+s=3D"headerlink" href=3D"https://docs.python.org/3/library/shutil.html#shut=
+il.ignore_patterns" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>This factory function creates a function that can be used as a calla=
+ble for
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.copytree" title=3D"shutil.copytree"><code class=3D"xref p=
+y py-func docutils literal notranslate"><span class=3D"pre">copytree()</spa=
+n></code></a>=E2=80=99s <em>ignore</em> argument, ignoring files and direct=
+ories that
+match one of the glob-style <em>patterns</em> provided.  See the example be=
+low.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.copytree">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">copytree</code><span class=3D"sig-paren">(</span><em class=
+=3D"sig-param">src</em>, <em class=3D"sig-param">dst</em>, <em class=3D"sig=
+-param">symlinks=3DFalse</em>, <em class=3D"sig-param">ignore=3DNone</em>, =
+<em class=3D"sig-param">copy_function=3Dcopy2</em>, <em class=3D"sig-param"=
+>ignore_dangling_symlinks=3DFalse</em>, <em class=3D"sig-param">dirs_exist_=
+ok=3DFalse</em><span class=3D"sig-paren">)</span><a class=3D"headerlink" hr=
+ef=3D"https://docs.python.org/3/library/shutil.html#shutil.copytree" title=
+=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Recursively copy an entire directory tree rooted at <em>src</em> to =
+a directory
+named <em>dst</em> and return the destination directory. <em>dirs_exist_ok<=
+/em> dictates
+whether to raise an exception in case <em>dst</em> or any missing parent di=
+rectory
+already exists.</p>
+<p>Permissions and times of directories are copied with <a class=3D"referen=
+ce internal" href=3D"https://docs.python.org/3/library/shutil.html#shutil.c=
+opystat" title=3D"shutil.copystat"><code class=3D"xref py py-func docutils =
+literal notranslate"><span class=3D"pre">copystat()</span></code></a>,
+individual files are copied using <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/shutil.html#shutil.copy2" title=3D"shutil.=
+copy2"><code class=3D"xref py py-func docutils literal notranslate"><span c=
+lass=3D"pre">copy2()</span></code></a>.</p>
+<p>If <em>symlinks</em> is true, symbolic links in the source tree are repr=
+esented as
+symbolic links in the new tree and the metadata of the original links will
+be copied as far as the platform allows; if false or omitted, the contents
+and metadata of the linked files are copied to the new tree.</p>
+<p>When <em>symlinks</em> is false, if the file pointed by the symlink does=
+n=E2=80=99t
+exist, an exception will be added in the list of errors raised in
+an <a class=3D"reference internal" href=3D"https://docs.python.org/3/librar=
+y/shutil.html#shutil.Error" title=3D"shutil.Error"><code class=3D"xref py p=
+y-exc docutils literal notranslate"><span class=3D"pre">Error</span></code>=
+</a> exception at the end of the copy process.
+You can set the optional <em>ignore_dangling_symlinks</em> flag to true if =
+you
+want to silence this exception. Notice that this option has no effect
+on platforms that don=E2=80=99t support <a class=3D"reference internal" hre=
+f=3D"https://docs.python.org/3/library/os.html#os.symlink" title=3D"os.syml=
+ink"><code class=3D"xref py py-func docutils literal notranslate"><span cla=
+ss=3D"pre">os.symlink()</span></code></a>.</p>
+<p>If <em>ignore</em> is given, it must be a callable that will receive as =
+its
+arguments the directory being visited by <a class=3D"reference internal" hr=
+ef=3D"https://docs.python.org/3/library/shutil.html#shutil.copytree" title=
+=3D"shutil.copytree"><code class=3D"xref py py-func docutils literal notran=
+slate"><span class=3D"pre">copytree()</span></code></a>, and a list of its
+contents, as returned by <a class=3D"reference internal" href=3D"https://do=
+cs.python.org/3/library/os.html#os.listdir" title=3D"os.listdir"><code clas=
+s=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">os.l=
+istdir()</span></code></a>.  Since <a class=3D"reference internal" href=3D"=
+https://docs.python.org/3/library/shutil.html#shutil.copytree" title=3D"shu=
+til.copytree"><code class=3D"xref py py-func docutils literal notranslate">=
+<span class=3D"pre">copytree()</span></code></a> is
+called recursively, the <em>ignore</em> callable will be called once for ea=
+ch
+directory that is copied.  The callable must return a sequence of directory
+and file names relative to the current directory (i.e. a subset of the item=
+s
+in its second argument); these names will then be ignored in the copy
+process.  <a class=3D"reference internal" href=3D"https://docs.python.org/3=
+/library/shutil.html#shutil.ignore_patterns" title=3D"shutil.ignore_pattern=
+s"><code class=3D"xref py py-func docutils literal notranslate"><span class=
+=3D"pre">ignore_patterns()</span></code></a> can be used to create such a c=
+allable that
+ignores names based on glob-style patterns.</p>
+<p>If exception(s) occur, an <a class=3D"reference internal" href=3D"https:=
+//docs.python.org/3/library/shutil.html#shutil.Error" title=3D"shutil.Error=
+"><code class=3D"xref py py-exc docutils literal notranslate"><span class=
+=3D"pre">Error</span></code></a> is raised with a list of reasons.</p>
+<p>If <em>copy_function</em> is given, it must be a callable that will be u=
+sed to copy
+each file. It will be called with the source path and the destination path
+as arguments. By default, <a class=3D"reference internal" href=3D"https://d=
+ocs.python.org/3/library/shutil.html#shutil.copy2" title=3D"shutil.copy2"><=
+code class=3D"xref py py-func docutils literal notranslate"><span class=3D"=
+pre">copy2()</span></code></a> is used, but any function
+that supports the same signature (like <a class=3D"reference internal" href=
+=3D"https://docs.python.org/3/library/shutil.html#shutil.copy" title=3D"shu=
+til.copy"><code class=3D"xref py py-func docutils literal notranslate"><spa=
+n class=3D"pre">copy()</span></code></a>) can be used.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.copytree</span></code> with arguments <code cla=
+ss=3D"docutils literal notranslate"><span class=3D"pre">src</span></code>, =
+<code class=3D"docutils literal notranslate"><span class=3D"pre">dst</span>=
+</code>.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.3: </span>C=
+opy metadata when <em>symlinks</em> is false.
+Now returns <em>dst</em>.</p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.2: </span>A=
+dded the <em>copy_function</em> argument to be able to provide a custom cop=
+y
+function.
+Added the <em>ignore_dangling_symlinks</em> argument to silent dangling sym=
+links
+errors when <em>symlinks</em> is false.</p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.8: </span>P=
+latform-specific fast-copy syscalls may be used internally in order to
+copy the file more efficiently. See
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil-platform-dependent-efficient-copy-operations"><span class=
+=3D"std std-ref">Platform-dependent efficient copy operations</span></a> se=
+ction.</p>
+</div>
+<div class=3D"versionadded">
+<p><span class=3D"versionmodified added">New in version 3.8: </span>The <em=
+>dirs_exist_ok</em> parameter.</p>
+</div>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.rmtree">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">rmtree</code><span class=3D"sig-paren">(</span><em class=3D"=
+sig-param">path</em>, <em class=3D"sig-param">ignore_errors=3DFalse</em>, <=
+em class=3D"sig-param">onerror=3DNone</em><span class=3D"sig-paren">)</span=
+><a class=3D"headerlink" href=3D"https://docs.python.org/3/library/shutil.h=
+tml#shutil.rmtree" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p id=3D"index-1">Delete an entire directory tree; <em>path</em> must p=
+oint to a directory (but not a
+symbolic link to a directory).  If <em>ignore_errors</em> is true, errors r=
+esulting
+from failed removals will be ignored; if false or omitted, such errors are
+handled by calling a handler specified by <em>onerror</em> or, if that is o=
+mitted,
+they raise an exception.</p>
+<div class=3D"admonition note">
+<p class=3D"admonition-title">Note</p>
+<p>On platforms that support the necessary fd-based functions a symlink
+attack resistant version of <a class=3D"reference internal" href=3D"https:/=
+/docs.python.org/3/library/shutil.html#shutil.rmtree" title=3D"shutil.rmtre=
+e"><code class=3D"xref py py-func docutils literal notranslate"><span class=
+=3D"pre">rmtree()</span></code></a> is used by default.  On other
+platforms, the <a class=3D"reference internal" href=3D"https://docs.python.=
+org/3/library/shutil.html#shutil.rmtree" title=3D"shutil.rmtree"><code clas=
+s=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">rmtr=
+ee()</span></code></a> implementation is susceptible to a symlink
+attack: given proper timing and circumstances, attackers can manipulate
+symlinks on the filesystem to delete files they wouldn=E2=80=99t be able to=
+ access
+otherwise.  Applications can use the <a class=3D"reference internal" href=
+=3D"https://docs.python.org/3/library/shutil.html#shutil.rmtree.avoids_syml=
+ink_attacks" title=3D"shutil.rmtree.avoids_symlink_attacks"><code class=3D"=
+xref py py-data docutils literal notranslate"><span class=3D"pre">rmtree.av=
+oids_symlink_attacks</span></code></a>
+function attribute to determine which case applies.</p>
+</div>
+<p>If <em>onerror</em> is provided, it must be a callable that accepts thre=
+e
+parameters: <em>function</em>, <em>path</em>, and <em>excinfo</em>.</p>
+<p>The first parameter, <em>function</em>, is the function which raised the=
+ exception;
+it depends on the platform and implementation.  The second parameter,
+<em>path</em>, will be the path name passed to <em>function</em>.  The thir=
+d parameter,
+<em>excinfo</em>, will be the exception information returned by
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+ys.html#sys.exc_info" title=3D"sys.exc_info"><code class=3D"xref py py-func=
+ docutils literal notranslate"><span class=3D"pre">sys.exc_info()</span></c=
+ode></a>.  Exceptions raised by <em>onerror</em> will not be caught.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.rmtree</span></code> with argument <code class=
+=3D"docutils literal notranslate"><span class=3D"pre">path</span></code>.</=
+p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.3: </span>A=
+dded a symlink attack resistant version that is used automatically
+if platform supports fd-based functions.</p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.8: </span>O=
+n Windows, will no longer delete the contents of a directory junction
+before removing the junction.</p>
+</div>
+<dl class=3D"attribute">
+<dt id=3D"shutil.rmtree.avoids_symlink_attacks">
+<code class=3D"sig-prename descclassname">rmtree.</code><code class=3D"sig-=
+name descname">avoids_symlink_attacks</code><a class=3D"headerlink" href=3D=
+"https://docs.python.org/3/library/shutil.html#shutil.rmtree.avoids_symlink=
+_attacks" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Indicates whether the current platform and implementation provides a
+symlink attack resistant version of <a class=3D"reference internal" href=3D=
+"https://docs.python.org/3/library/shutil.html#shutil.rmtree" title=3D"shut=
+il.rmtree"><code class=3D"xref py py-func docutils literal notranslate"><sp=
+an class=3D"pre">rmtree()</span></code></a>.  Currently this is
+only true for platforms supporting fd-based directory access functions.</p>
+<div class=3D"versionadded">
+<p><span class=3D"versionmodified added">New in version 3.3.</span></p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.move">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">move</code><span class=3D"sig-paren">(</span><em class=3D"si=
+g-param">src</em>, <em class=3D"sig-param">dst</em>, <em class=3D"sig-param=
+">copy_function=3Dcopy2</em><span class=3D"sig-paren">)</span><a class=3D"h=
+eaderlink" href=3D"https://docs.python.org/3/library/shutil.html#shutil.mov=
+e" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Recursively move a file or directory (<em>src</em>) to another locat=
+ion (<em>dst</em>)
+and return the destination.</p>
+<p>If the destination is an existing directory, then <em>src</em> is moved =
+inside that
+directory. If the destination already exists but is not a directory, it may
+be overwritten depending on <a class=3D"reference internal" href=3D"https:/=
+/docs.python.org/3/library/os.html#os.rename" title=3D"os.rename"><code cla=
+ss=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">os.=
+rename()</span></code></a> semantics.</p>
+<p>If the destination is on the current filesystem, then <a class=3D"refere=
+nce internal" href=3D"https://docs.python.org/3/library/os.html#os.rename" =
+title=3D"os.rename"><code class=3D"xref py py-func docutils literal notrans=
+late"><span class=3D"pre">os.rename()</span></code></a> is
+used. Otherwise, <em>src</em> is copied to <em>dst</em> using <em>copy_func=
+tion</em> and then
+removed.  In case of symlinks, a new symlink pointing to the target of <em>=
+src</em>
+will be created in or as <em>dst</em> and <em>src</em> will be removed.</p>
+<p>If <em>copy_function</em> is given, it must be a callable that takes two=
+ arguments
+<em>src</em> and <em>dst</em>, and will be used to copy <em>src</em> to <em=
+>dest</em> if
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/o=
+s.html#os.rename" title=3D"os.rename"><code class=3D"xref py py-func docuti=
+ls literal notranslate"><span class=3D"pre">os.rename()</span></code></a> c=
+annot be used.  If the source is a directory,
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.copytree" title=3D"shutil.copytree"><code class=3D"xref p=
+y py-func docutils literal notranslate"><span class=3D"pre">copytree()</spa=
+n></code></a> is called, passing it the <code class=3D"xref py py-func docu=
+tils literal notranslate"><span class=3D"pre">copy_function()</span></code>=
+. The
+default <em>copy_function</em> is <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/shutil.html#shutil.copy2" title=3D"shutil.=
+copy2"><code class=3D"xref py py-func docutils literal notranslate"><span c=
+lass=3D"pre">copy2()</span></code></a>.  Using <a class=3D"reference intern=
+al" href=3D"https://docs.python.org/3/library/shutil.html#shutil.copy" titl=
+e=3D"shutil.copy"><code class=3D"xref py py-func docutils literal notransla=
+te"><span class=3D"pre">copy()</span></code></a> as the
+<em>copy_function</em> allows the move to succeed when it is not possible t=
+o also
+copy the metadata, at the expense of not copying any of the metadata.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.move</span></code> with arguments <code class=
+=3D"docutils literal notranslate"><span class=3D"pre">src</span></code>, <c=
+ode class=3D"docutils literal notranslate"><span class=3D"pre">dst</span></=
+code>.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.3: </span>A=
+dded explicit symlink handling for foreign filesystems, thus adapting
+it to the behavior of GNU=E2=80=99s <strong class=3D"program">mv</strong>.
+Now returns <em>dst</em>.</p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.5: </span>A=
+dded the <em>copy_function</em> keyword argument.</p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.8: </span>P=
+latform-specific fast-copy syscalls may be used internally in order to
+copy the file more efficiently. See
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil-platform-dependent-efficient-copy-operations"><span class=
+=3D"std std-ref">Platform-dependent efficient copy operations</span></a> se=
+ction.</p>
+</div>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.disk_usage">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">disk_usage</code><span class=3D"sig-paren">(</span><em class=
+=3D"sig-param">path</em><span class=3D"sig-paren">)</span><a class=3D"heade=
+rlink" href=3D"https://docs.python.org/3/library/shutil.html#shutil.disk_us=
+age" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Return disk usage statistics about the given path as a <a class=3D"r=
+eference internal" href=3D"https://docs.python.org/3/glossary.html#term-nam=
+ed-tuple"><span class=3D"xref std std-term">named tuple</span></a>
+with the attributes <em>total</em>, <em>used</em> and <em>free</em>, which =
+are the amount of
+total, used and free space, in bytes. <em>path</em> may be a file or a
+directory.</p>
+<div class=3D"versionadded">
+<p><span class=3D"versionmodified added">New in version 3.3.</span></p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.8: </span>O=
+n Windows, <em>path</em> can now be a file or directory.</p>
+</div>
+<p class=3D"availability"><a class=3D"reference internal" href=3D"https://d=
+ocs.python.org/3/library/intro.html#availability"><span class=3D"std std-re=
+f">Availability</span></a>: Unix, Windows.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.chown">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">chown</code><span class=3D"sig-paren">(</span><em class=3D"s=
+ig-param">path</em>, <em class=3D"sig-param">user=3DNone</em>, <em class=3D=
+"sig-param">group=3DNone</em><span class=3D"sig-paren">)</span><a class=3D"=
+headerlink" href=3D"https://docs.python.org/3/library/shutil.html#shutil.ch=
+own" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Change owner <em>user</em> and/or <em>group</em> of the given <em>pa=
+th</em>.</p>
+<p><em>user</em> can be a system user name or a uid; the same applies to <e=
+m>group</em>. At
+least one argument is required.</p>
+<p>See also <a class=3D"reference internal" href=3D"https://docs.python.org=
+/3/library/os.html#os.chown" title=3D"os.chown"><code class=3D"xref py py-f=
+unc docutils literal notranslate"><span class=3D"pre">os.chown()</span></co=
+de></a>, the underlying function.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.chown</span></code> with arguments <code class=
+=3D"docutils literal notranslate"><span class=3D"pre">path</span></code>, <=
+code class=3D"docutils literal notranslate"><span class=3D"pre">user</span>=
+</code>, <code class=3D"docutils literal notranslate"><span class=3D"pre">g=
+roup</span></code>.</p>
+<p class=3D"availability"><a class=3D"reference internal" href=3D"https://d=
+ocs.python.org/3/library/intro.html#availability"><span class=3D"std std-re=
+f">Availability</span></a>: Unix.</p>
+<div class=3D"versionadded">
+<p><span class=3D"versionmodified added">New in version 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.which">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">which</code><span class=3D"sig-paren">(</span><em class=3D"s=
+ig-param">cmd</em>, <em class=3D"sig-param">mode=3Dos.F_OK | os.X_OK</em>, =
+<em class=3D"sig-param">path=3DNone</em><span class=3D"sig-paren">)</span><=
+a class=3D"headerlink" href=3D"https://docs.python.org/3/library/shutil.htm=
+l#shutil.which" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Return the path to an executable which would be run if the given <em=
+>cmd</em> was
+called.  If no <em>cmd</em> would be called, return <code class=3D"docutils=
+ literal notranslate"><span class=3D"pre">None</span></code>.</p>
+<p><em>mode</em> is a permission mask passed to <a class=3D"reference inter=
+nal" href=3D"https://docs.python.org/3/library/os.html#os.access" title=3D"=
+os.access"><code class=3D"xref py py-func docutils literal notranslate"><sp=
+an class=3D"pre">os.access()</span></code></a>, by default
+determining if the file exists and executable.</p>
+<p>When no <em>path</em> is specified, the results of <a class=3D"reference=
+ internal" href=3D"https://docs.python.org/3/library/os.html#os.environ" ti=
+tle=3D"os.environ"><code class=3D"xref py py-func docutils literal notransl=
+ate"><span class=3D"pre">os.environ()</span></code></a> are used,
+returning either the =E2=80=9CPATH=E2=80=9D value or a fallback of <a class=
+=3D"reference internal" href=3D"https://docs.python.org/3/library/os.html#o=
+s.defpath" title=3D"os.defpath"><code class=3D"xref py py-attr docutils lit=
+eral notranslate"><span class=3D"pre">os.defpath</span></code></a>.</p>
+<p>On Windows, the current directory is always prepended to the <em>path</e=
+m> whether
+or not you use the default or provide your own, which is the behavior the
+command shell uses when finding executables.  Additionally, when finding th=
+e
+<em>cmd</em> in the <em>path</em>, the <code class=3D"docutils literal notr=
+anslate"><span class=3D"pre">PATHEXT</span></code> environment variable is =
+checked.  For
+example, if you call <code class=3D"docutils literal notranslate"><span cla=
+ss=3D"pre">shutil.which("python")</span></code>, <a class=3D"reference inte=
+rnal" href=3D"https://docs.python.org/3/library/shutil.html#shutil.which" t=
+itle=3D"shutil.which"><code class=3D"xref py py-func docutils literal notra=
+nslate"><span class=3D"pre">which()</span></code></a> will search
+<code class=3D"docutils literal notranslate"><span class=3D"pre">PATHEXT</s=
+pan></code> to know that it should look for <code class=3D"docutils literal=
+ notranslate"><span class=3D"pre">python.exe</span></code> within the <em>p=
+ath</em>
+directories.  For example, on Windows:</p>
+<div class=3D"highlight-python3 notranslate" style=3D"position: relative;">=
+<div class=3D"highlight"><span class=3D"copybutton" title=3D"Hide the promp=
+ts and output" style=3D"cursor: pointer; position: absolute; top: 0px; righ=
+t: 0px; border-color: rgb(170, 204, 153); border-style: solid; border-width=
+: 1px; color: rgb(170, 204, 153); font-family: monospace; padding-left: 0.2=
+em; padding-right: 0.2em; border-radius: 0px 3px 0px 0px;">&gt;&gt;&gt;</sp=
+an><pre><span></span><span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"=
+n">shutil</span><span class=3D"o">.</span><span class=3D"n">which</span><sp=
+an class=3D"p">(</span><span class=3D"s2">"python"</span><span class=3D"p">=
+)</span>
+<span class=3D"go">'C:\\Python33\\python.EXE'</span>
+</pre></div>
+</div>
+<div class=3D"versionadded">
+<p><span class=3D"versionmodified added">New in version 3.3.</span></p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.8: </span>T=
+he <a class=3D"reference internal" href=3D"https://docs.python.org/3/librar=
+y/stdtypes.html#bytes" title=3D"bytes"><code class=3D"xref py py-class docu=
+tils literal notranslate"><span class=3D"pre">bytes</span></code></a> type =
+is now accepted.  If <em>cmd</em> type is
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+tdtypes.html#bytes" title=3D"bytes"><code class=3D"xref py py-class docutil=
+s literal notranslate"><span class=3D"pre">bytes</span></code></a>, the res=
+ult type is also <a class=3D"reference internal" href=3D"https://docs.pytho=
+n.org/3/library/stdtypes.html#bytes" title=3D"bytes"><code class=3D"xref py=
+ py-class docutils literal notranslate"><span class=3D"pre">bytes</span></c=
+ode></a>.</p>
+</div>
+</dd></dl>
+
+<dl class=3D"exception">
+<dt id=3D"shutil.Error">
+<em class=3D"property">exception </em><code class=3D"sig-prename descclassn=
+ame">shutil.</code><code class=3D"sig-name descname">Error</code><a class=
+=3D"headerlink" href=3D"https://docs.python.org/3/library/shutil.html#shuti=
+l.Error" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>This exception collects exceptions that are raised during a multi-fi=
+le
+operation. For <a class=3D"reference internal" href=3D"https://docs.python.=
+org/3/library/shutil.html#shutil.copytree" title=3D"shutil.copytree"><code =
+class=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">=
+copytree()</span></code></a>, the exception argument is a list of 3-tuples
+(<em>srcname</em>, <em>dstname</em>, <em>exception</em>).</p>
+</dd></dl>
+
+<div class=3D"section" id=3D"platform-dependent-efficient-copy-operations">
+<span id=3D"shutil-platform-dependent-efficient-copy-operations"></span><h3=
+>Platform-dependent efficient copy operations<a class=3D"headerlink" href=
+=3D"https://docs.python.org/3/library/shutil.html#platform-dependent-effici=
+ent-copy-operations" title=3D"Permalink to this headline">=C2=B6</a></h3>
+<p>Starting from Python 3.8 all functions involving a file copy (<a class=
+=3D"reference internal" href=3D"https://docs.python.org/3/library/shutil.ht=
+ml#shutil.copyfile" title=3D"shutil.copyfile"><code class=3D"xref py py-fun=
+c docutils literal notranslate"><span class=3D"pre">copyfile()</span></code=
+></a>,
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/c=
+opy.html#module-copy" title=3D"copy: Shallow and deep copy operations."><co=
+de class=3D"xref py py-func docutils literal notranslate"><span class=3D"pr=
+e">copy()</span></code></a>, <a class=3D"reference internal" href=3D"https:=
+//docs.python.org/3/library/shutil.html#shutil.copy2" title=3D"shutil.copy2=
+"><code class=3D"xref py py-func docutils literal notranslate"><span class=
+=3D"pre">copy2()</span></code></a>, <a class=3D"reference internal" href=3D=
+"https://docs.python.org/3/library/shutil.html#shutil.copytree" title=3D"sh=
+util.copytree"><code class=3D"xref py py-func docutils literal notranslate"=
+><span class=3D"pre">copytree()</span></code></a>, and <a class=3D"referenc=
+e internal" href=3D"https://docs.python.org/3/library/shutil.html#shutil.mo=
+ve" title=3D"shutil.move"><code class=3D"xref py py-func docutils literal n=
+otranslate"><span class=3D"pre">move()</span></code></a>) may use
+platform-specific =E2=80=9Cfast-copy=E2=80=9D syscalls in order to copy the=
+ file more
+efficiently (see <a class=3D"reference external" href=3D"https://bugs.pytho=
+n.org/issue33671">bpo-33671</a>).
+=E2=80=9Cfast-copy=E2=80=9D means that the copying operation occurs within =
+the kernel, avoiding
+the use of userspace buffers in Python as in =E2=80=9C<code class=3D"docuti=
+ls literal notranslate"><span class=3D"pre">outfd.write(infd.read())</span>=
+</code>=E2=80=9D.</p>
+<p>On macOS <a class=3D"reference external" href=3D"http://www.manpagez.com=
+/man/3/copyfile/">fcopyfile</a> is used to copy the file content (not metad=
+ata).</p>
+<p>On Linux <a class=3D"reference internal" href=3D"https://docs.python.org=
+/3/library/os.html#os.sendfile" title=3D"os.sendfile"><code class=3D"xref p=
+y py-func docutils literal notranslate"><span class=3D"pre">os.sendfile()</=
+span></code></a> is used.</p>
+<p>On Windows <a class=3D"reference internal" href=3D"https://docs.python.o=
+rg/3/library/shutil.html#shutil.copyfile" title=3D"shutil.copyfile"><code c=
+lass=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">s=
+hutil.copyfile()</span></code></a> uses a bigger default buffer size (1 MiB
+instead of 64 KiB) and a <a class=3D"reference internal" href=3D"https://do=
+cs.python.org/3/library/stdtypes.html#memoryview" title=3D"memoryview"><cod=
+e class=3D"xref py py-func docutils literal notranslate"><span class=3D"pre=
+">memoryview()</span></code></a>-based variant of
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.copyfileobj" title=3D"shutil.copyfileobj"><code class=3D"=
+xref py py-func docutils literal notranslate"><span class=3D"pre">shutil.co=
+pyfileobj()</span></code></a> is used.</p>
+<p>If the fast-copy operation fails and no data was written in the destinat=
+ion
+file then shutil will silently fallback on using less efficient
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.copyfileobj" title=3D"shutil.copyfileobj"><code class=3D"=
+xref py py-func docutils literal notranslate"><span class=3D"pre">copyfileo=
+bj()</span></code></a> function internally.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.8.</span></=
+p>
+</div>
+</div>
+<div class=3D"section" id=3D"copytree-example">
+<span id=3D"shutil-copytree-example"></span><h3>copytree example<a class=3D=
+"headerlink" href=3D"https://docs.python.org/3/library/shutil.html#copytree=
+-example" title=3D"Permalink to this headline">=C2=B6</a></h3>
+<p>This example is the implementation of the <a class=3D"reference internal=
+" href=3D"https://docs.python.org/3/library/shutil.html#shutil.copytree" ti=
+tle=3D"shutil.copytree"><code class=3D"xref py py-func docutils literal not=
+ranslate"><span class=3D"pre">copytree()</span></code></a> function, descri=
+bed
+above, with the docstring omitted.  It demonstrates many of the other funct=
+ions
+provided by this module.</p>
+<div class=3D"highlight-python3 notranslate" style=3D"position: relative;">=
+<div class=3D"highlight"><pre><span></span><span class=3D"k">def</span> <sp=
+an class=3D"nf">copytree</span><span class=3D"p">(</span><span class=3D"n">=
+src</span><span class=3D"p">,</span> <span class=3D"n">dst</span><span clas=
+s=3D"p">,</span> <span class=3D"n">symlinks</span><span class=3D"o">=3D</sp=
+an><span class=3D"kc">False</span><span class=3D"p">):</span>
+    <span class=3D"n">names</span> <span class=3D"o">=3D</span> <span class=
+=3D"n">os</span><span class=3D"o">.</span><span class=3D"n">listdir</span><=
+span class=3D"p">(</span><span class=3D"n">src</span><span class=3D"p">)</s=
+pan>
+    <span class=3D"n">os</span><span class=3D"o">.</span><span class=3D"n">=
+makedirs</span><span class=3D"p">(</span><span class=3D"n">dst</span><span =
+class=3D"p">)</span>
+    <span class=3D"n">errors</span> <span class=3D"o">=3D</span> <span clas=
+s=3D"p">[]</span>
+    <span class=3D"k">for</span> <span class=3D"n">name</span> <span class=
+=3D"ow">in</span> <span class=3D"n">names</span><span class=3D"p">:</span>
+        <span class=3D"n">srcname</span> <span class=3D"o">=3D</span> <span=
+ class=3D"n">os</span><span class=3D"o">.</span><span class=3D"n">path</spa=
+n><span class=3D"o">.</span><span class=3D"n">join</span><span class=3D"p">=
+(</span><span class=3D"n">src</span><span class=3D"p">,</span> <span class=
+=3D"n">name</span><span class=3D"p">)</span>
+        <span class=3D"n">dstname</span> <span class=3D"o">=3D</span> <span=
+ class=3D"n">os</span><span class=3D"o">.</span><span class=3D"n">path</spa=
+n><span class=3D"o">.</span><span class=3D"n">join</span><span class=3D"p">=
+(</span><span class=3D"n">dst</span><span class=3D"p">,</span> <span class=
+=3D"n">name</span><span class=3D"p">)</span>
+        <span class=3D"k">try</span><span class=3D"p">:</span>
+            <span class=3D"k">if</span> <span class=3D"n">symlinks</span> <=
+span class=3D"ow">and</span> <span class=3D"n">os</span><span class=3D"o">.=
+</span><span class=3D"n">path</span><span class=3D"o">.</span><span class=
+=3D"n">islink</span><span class=3D"p">(</span><span class=3D"n">srcname</sp=
+an><span class=3D"p">):</span>
+                <span class=3D"n">linkto</span> <span class=3D"o">=3D</span=
+> <span class=3D"n">os</span><span class=3D"o">.</span><span class=3D"n">re=
+adlink</span><span class=3D"p">(</span><span class=3D"n">srcname</span><spa=
+n class=3D"p">)</span>
+                <span class=3D"n">os</span><span class=3D"o">.</span><span =
+class=3D"n">symlink</span><span class=3D"p">(</span><span class=3D"n">linkt=
+o</span><span class=3D"p">,</span> <span class=3D"n">dstname</span><span cl=
+ass=3D"p">)</span>
+            <span class=3D"k">elif</span> <span class=3D"n">os</span><span =
+class=3D"o">.</span><span class=3D"n">path</span><span class=3D"o">.</span>=
+<span class=3D"n">isdir</span><span class=3D"p">(</span><span class=3D"n">s=
+rcname</span><span class=3D"p">):</span>
+                <span class=3D"n">copytree</span><span class=3D"p">(</span>=
+<span class=3D"n">srcname</span><span class=3D"p">,</span> <span class=3D"n=
+">dstname</span><span class=3D"p">,</span> <span class=3D"n">symlinks</span=
+><span class=3D"p">)</span>
+            <span class=3D"k">else</span><span class=3D"p">:</span>
+                <span class=3D"n">copy2</span><span class=3D"p">(</span><sp=
+an class=3D"n">srcname</span><span class=3D"p">,</span> <span class=3D"n">d=
+stname</span><span class=3D"p">)</span>
+            <span class=3D"c1"># XXX What about devices, sockets etc.?</spa=
+n>
+        <span class=3D"k">except</span> <span class=3D"ne">OSError</span> <=
+span class=3D"k">as</span> <span class=3D"n">why</span><span class=3D"p">:<=
+/span>
+            <span class=3D"n">errors</span><span class=3D"o">.</span><span =
+class=3D"n">append</span><span class=3D"p">((</span><span class=3D"n">srcna=
+me</span><span class=3D"p">,</span> <span class=3D"n">dstname</span><span c=
+lass=3D"p">,</span> <span class=3D"nb">str</span><span class=3D"p">(</span>=
+<span class=3D"n">why</span><span class=3D"p">)))</span>
+        <span class=3D"c1"># catch the Error from the recursive copytree so=
+ that we can</span>
+        <span class=3D"c1"># continue with other files</span>
+        <span class=3D"k">except</span> <span class=3D"n">Error</span> <spa=
+n class=3D"k">as</span> <span class=3D"n">err</span><span class=3D"p">:</sp=
+an>
+            <span class=3D"n">errors</span><span class=3D"o">.</span><span =
+class=3D"n">extend</span><span class=3D"p">(</span><span class=3D"n">err</s=
+pan><span class=3D"o">.</span><span class=3D"n">args</span><span class=3D"p=
+">[</span><span class=3D"mi">0</span><span class=3D"p">])</span>
+    <span class=3D"k">try</span><span class=3D"p">:</span>
+        <span class=3D"n">copystat</span><span class=3D"p">(</span><span cl=
+ass=3D"n">src</span><span class=3D"p">,</span> <span class=3D"n">dst</span>=
+<span class=3D"p">)</span>
+    <span class=3D"k">except</span> <span class=3D"ne">OSError</span> <span=
+ class=3D"k">as</span> <span class=3D"n">why</span><span class=3D"p">:</spa=
+n>
+        <span class=3D"c1"># can't copy file access times on Windows</span>
+        <span class=3D"k">if</span> <span class=3D"n">why</span><span class=
+=3D"o">.</span><span class=3D"n">winerror</span> <span class=3D"ow">is</spa=
+n> <span class=3D"kc">None</span><span class=3D"p">:</span>
+            <span class=3D"n">errors</span><span class=3D"o">.</span><span =
+class=3D"n">extend</span><span class=3D"p">((</span><span class=3D"n">src</=
+span><span class=3D"p">,</span> <span class=3D"n">dst</span><span class=3D"=
+p">,</span> <span class=3D"nb">str</span><span class=3D"p">(</span><span cl=
+ass=3D"n">why</span><span class=3D"p">)))</span>
+    <span class=3D"k">if</span> <span class=3D"n">errors</span><span class=
+=3D"p">:</span>
+        <span class=3D"k">raise</span> <span class=3D"n">Error</span><span =
+class=3D"p">(</span><span class=3D"n">errors</span><span class=3D"p">)</spa=
+n>
+</pre></div>
+</div>
+<p>Another example that uses the <a class=3D"reference internal" href=3D"ht=
+tps://docs.python.org/3/library/shutil.html#shutil.ignore_patterns" title=
+=3D"shutil.ignore_patterns"><code class=3D"xref py py-func docutils literal=
+ notranslate"><span class=3D"pre">ignore_patterns()</span></code></a> helpe=
+r:</p>
+<div class=3D"highlight-python3 notranslate" style=3D"position: relative;">=
+<div class=3D"highlight"><pre><span></span><span class=3D"kn">from</span> <=
+span class=3D"nn">shutil</span> <span class=3D"kn">import</span> <span clas=
+s=3D"n">copytree</span><span class=3D"p">,</span> <span class=3D"n">ignore_=
+patterns</span>
+
+<span class=3D"n">copytree</span><span class=3D"p">(</span><span class=3D"n=
+">source</span><span class=3D"p">,</span> <span class=3D"n">destination</sp=
+an><span class=3D"p">,</span> <span class=3D"n">ignore</span><span class=3D=
+"o">=3D</span><span class=3D"n">ignore_patterns</span><span class=3D"p">(</=
+span><span class=3D"s1">'*.pyc'</span><span class=3D"p">,</span> <span clas=
+s=3D"s1">'tmp*'</span><span class=3D"p">))</span>
+</pre></div>
+</div>
+<p>This will copy everything except <code class=3D"docutils literal notrans=
+late"><span class=3D"pre">.pyc</span></code> files and files or directories=
+ whose
+name starts with <code class=3D"docutils literal notranslate"><span class=
+=3D"pre">tmp</span></code>.</p>
+<p>Another example that uses the <em>ignore</em> argument to add a logging =
+call:</p>
+<div class=3D"highlight-python3 notranslate" style=3D"position: relative;">=
+<div class=3D"highlight"><pre><span></span><span class=3D"kn">from</span> <=
+span class=3D"nn">shutil</span> <span class=3D"kn">import</span> <span clas=
+s=3D"n">copytree</span>
+<span class=3D"kn">import</span> <span class=3D"nn">logging</span>
+
+<span class=3D"k">def</span> <span class=3D"nf">_logpath</span><span class=
+=3D"p">(</span><span class=3D"n">path</span><span class=3D"p">,</span> <spa=
+n class=3D"n">names</span><span class=3D"p">):</span>
+    <span class=3D"n">logging</span><span class=3D"o">.</span><span class=
+=3D"n">info</span><span class=3D"p">(</span><span class=3D"s1">'Working in =
+</span><span class=3D"si">%s</span><span class=3D"s1">'</span><span class=
+=3D"p">,</span> <span class=3D"n">path</span><span class=3D"p">)</span>
+    <span class=3D"k">return</span> <span class=3D"p">[]</span>   <span cla=
+ss=3D"c1"># nothing will be ignored</span>
+
+<span class=3D"n">copytree</span><span class=3D"p">(</span><span class=3D"n=
+">source</span><span class=3D"p">,</span> <span class=3D"n">destination</sp=
+an><span class=3D"p">,</span> <span class=3D"n">ignore</span><span class=3D=
+"o">=3D</span><span class=3D"n">_logpath</span><span class=3D"p">)</span>
+</pre></div>
+</div>
+</div>
+<div class=3D"section" id=3D"rmtree-example">
+<span id=3D"shutil-rmtree-example"></span><h3>rmtree example<a class=3D"hea=
+derlink" href=3D"https://docs.python.org/3/library/shutil.html#rmtree-examp=
+le" title=3D"Permalink to this headline">=C2=B6</a></h3>
+<p>This example shows how to remove a directory tree on Windows where some
+of the files have their read-only bit set. It uses the onerror callback
+to clear the readonly bit and reattempt the remove. Any subsequent failure
+will propagate.</p>
+<div class=3D"highlight-python3 notranslate" style=3D"position: relative;">=
+<div class=3D"highlight"><pre><span></span><span class=3D"kn">import</span>=
+ <span class=3D"nn">os</span><span class=3D"o">,</span> <span class=3D"nn">=
+stat</span>
+<span class=3D"kn">import</span> <span class=3D"nn">shutil</span>
+
+<span class=3D"k">def</span> <span class=3D"nf">remove_readonly</span><span=
+ class=3D"p">(</span><span class=3D"n">func</span><span class=3D"p">,</span=
+> <span class=3D"n">path</span><span class=3D"p">,</span> <span class=3D"n"=
+>_</span><span class=3D"p">):</span>
+    <span class=3D"s2">"Clear the readonly bit and reattempt the removal"</=
+span>
+    <span class=3D"n">os</span><span class=3D"o">.</span><span class=3D"n">=
+chmod</span><span class=3D"p">(</span><span class=3D"n">path</span><span cl=
+ass=3D"p">,</span> <span class=3D"n">stat</span><span class=3D"o">.</span><=
+span class=3D"n">S_IWRITE</span><span class=3D"p">)</span>
+    <span class=3D"n">func</span><span class=3D"p">(</span><span class=3D"n=
+">path</span><span class=3D"p">)</span>
+
+<span class=3D"n">shutil</span><span class=3D"o">.</span><span class=3D"n">=
+rmtree</span><span class=3D"p">(</span><span class=3D"n">directory</span><s=
+pan class=3D"p">,</span> <span class=3D"n">onerror</span><span class=3D"o">=
+=3D</span><span class=3D"n">remove_readonly</span><span class=3D"p">)</span=
+>
+</pre></div>
+</div>
+</div>
+</div>
+<div class=3D"section" id=3D"archiving-operations">
+<span id=3D"id1"></span><h2>Archiving operations<a class=3D"headerlink" hre=
+f=3D"https://docs.python.org/3/library/shutil.html#archiving-operations" ti=
+tle=3D"Permalink to this headline">=C2=B6</a></h2>
+<div class=3D"versionadded">
+<p><span class=3D"versionmodified added">New in version 3.2.</span></p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.5: </span>A=
+dded support for the <em>xztar</em> format.</p>
+</div>
+<p>High-level utilities to create and read compressed and archived files ar=
+e also
+provided.  They rely on the <a class=3D"reference internal" href=3D"https:/=
+/docs.python.org/3/library/zipfile.html#module-zipfile" title=3D"zipfile: R=
+ead and write ZIP-format archive files."><code class=3D"xref py py-mod docu=
+tils literal notranslate"><span class=3D"pre">zipfile</span></code></a> and=
+ <a class=3D"reference internal" href=3D"https://docs.python.org/3/library/=
+tarfile.html#module-tarfile" title=3D"tarfile: Read and write tar-format ar=
+chive files."><code class=3D"xref py py-mod docutils literal notranslate"><=
+span class=3D"pre">tarfile</span></code></a> modules.</p>
+<dl class=3D"function">
+<dt id=3D"shutil.make_archive">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">make_archive</code><span class=3D"sig-paren">(</span><em cla=
+ss=3D"sig-param">base_name</em>, <em class=3D"sig-param">format</em><span c=
+lass=3D"optional">[</span>, <em class=3D"sig-param">root_dir</em><span clas=
+s=3D"optional">[</span>, <em class=3D"sig-param">base_dir</em><span class=
+=3D"optional">[</span>, <em class=3D"sig-param">verbose</em><span class=3D"=
+optional">[</span>, <em class=3D"sig-param">dry_run</em><span class=3D"opti=
+onal">[</span>, <em class=3D"sig-param">owner</em><span class=3D"optional">=
+[</span>, <em class=3D"sig-param">group</em><span class=3D"optional">[</spa=
+n>, <em class=3D"sig-param">logger</em><span class=3D"optional">]</span><sp=
+an class=3D"optional">]</span><span class=3D"optional">]</span><span class=
+=3D"optional">]</span><span class=3D"optional">]</span><span class=3D"optio=
+nal">]</span><span class=3D"optional">]</span><span class=3D"sig-paren">)</=
+span><a class=3D"headerlink" href=3D"https://docs.python.org/3/library/shut=
+il.html#shutil.make_archive" title=3D"Permalink to this definition">=C2=B6<=
+/a></dt>
+<dd><p>Create an archive file (such as zip or tar) and return its name.</p>
+<p><em>base_name</em> is the name of the file to create, including the path=
+, minus
+any format-specific extension. <em>format</em> is the archive format: one o=
+f
+=E2=80=9Czip=E2=80=9D (if the <a class=3D"reference internal" href=3D"https=
+://docs.python.org/3/library/zlib.html#module-zlib" title=3D"zlib: Low-leve=
+l interface to compression and decompression routines compatible with gzip.=
+"><code class=3D"xref py py-mod docutils literal notranslate"><span class=
+=3D"pre">zlib</span></code></a> module is available), =E2=80=9Ctar=E2=80=9D=
+, =E2=80=9Cgztar=E2=80=9D (if the
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/z=
+lib.html#module-zlib" title=3D"zlib: Low-level interface to compression and=
+ decompression routines compatible with gzip."><code class=3D"xref py py-mo=
+d docutils literal notranslate"><span class=3D"pre">zlib</span></code></a> =
+module is available), =E2=80=9Cbztar=E2=80=9D (if the <a class=3D"reference=
+ internal" href=3D"https://docs.python.org/3/library/bz2.html#module-bz2" t=
+itle=3D"bz2: Interfaces for bzip2 compression and decompression."><code cla=
+ss=3D"xref py py-mod docutils literal notranslate"><span class=3D"pre">bz2<=
+/span></code></a> module is
+available), or =E2=80=9Cxztar=E2=80=9D (if the <a class=3D"reference intern=
+al" href=3D"https://docs.python.org/3/library/lzma.html#module-lzma" title=
+=3D"lzma: A Python wrapper for the liblzma compression library."><code clas=
+s=3D"xref py py-mod docutils literal notranslate"><span class=3D"pre">lzma<=
+/span></code></a> module is available).</p>
+<p><em>root_dir</em> is a directory that will be the root directory of the
+archive; for example, we typically chdir into <em>root_dir</em> before crea=
+ting the
+archive.</p>
+<p><em>base_dir</em> is the directory where we start archiving from;
+i.e. <em>base_dir</em> will be the common prefix of all files and
+directories in the archive.</p>
+<p><em>root_dir</em> and <em>base_dir</em> both default to the current dire=
+ctory.</p>
+<p>If <em>dry_run</em> is true, no archive is created, but the operations t=
+hat would be
+executed are logged to <em>logger</em>.</p>
+<p><em>owner</em> and <em>group</em> are used when creating a tar archive. =
+By default,
+uses the current owner and group.</p>
+<p><em>logger</em> must be an object compatible with <span class=3D"target"=
+ id=3D"index-2"></span><a class=3D"pep reference external" href=3D"https://=
+www.python.org/dev/peps/pep-0282"><strong>PEP 282</strong></a>, usually an =
+instance of
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/l=
+ogging.html#logging.Logger" title=3D"logging.Logger"><code class=3D"xref py=
+ py-class docutils literal notranslate"><span class=3D"pre">logging.Logger<=
+/span></code></a>.</p>
+<p>The <em>verbose</em> argument is unused and deprecated.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.make_archive</span></code> with arguments <code=
+ class=3D"docutils literal notranslate"><span class=3D"pre">base_name</span=
+></code>, <code class=3D"docutils literal notranslate"><span class=3D"pre">=
+format</span></code>, <code class=3D"docutils literal notranslate"><span cl=
+ass=3D"pre">root_dir</span></code>, <code class=3D"docutils literal notrans=
+late"><span class=3D"pre">base_dir</span></code>.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.8: </span>T=
+he modern pax (POSIX.1-2001) format is now used instead of
+the legacy GNU format for archives created with <code class=3D"docutils lit=
+eral notranslate"><span class=3D"pre">format=3D"tar"</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.get_archive_formats">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">get_archive_formats</code><span class=3D"sig-paren">(</span>=
+<span class=3D"sig-paren">)</span><a class=3D"headerlink" href=3D"https://d=
+ocs.python.org/3/library/shutil.html#shutil.get_archive_formats" title=3D"P=
+ermalink to this definition">=C2=B6</a></dt>
+<dd><p>Return a list of supported formats for archiving.
+Each element of the returned sequence is a tuple <code class=3D"docutils li=
+teral notranslate"><span class=3D"pre">(name,</span> <span class=3D"pre">de=
+scription)</span></code>.</p>
+<p>By default <a class=3D"reference internal" href=3D"https://docs.python.o=
+rg/3/library/shutil.html#module-shutil" title=3D"shutil: High-level file op=
+erations, including copying."><code class=3D"xref py py-mod docutils litera=
+l notranslate"><span class=3D"pre">shutil</span></code></a> provides these =
+formats:</p>
+<ul class=3D"simple">
+<li><p><em>zip</em>: ZIP file (if the <a class=3D"reference internal" href=
+=3D"https://docs.python.org/3/library/zlib.html#module-zlib" title=3D"zlib:=
+ Low-level interface to compression and decompression routines compatible w=
+ith gzip."><code class=3D"xref py py-mod docutils literal notranslate"><spa=
+n class=3D"pre">zlib</span></code></a> module is available).</p></li>
+<li><p><em>tar</em>: Uncompressed tar file. Uses POSIX.1-2001 pax format fo=
+r new archives.</p></li>
+<li><p><em>gztar</em>: gzip=E2=80=99ed tar-file (if the <a class=3D"referen=
+ce internal" href=3D"https://docs.python.org/3/library/zlib.html#module-zli=
+b" title=3D"zlib: Low-level interface to compression and decompression rout=
+ines compatible with gzip."><code class=3D"xref py py-mod docutils literal =
+notranslate"><span class=3D"pre">zlib</span></code></a> module is available=
+).</p></li>
+<li><p><em>bztar</em>: bzip2=E2=80=99ed tar-file (if the <a class=3D"refere=
+nce internal" href=3D"https://docs.python.org/3/library/bz2.html#module-bz2=
+" title=3D"bz2: Interfaces for bzip2 compression and decompression."><code =
+class=3D"xref py py-mod docutils literal notranslate"><span class=3D"pre">b=
+z2</span></code></a> module is available).</p></li>
+<li><p><em>xztar</em>: xz=E2=80=99ed tar-file (if the <a class=3D"reference=
+ internal" href=3D"https://docs.python.org/3/library/lzma.html#module-lzma"=
+ title=3D"lzma: A Python wrapper for the liblzma compression library."><cod=
+e class=3D"xref py py-mod docutils literal notranslate"><span class=3D"pre"=
+>lzma</span></code></a> module is available).</p></li>
+</ul>
+<p>You can register new formats or provide your own archiver for any existi=
+ng
+formats, by using <a class=3D"reference internal" href=3D"https://docs.pyth=
+on.org/3/library/shutil.html#shutil.register_archive_format" title=3D"shuti=
+l.register_archive_format"><code class=3D"xref py py-func docutils literal =
+notranslate"><span class=3D"pre">register_archive_format()</span></code></a=
+>.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.register_archive_format">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">register_archive_format</code><span class=3D"sig-paren">(</s=
+pan><em class=3D"sig-param">name</em>, <em class=3D"sig-param">function</em=
+><span class=3D"optional">[</span>, <em class=3D"sig-param">extra_args</em>=
+<span class=3D"optional">[</span>, <em class=3D"sig-param">description</em>=
+<span class=3D"optional">]</span><span class=3D"optional">]</span><span cla=
+ss=3D"sig-paren">)</span><a class=3D"headerlink" href=3D"https://docs.pytho=
+n.org/3/library/shutil.html#shutil.register_archive_format" title=3D"Permal=
+ink to this definition">=C2=B6</a></dt>
+<dd><p>Register an archiver for the format <em>name</em>.</p>
+<p><em>function</em> is the callable that will be used to unpack archives. =
+The callable
+will receive the <em>base_name</em> of the file to create, followed by the
+<em>base_dir</em> (which defaults to <a class=3D"reference internal" href=
+=3D"https://docs.python.org/3/library/os.html#os.curdir" title=3D"os.curdir=
+"><code class=3D"xref py py-data docutils literal notranslate"><span class=
+=3D"pre">os.curdir</span></code></a>) to start archiving from.
+Further arguments are passed as keyword arguments: <em>owner</em>, <em>grou=
+p</em>,
+<em>dry_run</em> and <em>logger</em> (as passed in <a class=3D"reference in=
+ternal" href=3D"https://docs.python.org/3/library/shutil.html#shutil.make_a=
+rchive" title=3D"shutil.make_archive"><code class=3D"xref py py-func docuti=
+ls literal notranslate"><span class=3D"pre">make_archive()</span></code></a=
+>).</p>
+<p>If given, <em>extra_args</em> is a sequence of <code class=3D"docutils l=
+iteral notranslate"><span class=3D"pre">(name,</span> <span class=3D"pre">v=
+alue)</span></code> pairs that will be
+used as extra keywords arguments when the archiver callable is used.</p>
+<p><em>description</em> is used by <a class=3D"reference internal" href=3D"=
+https://docs.python.org/3/library/shutil.html#shutil.get_archive_formats" t=
+itle=3D"shutil.get_archive_formats"><code class=3D"xref py py-func docutils=
+ literal notranslate"><span class=3D"pre">get_archive_formats()</span></cod=
+e></a> which returns the
+list of archivers.  Defaults to an empty string.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.unregister_archive_format">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">unregister_archive_format</code><span class=3D"sig-paren">(<=
+/span><em class=3D"sig-param">name</em><span class=3D"sig-paren">)</span><a=
+ class=3D"headerlink" href=3D"https://docs.python.org/3/library/shutil.html=
+#shutil.unregister_archive_format" title=3D"Permalink to this definition">=
+=C2=B6</a></dt>
+<dd><p>Remove the archive format <em>name</em> from the list of supported f=
+ormats.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.unpack_archive">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">unpack_archive</code><span class=3D"sig-paren">(</span><em c=
+lass=3D"sig-param">filename</em><span class=3D"optional">[</span>, <em clas=
+s=3D"sig-param">extract_dir</em><span class=3D"optional">[</span>, <em clas=
+s=3D"sig-param">format</em><span class=3D"optional">]</span><span class=3D"=
+optional">]</span><span class=3D"sig-paren">)</span><a class=3D"headerlink"=
+ href=3D"https://docs.python.org/3/library/shutil.html#shutil.unpack_archiv=
+e" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Unpack an archive. <em>filename</em> is the full path of the archive=
+.</p>
+<p><em>extract_dir</em> is the name of the target directory where the archi=
+ve is
+unpacked. If not provided, the current working directory is used.</p>
+<p><em>format</em> is the archive format: one of =E2=80=9Czip=E2=80=9D, =E2=
+=80=9Ctar=E2=80=9D, =E2=80=9Cgztar=E2=80=9D, =E2=80=9Cbztar=E2=80=9D, or
+=E2=80=9Cxztar=E2=80=9D.  Or any other format registered with
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.register_unpack_format" title=3D"shutil.register_unpack_f=
+ormat"><code class=3D"xref py py-func docutils literal notranslate"><span c=
+lass=3D"pre">register_unpack_format()</span></code></a>.  If not provided, =
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+hutil.html#shutil.unpack_archive" title=3D"shutil.unpack_archive"><code cla=
+ss=3D"xref py py-func docutils literal notranslate"><span class=3D"pre">unp=
+ack_archive()</span></code></a>
+will use the archive file name extension and see if an unpacker was
+registered for that extension.  In case none is found,
+a <a class=3D"reference internal" href=3D"https://docs.python.org/3/library=
+/exceptions.html#ValueError" title=3D"ValueError"><code class=3D"xref py py=
+-exc docutils literal notranslate"><span class=3D"pre">ValueError</span></c=
+ode></a> is raised.</p>
+<p class=3D"audit-hook">Raises an <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/sys.html#auditing"><span class=3D"std std-=
+ref">auditing event</span></a> <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">shutil.unpack_archive</span></code> with arguments <co=
+de class=3D"docutils literal notranslate"><span class=3D"pre">filename</spa=
+n></code>, <code class=3D"docutils literal notranslate"><span class=3D"pre"=
+>extract_dir</span></code>, <code class=3D"docutils literal notranslate"><s=
+pan class=3D"pre">format</span></code>.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.7: </span>A=
+ccepts a <a class=3D"reference internal" href=3D"https://docs.python.org/3/=
+glossary.html#term-path-like-object"><span class=3D"xref std std-term">path=
+-like object</span></a> for <em>filename</em> and <em>extract_dir</em>.</p>
+</div>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.register_unpack_format">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">register_unpack_format</code><span class=3D"sig-paren">(</sp=
+an><em class=3D"sig-param">name</em>, <em class=3D"sig-param">extensions</e=
+m>, <em class=3D"sig-param">function</em><span class=3D"optional">[</span>,=
+ <em class=3D"sig-param">extra_args</em><span class=3D"optional">[</span>, =
+<em class=3D"sig-param">description</em><span class=3D"optional">]</span><s=
+pan class=3D"optional">]</span><span class=3D"sig-paren">)</span><a class=
+=3D"headerlink" href=3D"https://docs.python.org/3/library/shutil.html#shuti=
+l.register_unpack_format" title=3D"Permalink to this definition">=C2=B6</a>=
+</dt>
+<dd><p>Registers an unpack format. <em>name</em> is the name of the format =
+and
+<em>extensions</em> is a list of extensions corresponding to the format, li=
+ke
+<code class=3D"docutils literal notranslate"><span class=3D"pre">.zip</span=
+></code> for Zip files.</p>
+<p><em>function</em> is the callable that will be used to unpack archives. =
+The
+callable will receive the path of the archive, followed by the directory
+the archive must be extracted to.</p>
+<p>When provided, <em>extra_args</em> is a sequence of <code class=3D"docut=
+ils literal notranslate"><span class=3D"pre">(name,</span> <span class=3D"p=
+re">value)</span></code> tuples that
+will be passed as keywords arguments to the callable.</p>
+<p><em>description</em> can be provided to describe the format, and will be=
+ returned
+by the <a class=3D"reference internal" href=3D"https://docs.python.org/3/li=
+brary/shutil.html#shutil.get_unpack_formats" title=3D"shutil.get_unpack_for=
+mats"><code class=3D"xref py py-func docutils literal notranslate"><span cl=
+ass=3D"pre">get_unpack_formats()</span></code></a> function.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.unregister_unpack_format">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">unregister_unpack_format</code><span class=3D"sig-paren">(</=
+span><em class=3D"sig-param">name</em><span class=3D"sig-paren">)</span><a =
+class=3D"headerlink" href=3D"https://docs.python.org/3/library/shutil.html#=
+shutil.unregister_unpack_format" title=3D"Permalink to this definition">=C2=
+=B6</a></dt>
+<dd><p>Unregister an unpack format. <em>name</em> is the name of the format=
+.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"shutil.get_unpack_formats">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">get_unpack_formats</code><span class=3D"sig-paren">(</span><=
+span class=3D"sig-paren">)</span><a class=3D"headerlink" href=3D"https://do=
+cs.python.org/3/library/shutil.html#shutil.get_unpack_formats" title=3D"Per=
+malink to this definition">=C2=B6</a></dt>
+<dd><p>Return a list of all registered formats for unpacking.
+Each element of the returned sequence is a tuple
+<code class=3D"docutils literal notranslate"><span class=3D"pre">(name,</sp=
+an> <span class=3D"pre">extensions,</span> <span class=3D"pre">description)=
+</span></code>.</p>
+<p>By default <a class=3D"reference internal" href=3D"https://docs.python.o=
+rg/3/library/shutil.html#module-shutil" title=3D"shutil: High-level file op=
+erations, including copying."><code class=3D"xref py py-mod docutils litera=
+l notranslate"><span class=3D"pre">shutil</span></code></a> provides these =
+formats:</p>
+<ul class=3D"simple">
+<li><p><em>zip</em>: ZIP file (unpacking compressed files works only if the=
+ corresponding
+module is available).</p></li>
+<li><p><em>tar</em>: uncompressed tar file.</p></li>
+<li><p><em>gztar</em>: gzip=E2=80=99ed tar-file (if the <a class=3D"referen=
+ce internal" href=3D"https://docs.python.org/3/library/zlib.html#module-zli=
+b" title=3D"zlib: Low-level interface to compression and decompression rout=
+ines compatible with gzip."><code class=3D"xref py py-mod docutils literal =
+notranslate"><span class=3D"pre">zlib</span></code></a> module is available=
+).</p></li>
+<li><p><em>bztar</em>: bzip2=E2=80=99ed tar-file (if the <a class=3D"refere=
+nce internal" href=3D"https://docs.python.org/3/library/bz2.html#module-bz2=
+" title=3D"bz2: Interfaces for bzip2 compression and decompression."><code =
+class=3D"xref py py-mod docutils literal notranslate"><span class=3D"pre">b=
+z2</span></code></a> module is available).</p></li>
+<li><p><em>xztar</em>: xz=E2=80=99ed tar-file (if the <a class=3D"reference=
+ internal" href=3D"https://docs.python.org/3/library/lzma.html#module-lzma"=
+ title=3D"lzma: A Python wrapper for the liblzma compression library."><cod=
+e class=3D"xref py py-mod docutils literal notranslate"><span class=3D"pre"=
+>lzma</span></code></a> module is available).</p></li>
+</ul>
+<p>You can register new formats or provide your own unpacker for any existi=
+ng
+formats, by using <a class=3D"reference internal" href=3D"https://docs.pyth=
+on.org/3/library/shutil.html#shutil.register_unpack_format" title=3D"shutil=
+.register_unpack_format"><code class=3D"xref py py-func docutils literal no=
+translate"><span class=3D"pre">register_unpack_format()</span></code></a>.<=
+/p>
+</dd></dl>
+
+<div class=3D"section" id=3D"archiving-example">
+<span id=3D"shutil-archiving-example"></span><h3>Archiving example<a class=
+=3D"headerlink" href=3D"https://docs.python.org/3/library/shutil.html#archi=
+ving-example" title=3D"Permalink to this headline">=C2=B6</a></h3>
+<p>In this example, we create a gzip=E2=80=99ed tar-file archive containing=
+ all files
+found in the <code class=3D"file docutils literal notranslate"><span class=
+=3D"pre">.ssh</span></code> directory of the user:</p>
+<div class=3D"highlight-python3 notranslate" style=3D"position: relative;">=
+<div class=3D"highlight"><span class=3D"copybutton" title=3D"Hide the promp=
+ts and output" style=3D"cursor: pointer; position: absolute; top: 0px; righ=
+t: 0px; border-color: rgb(170, 204, 153); border-style: solid; border-width=
+: 1px; color: rgb(170, 204, 153); font-family: monospace; padding-left: 0.2=
+em; padding-right: 0.2em; border-radius: 0px 3px 0px 0px;">&gt;&gt;&gt;</sp=
+an><pre><span></span><span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"=
+kn">from</span> <span class=3D"nn">shutil</span> <span class=3D"kn">import<=
+/span> <span class=3D"n">make_archive</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"kn">import</span> <sp=
+an class=3D"nn">os</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">archive_name</span=
+> <span class=3D"o">=3D</span> <span class=3D"n">os</span><span class=3D"o"=
+>.</span><span class=3D"n">path</span><span class=3D"o">.</span><span class=
+=3D"n">expanduser</span><span class=3D"p">(</span><span class=3D"n">os</spa=
+n><span class=3D"o">.</span><span class=3D"n">path</span><span class=3D"o">=
+.</span><span class=3D"n">join</span><span class=3D"p">(</span><span class=
+=3D"s1">'~'</span><span class=3D"p">,</span> <span class=3D"s1">'myarchive'=
+</span><span class=3D"p">))</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">root_dir</span> <s=
+pan class=3D"o">=3D</span> <span class=3D"n">os</span><span class=3D"o">.</=
+span><span class=3D"n">path</span><span class=3D"o">.</span><span class=3D"=
+n">expanduser</span><span class=3D"p">(</span><span class=3D"n">os</span><s=
+pan class=3D"o">.</span><span class=3D"n">path</span><span class=3D"o">.</s=
+pan><span class=3D"n">join</span><span class=3D"p">(</span><span class=3D"s=
+1">'~'</span><span class=3D"p">,</span> <span class=3D"s1">'.ssh'</span><sp=
+an class=3D"p">))</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">make_archive</span=
+><span class=3D"p">(</span><span class=3D"n">archive_name</span><span class=
+=3D"p">,</span> <span class=3D"s1">'gztar'</span><span class=3D"p">,</span>=
+ <span class=3D"n">root_dir</span><span class=3D"p">)</span>
+<span class=3D"go">'/Users/tarek/myarchive.tar.gz'</span>
+</pre></div>
+</div>
+<p>The resulting archive contains:</p>
+<div class=3D"highlight-shell-session notranslate"><div class=3D"highlight"=
+><pre><span></span><span class=3D"gp">$</span> tar -tzvf /Users/tarek/myarc=
+hive.tar.gz
+<span class=3D"go">drwx------ tarek/staff       0 2010-02-01 16:23:40 ./</s=
+pan>
+<span class=3D"go">-rw-r--r-- tarek/staff     609 2008-06-09 13:26:54 ./aut=
+horized_keys</span>
+<span class=3D"go">-rwxr-xr-x tarek/staff      65 2008-06-09 13:26:54 ./con=
+fig</span>
+<span class=3D"go">-rwx------ tarek/staff     668 2008-06-09 13:26:54 ./id_=
+dsa</span>
+<span class=3D"go">-rwxr-xr-x tarek/staff     609 2008-06-09 13:26:54 ./id_=
+dsa.pub</span>
+<span class=3D"go">-rw------- tarek/staff    1675 2008-06-09 13:26:54 ./id_=
+rsa</span>
+<span class=3D"go">-rw-r--r-- tarek/staff     397 2008-06-09 13:26:54 ./id_=
+rsa.pub</span>
+<span class=3D"go">-rw-r--r-- tarek/staff   37192 2010-02-06 18:23:10 ./kno=
+wn_hosts</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class=3D"section" id=3D"querying-the-size-of-the-output-terminal">
+<h2>Querying the size of the output terminal<a class=3D"headerlink" href=3D=
+"https://docs.python.org/3/library/shutil.html#querying-the-size-of-the-out=
+put-terminal" title=3D"Permalink to this headline">=C2=B6</a></h2>
+<dl class=3D"function">
+<dt id=3D"shutil.get_terminal_size">
+<code class=3D"sig-prename descclassname">shutil.</code><code class=3D"sig-=
+name descname">get_terminal_size</code><span class=3D"sig-paren">(</span><e=
+m class=3D"sig-param">fallback=3D(columns</em>, <em class=3D"sig-param">lin=
+es)</em><span class=3D"sig-paren">)</span><a class=3D"headerlink" href=3D"h=
+ttps://docs.python.org/3/library/shutil.html#shutil.get_terminal_size" titl=
+e=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Get the size of the terminal window.</p>
+<p>For each of the two dimensions, the environment variable, <code class=3D=
+"docutils literal notranslate"><span class=3D"pre">COLUMNS</span></code>
+and <code class=3D"docutils literal notranslate"><span class=3D"pre">LINES<=
+/span></code> respectively, is checked. If the variable is defined and
+the value is a positive integer, it is used.</p>
+<p>When <code class=3D"docutils literal notranslate"><span class=3D"pre">CO=
+LUMNS</span></code> or <code class=3D"docutils literal notranslate"><span c=
+lass=3D"pre">LINES</span></code> is not defined, which is the common case,
+the terminal connected to <a class=3D"reference internal" href=3D"https://d=
+ocs.python.org/3/library/sys.html#sys.__stdout__" title=3D"sys.__stdout__">=
+<code class=3D"xref py py-data docutils literal notranslate"><span class=3D=
+"pre">sys.__stdout__</span></code></a> is queried
+by invoking <a class=3D"reference internal" href=3D"https://docs.python.org=
+/3/library/os.html#os.get_terminal_size" title=3D"os.get_terminal_size"><co=
+de class=3D"xref py py-func docutils literal notranslate"><span class=3D"pr=
+e">os.get_terminal_size()</span></code></a>.</p>
+<p>If the terminal size cannot be successfully queried, either because
+the system doesn=E2=80=99t support querying, or because we are not
+connected to a terminal, the value given in <code class=3D"docutils literal=
+ notranslate"><span class=3D"pre">fallback</span></code> parameter
+is used. <code class=3D"docutils literal notranslate"><span class=3D"pre">f=
+allback</span></code> defaults to <code class=3D"docutils literal notransla=
+te"><span class=3D"pre">(80,</span> <span class=3D"pre">24)</span></code> w=
+hich is the default
+size used by many terminal emulators.</p>
+<p>The value returned is a named tuple of type <a class=3D"reference intern=
+al" href=3D"https://docs.python.org/3/library/os.html#os.terminal_size" tit=
+le=3D"os.terminal_size"><code class=3D"xref py py-class docutils literal no=
+translate"><span class=3D"pre">os.terminal_size</span></code></a>.</p>
+<p>See also: The Single UNIX Specification, Version 2,
+<a class=3D"reference external" href=3D"http://pubs.opengroup.org/onlinepub=
+s/7908799/xbd/envvar.html#tag_002_003">Other Environment Variables</a>.</p>
+<div class=3D"versionadded">
+<p><span class=3D"versionmodified added">New in version 3.3.</span></p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class=3D"sphinxsidebar" role=3D"navigation" aria-label=3D"main n=
+avigation">
+        <div class=3D"sphinxsidebarwrapper" style=3D"float: left; margin-ri=
+ght: 0px; width: 202px; top: 0px;">
+  <h3><a href=3D"https://docs.python.org/3/contents.html">Table of Contents=
+</a></h3>
+  <ul>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/shutil.html#"><code class=3D"xref py py-mod docutils literal notranslate=
+"><span class=3D"pre">shutil</span></code> =E2=80=94 High-level file operat=
+ions</a><ul>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/shutil.html#directory-and-files-operations">Directory and files operatio=
+ns</a><ul>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/shutil.html#platform-dependent-efficient-copy-operations">Platform-depen=
+dent efficient copy operations</a></li>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/shutil.html#copytree-example">copytree example</a></li>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/shutil.html#rmtree-example">rmtree example</a></li>
+</ul>
+</li>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/shutil.html#archiving-operations">Archiving operations</a><ul>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/shutil.html#archiving-example">Archiving example</a></li>
+</ul>
+</li>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/shutil.html#querying-the-size-of-the-output-terminal">Querying the size =
+of the output terminal</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class=3D"topless"><a href=3D"https://docs.python.org/3/library/linecac=
+he.html" title=3D"previous chapter"><code class=3D"xref py py-mod docutils =
+literal notranslate"><span class=3D"pre">linecache</span></code> =E2=80=94 =
+Random access to text lines</a></p>
+  <h4>Next topic</h4>
+  <p class=3D"topless"><a href=3D"https://docs.python.org/3/library/persist=
+ence.html" title=3D"next chapter">Data Persistence</a></p>
+  <div role=3D"note" aria-label=3D"source link">
+    <h3>This Page</h3>
+    <ul class=3D"this-page-menu">
+      <li><a href=3D"https://docs.python.org/3/bugs.html">Report a Bug</a><=
+/li>
+      <li>
+        <a href=3D"https://github.com/python/cpython/blob/3.8/Doc/library/s=
+hutil.rst" rel=3D"nofollow">Show Source
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      <div id=3D"sidebarbutton" title=3D"Collapse sidebar" style=3D"border-=
+radius: 0px 5px 5px 0px; color: rgb(68, 68, 68); background-color: rgb(204,=
+ 204, 204); font-size: 1.2em; cursor: pointer; height: 11725.3px; padding-t=
+op: 1px; padding-left: 1px; margin-left: 218px;"><span style=3D"display: bl=
+ock; position: fixed; top: 320.5px;">=C2=AB</span></div></div>
+      <div class=3D"clearer"></div>
+    </div> =20
+    <div class=3D"related" role=3D"navigation" aria-label=3D"related naviga=
+tion">
+      <h3>Navigation</h3>
+      <ul>
+        <li class=3D"right" style=3D"margin-right: 10px">
+          <a href=3D"https://docs.python.org/3/genindex.html" title=3D"Gene=
+ral Index">index</a></li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/py-modindex.html" title=3D"P=
+ython Module Index">modules</a> |</li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/library/persistence.html" ti=
+tle=3D"Data Persistence">next</a> |</li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/library/linecache.html" titl=
+e=3D"linecache =E2=80=94 Random access to text lines">previous</a> |</li>
+
+    <li><img src=3D"https://docs.python.org/3/_static/py.png" alt=3D"" styl=
+e=3D"vertical-align: middle; margin-top: -1px"></li>
+    <li><a href=3D"https://www.python.org/">Python</a> =C2=BB</li>
+   =20
+
+    <li>
+      <span class=3D"language_switcher_placeholder"><select><option value=
+=3D"en" selected=3D"selected">English</option><option value=3D"fr">French</=
+option><option value=3D"ja">Japanese</option><option value=3D"ko">Korean</o=
+ption><option value=3D"pt-br">Brazilian Portuguese</option><option value=3D=
+"zh-cn">Simplified Chinese</option></select></span>
+      <span class=3D"version_switcher_placeholder"><select><option value=3D=
+"3.9">dev (3.9)</option><option value=3D"3.8" selected=3D"selected">3.8.2</=
+option><option value=3D"3.7">3.7</option><option value=3D"3.6">3.6</option>=
+<option value=3D"3.5">3.5</option><option value=3D"2.7">2.7</option></selec=
+t></span>
+      <a href=3D"https://docs.python.org/3/index.html">Documentation </a> =
+=C2=BB
+    </li>
+
+          <li class=3D"nav-item nav-item-1"><a href=3D"https://docs.python.=
+org/3/library/index.html">The Python Standard Library</a> =C2=BB</li>
+          <li class=3D"nav-item nav-item-2"><a href=3D"https://docs.python.=
+org/3/library/filesys.html">File and Directory Access</a> =C2=BB</li>
+    <li class=3D"right">
+       =20
+
+    <div class=3D"inline-search" style=3D"" role=3D"search">
+        <form class=3D"inline-search" action=3D"https://docs.python.org/3/s=
+earch.html" method=3D"get">
+          <input placeholder=3D"Quick search" type=3D"text" name=3D"q">
+          <input type=3D"submit" value=3D"Go">
+         =20
+         =20
+        </form>
+    </div>
+   =20
+         |
+    </li>
+
+      </ul>
+    </div> =20
+    <div class=3D"footer">
+    =C2=A9 <a href=3D"https://docs.python.org/3/copyright.html">Copyright</=
+a> 2001-2020, Python Software Foundation.
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href=3D"https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+
+    Last updated on Mar 26, 2020.
+    <a href=3D"https://docs.python.org/3/bugs.html">Found a bug</a>?
+    <br>
+
+    Created using <a href=3D"https://www.sphinx-doc.org/">Sphinx</a> 2.3.1.
+    </div>
+
+ =20
+</body></html>
+------MultipartBoundary--7xWz3inVwFWIZGYUEdcIrzHbYxpVg2WdZo438ypLJw----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-d7ddc0a6-9834-4955-8879-4a50caef2bef@mhtml.blink
+
+@charset "utf-8";
+
+@media only screen {
+  table.full-width-table { width: 100%; }
+}
+------MultipartBoundary--7xWz3inVwFWIZGYUEdcIrzHbYxpVg2WdZo438ypLJw----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/_static/pydoctheme.css
+
+@charset "utf-8";
+
+@import url("default.css");
+
+body { background-color: white; margin-left: 1em; margin-right: 1em; }
+
+div.related { margin-bottom: 1.2em; padding: 0.5em 0px; border-top: 1px sol=
+id rgb(204, 204, 204); margin-top: 0.5em; }
+
+div.related a:hover { color: rgb(0, 149, 196); }
+
+div.related:first-child { border-top: 0px; border-bottom: 1px solid rgb(204=
+, 204, 204); }
+
+.inline-search { display: inline; }
+
+form.inline-search input { display: inline; }
+
+form.inline-search input[type=3D"submit"] { width: 40px; }
+
+div.sphinxsidebar { background-color: rgb(238, 238, 238); border-radius: 5p=
+x; line-height: 130%; font-size: smaller; }
+
+div.sphinxsidebar h3, div.sphinxsidebar h4 { margin-top: 1.5em; }
+
+div.sphinxsidebarwrapper > h3:first-child { margin-top: 0.2em; }
+
+div.sphinxsidebarwrapper > ul > li > ul > li { margin-bottom: 0.4em; }
+
+div.sphinxsidebar a:hover { color: rgb(0, 149, 196); }
+
+form.inline-search input, div.sphinxsidebar input { font-family: "Lucida Gr=
+ande", Arial, sans-serif; border: 1px solid rgb(153, 153, 153); font-size: =
+smaller; border-radius: 3px; }
+
+div.sphinxsidebar input[type=3D"text"] { max-width: 150px; }
+
+div.body { padding: 0px 0px 0px 1.2em; }
+
+div.body p { line-height: 140%; }
+
+div.body h1, div.body h2, div.body h3, div.body h4, div.body h5, div.body h=
+6 { margin: 0px; border: 0px; padding: 0.3em 0px; }
+
+div.body hr { border: 0px; background-color: rgb(204, 204, 204); height: 1p=
+x; }
+
+div.body pre { border-radius: 3px; border: 1px solid rgb(170, 204, 153); }
+
+div.body div.admonition, div.body div.impl-detail { border-radius: 3px; }
+
+div.body div.impl-detail > p { margin: 0px; }
+
+div.body div.seealso { border: 1px solid rgb(221, 221, 102); }
+
+div.body a { color: rgb(0, 114, 170); }
+
+div.body a:visited { color: rgb(99, 99, 187); }
+
+div.body a:hover { color: rgb(0, 176, 228); }
+
+tt, code, pre { font-family: monospace, sans-serif; font-size: 96.5%; }
+
+div.body tt, div.body code { border-radius: 3px; }
+
+div.body tt.descname, div.body code.descname { font-size: 120%; }
+
+div.body tt.xref, div.body a tt, div.body code.xref, div.body a code { font=
+-weight: normal; }
+
+table.docutils { border: 1px solid rgb(221, 221, 221); min-width: 20%; bord=
+er-radius: 3px; margin-top: 10px; margin-bottom: 10px; }
+
+table.docutils td, table.docutils th { border-radius: 3px; border: 1px soli=
+d rgb(221, 221, 221) !important; }
+
+table p, table li { text-align: left !important; }
+
+table.docutils th { background-color: rgb(238, 238, 238); padding: 0.3em 0.=
+5em; }
+
+table.docutils td { background-color: white; padding: 0.3em 0.5em; }
+
+table.footnote, table.footnote td { border: 0px !important; }
+
+div.footer { line-height: 150%; margin-top: -2em; text-align: right; width:=
+ auto; margin-right: 10px; }
+
+div.footer a:hover { color: rgb(0, 149, 196); }
+
+.refcount { color: rgb(0, 102, 0); }
+
+.stableabi { color: rgb(34, 34, 153); }
+
+.highlight { background: none !important; }
+
+dl > dt span ~ em { font-family: monospace, sans-serif; }
+------MultipartBoundary--7xWz3inVwFWIZGYUEdcIrzHbYxpVg2WdZo438ypLJw----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/_static/default.css
+
+@charset "utf-8";
+
+@import url("classic.css");
+------MultipartBoundary--7xWz3inVwFWIZGYUEdcIrzHbYxpVg2WdZo438ypLJw----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/_static/classic.css
+
+@charset "utf-8";
+
+@import url("basic.css");
+
+html { background-color: rgb(255, 255, 255); }
+
+body { font-family: "Lucida Grande", Arial, sans-serif; font-size: 100%; ba=
+ckground-color: white; color: rgb(0, 0, 0); margin: 0px; padding: 0px; }
+
+div.document { background-color: white; }
+
+div.documentwrapper { float: left; width: 100%; }
+
+div.bodywrapper { margin: 0px 0px 0px 230px; }
+
+div.body { background-color: white; color: rgb(34, 34, 34); padding: 0px 20=
+px 30px; }
+
+div.footer { color: rgb(85, 85, 85); width: 100%; padding: 9px 0px; text-al=
+ign: center; font-size: 75%; }
+
+div.footer a { color: rgb(85, 85, 85); text-decoration: underline; }
+
+div.related { background-color: white; line-height: 30px; color: rgb(102, 1=
+02, 102); }
+
+div.related a { color: rgb(68, 68, 68); }
+
+div.sphinxsidebar { }
+
+div.sphinxsidebar h3 { font-family: "Lucida Grande", Arial, sans-serif; col=
+or: rgb(68, 68, 68); font-size: 1.4em; font-weight: normal; margin: 0px; pa=
+dding: 0px; }
+
+div.sphinxsidebar h3 a { color: rgb(68, 68, 68); }
+
+div.sphinxsidebar h4 { font-family: "Lucida Grande", Arial, sans-serif; col=
+or: rgb(68, 68, 68); font-size: 1.3em; font-weight: normal; margin: 5px 0px=
+ 0px; padding: 0px; }
+
+div.sphinxsidebar p { color: rgb(68, 68, 68); }
+
+div.sphinxsidebar p.topless { margin: 5px 10px 10px; }
+
+div.sphinxsidebar ul { margin: 10px; padding: 0px; color: rgb(68, 68, 68); =
+}
+
+div.sphinxsidebar a { color: rgb(68, 68, 68); }
+
+div.sphinxsidebar input { border: 1px solid rgb(68, 68, 68); font-family: s=
+ans-serif; font-size: 1em; }
+
+div#sidebarbutton { background-color: rgb(60, 110, 131); }
+
+a { color: rgb(0, 144, 192); text-decoration: none; }
+
+a:visited { color: rgb(0, 96, 143); text-decoration: none; }
+
+a:hover { text-decoration: underline; }
+
+div.body h1, div.body h2, div.body h3, div.body h4, div.body h5, div.body h=
+6 { font-family: "Lucida Grande", Arial, sans-serif; background-color: whit=
+e; font-weight: normal; color: rgb(26, 26, 26); border-bottom: 1px solid rg=
+b(204, 204, 204); margin: 20px -20px 10px; padding: 3px 0px 3px 10px; }
+
+div.body h1 { margin-top: 0px; font-size: 200%; }
+
+div.body h2 { font-size: 160%; }
+
+div.body h3 { font-size: 140%; }
+
+div.body h4 { font-size: 120%; }
+
+div.body h5 { font-size: 110%; }
+
+div.body h6 { font-size: 100%; }
+
+a.headerlink { color: rgb(170, 170, 170); font-size: 0.8em; padding: 0px 4p=
+x; text-decoration: none; }
+
+a.headerlink:hover { background-color: rgb(170, 170, 170); color: white; }
+
+div.body p, div.body dd, div.body li, div.body blockquote { text-align: jus=
+tify; line-height: 130%; }
+
+div.admonition p.admonition-title + p { display: inline; }
+
+div.admonition p { margin-bottom: 5px; }
+
+div.admonition pre { margin-bottom: 5px; }
+
+div.admonition ul, div.admonition ol { margin-bottom: 5px; }
+
+div.note { background-color: rgb(238, 238, 238); border: 1px solid rgb(204,=
+ 204, 204); }
+
+div.seealso { background-color: rgb(255, 255, 204); border: 1px solid rgb(2=
+55, 255, 102); }
+
+div.topic { background-color: rgb(238, 238, 238); }
+
+div.warning { background-color: rgb(255, 228, 228); border: 1px solid rgb(2=
+55, 102, 102); }
+
+p.admonition-title { display: inline; }
+
+p.admonition-title::after { content: ":"; }
+
+pre { padding: 5px; background-color: rgb(238, 255, 204); color: rgb(51, 51=
+, 51); line-height: 120%; border-top: 1px solid rgb(170, 204, 153); border-=
+bottom: 1px solid rgb(170, 204, 153); border-image: initial; border-left: n=
+one; border-right: none; }
+
+code { background-color: rgb(236, 240, 243); padding: 0px 1px; font-size: 0=
+.95em; }
+
+th, dl.field-list > dt { background-color: rgb(238, 221, 238); }
+
+.warning code { background: rgb(239, 194, 194); }
+
+.note code { background: rgb(214, 214, 214); }
+
+.viewcode-back { font-family: "Lucida Grande", Arial, sans-serif; }
+
+div.viewcode-block:target { background-color: rgb(244, 222, 191); border-to=
+p: 1px solid rgb(170, 204, 153); border-bottom: 1px solid rgb(170, 204, 153=
+); }
+
+div.code-block-caption { color: rgb(239, 239, 239); background-color: rgb(2=
+8, 78, 99); }
+------MultipartBoundary--7xWz3inVwFWIZGYUEdcIrzHbYxpVg2WdZo438ypLJw----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/_static/basic.css
+
+@charset "utf-8";
+
+div.clearer { clear: both; }
+
+div.related { width: 100%; font-size: 90%; }
+
+div.related h3 { display: none; }
+
+div.related ul { margin: 0px; padding: 0px 0px 0px 10px; list-style: none; =
+}
+
+div.related li { display: inline; }
+
+div.related li.right { float: right; margin-right: 5px; }
+
+div.sphinxsidebarwrapper { padding: 10px 5px 0px 10px; }
+
+div.sphinxsidebar { float: left; width: 230px; margin-left: -100%; font-siz=
+e: 90%; overflow-wrap: break-word; }
+
+div.sphinxsidebar ul { list-style: none; }
+
+div.sphinxsidebar ul ul, div.sphinxsidebar ul.want-points { margin-left: 20=
+px; list-style: square; }
+
+div.sphinxsidebar ul ul { margin-top: 0px; margin-bottom: 0px; }
+
+div.sphinxsidebar form { margin-top: 10px; }
+
+div.sphinxsidebar input { border: 1px solid rgb(152, 219, 204); font-family=
+: sans-serif; font-size: 1em; }
+
+div.sphinxsidebar #searchbox form.search { overflow: hidden; }
+
+div.sphinxsidebar #searchbox input[type=3D"text"] { float: left; width: 80%=
+; padding: 0.25em; box-sizing: border-box; }
+
+div.sphinxsidebar #searchbox input[type=3D"submit"] { float: left; width: 2=
+0%; border-left: none; padding: 0.25em; box-sizing: border-box; }
+
+img { border: 0px; max-width: 100%; }
+
+ul.search { margin: 10px 0px 0px 20px; padding: 0px; }
+
+ul.search li { padding: 5px 0px 5px 20px; background-image: url("file.png")=
+; background-repeat: no-repeat; background-position: 0px 7px; }
+
+ul.search li a { font-weight: bold; }
+
+ul.search li div.context { color: rgb(136, 136, 136); margin: 2px 0px 0px 3=
+0px; text-align: left; }
+
+ul.keywordmatches li.goodmatch a { font-weight: bold; }
+
+table.contentstable { width: 90%; margin-left: auto; margin-right: auto; }
+
+table.contentstable p.biglink { line-height: 150%; }
+
+a.biglink { font-size: 1.3em; }
+
+span.linkdescr { font-style: italic; padding-top: 5px; font-size: 90%; }
+
+table.indextable { width: 100%; }
+
+table.indextable td { text-align: left; vertical-align: top; }
+
+table.indextable ul { margin-top: 0px; margin-bottom: 0px; list-style-type:=
+ none; }
+
+table.indextable > tbody > tr > td > ul { padding-left: 0em; }
+
+table.indextable tr.pcap { height: 10px; }
+
+table.indextable tr.cap { margin-top: 10px; background-color: rgb(242, 242,=
+ 242); }
+
+img.toggler { margin-right: 3px; margin-top: 3px; cursor: pointer; }
+
+div.modindex-jumpbox { border-top: 1px solid rgb(221, 221, 221); border-bot=
+tom: 1px solid rgb(221, 221, 221); margin: 1em 0px; padding: 0.4em; }
+
+div.genindex-jumpbox { border-top: 1px solid rgb(221, 221, 221); border-bot=
+tom: 1px solid rgb(221, 221, 221); margin: 1em 0px; padding: 0.4em; }
+
+table.modindextable td { padding: 2px; border-collapse: collapse; }
+
+div.body { min-width: 450px; max-width: 800px; }
+
+div.body p, div.body dd, div.body li, div.body blockquote { hyphens: auto; =
+}
+
+a.headerlink { visibility: hidden; }
+
+a.brackets::before, span.brackets > a::before { content: "["; }
+
+a.brackets::after, span.brackets > a::after { content: "]"; }
+
+h1:hover > a.headerlink, h2:hover > a.headerlink, h3:hover > a.headerlink, =
+h4:hover > a.headerlink, h5:hover > a.headerlink, h6:hover > a.headerlink, =
+dt:hover > a.headerlink, caption:hover > a.headerlink, p.caption:hover > a.=
+headerlink, div.code-block-caption:hover > a.headerlink { visibility: visib=
+le; }
+
+div.body p.caption { text-align: inherit; }
+
+div.body td { text-align: left; }
+
+.first { margin-top: 0px !important; }
+
+p.rubric { margin-top: 30px; font-weight: bold; }
+
+img.align-left, .figure.align-left, object.align-left { clear: left; float:=
+ left; margin-right: 1em; }
+
+img.align-right, .figure.align-right, object.align-right { clear: right; fl=
+oat: right; margin-left: 1em; }
+
+img.align-center, .figure.align-center, object.align-center { display: bloc=
+k; margin-left: auto; margin-right: auto; }
+
+img.align-default, .figure.align-default { display: block; margin-left: aut=
+o; margin-right: auto; }
+
+.align-left { text-align: left; }
+
+.align-center { text-align: center; }
+
+.align-default { text-align: center; }
+
+.align-right { text-align: right; }
+
+div.sidebar { margin: 0px 0px 0.5em 1em; border: 1px solid rgb(221, 221, 18=
+7); padding: 7px 7px 0px; background-color: rgb(255, 255, 238); width: 40%;=
+ float: right; }
+
+p.sidebar-title { font-weight: bold; }
+
+div.topic { border: 1px solid rgb(204, 204, 204); padding: 7px 7px 0px; mar=
+gin: 10px 0px; }
+
+p.topic-title { font-size: 1.1em; font-weight: bold; margin-top: 10px; }
+
+div.admonition { margin-top: 10px; margin-bottom: 10px; padding: 7px; }
+
+div.admonition dt { font-weight: bold; }
+
+div.admonition dl { margin-bottom: 0px; }
+
+p.admonition-title { margin: 0px 10px 5px 0px; font-weight: bold; }
+
+div.body p.centered { text-align: center; margin-top: 25px; }
+
+table.docutils { border: 0px; border-collapse: collapse; }
+
+table.align-center { margin-left: auto; margin-right: auto; }
+
+table.align-default { margin-left: auto; margin-right: auto; }
+
+table caption span.caption-number { font-style: italic; }
+
+table caption span.caption-text { }
+
+table.docutils td, table.docutils th { padding: 1px 8px 1px 5px; border-wid=
+th: 0px 0px 1px; border-top-style: initial; border-top-color: initial; bord=
+er-left-style: initial; border-left-color: initial; border-right-style: ini=
+tial; border-right-color: initial; border-bottom-style: solid; border-botto=
+m-color: rgb(170, 170, 170); }
+
+table.footnote td, table.footnote th { border: 0px !important; }
+
+th { text-align: left; padding-right: 5px; }
+
+table.citation { border-left: 1px solid gray; margin-left: 1px; }
+
+table.citation td { border-bottom: none; }
+
+th > p:first-child, td > p:first-child { margin-top: 0px; }
+
+th > p:last-child, td > p:last-child { margin-bottom: 0px; }
+
+div.figure { margin: 0.5em; padding: 0.5em; }
+
+div.figure p.caption { padding: 0.3em; }
+
+div.figure p.caption span.caption-number { font-style: italic; }
+
+div.figure p.caption span.caption-text { }
+
+table.field-list td, table.field-list th { border: 0px !important; }
+
+.field-list ul { margin: 0px; padding-left: 1em; }
+
+.field-list p { margin: 0px; }
+
+.field-name { hyphens: manual; }
+
+table.hlist td { vertical-align: top; }
+
+ol.arabic { list-style: decimal; }
+
+ol.loweralpha { list-style: lower-alpha; }
+
+ol.upperalpha { list-style: upper-alpha; }
+
+ol.lowerroman { list-style: lower-roman; }
+
+ol.upperroman { list-style: upper-roman; }
+
+li > p:first-child { margin-top: 0px; }
+
+li > p:last-child { margin-bottom: 0px; }
+
+dl.footnote > dt, dl.citation > dt { float: left; }
+
+dl.footnote > dd, dl.citation > dd { margin-bottom: 0em; }
+
+dl.footnote > dd::after, dl.citation > dd::after { content: ""; clear: both=
+; }
+
+dl.field-list { display: grid; grid-template-columns: fit-content(30%) auto=
+; }
+
+dl.field-list > dt { font-weight: bold; word-break: break-word; padding-lef=
+t: 0.5em; padding-right: 5px; }
+
+dl.field-list > dt::after { content: ":"; }
+
+dl.field-list > dd { padding-left: 0.5em; margin-top: 0em; margin-left: 0em=
+; margin-bottom: 0em; }
+
+dl { margin-bottom: 15px; }
+
+dd > p:first-child { margin-top: 0px; }
+
+dd ul, dd table { margin-bottom: 10px; }
+
+dd { margin-top: 3px; margin-bottom: 10px; margin-left: 30px; }
+
+dt:target, span.highlighted { background-color: rgb(251, 229, 78); }
+
+rect.highlighted { fill: rgb(251, 229, 78); }
+
+dl.glossary dt { font-weight: bold; font-size: 1.1em; }
+
+.optional { font-size: 1.3em; }
+
+.sig-paren { font-size: larger; }
+
+.versionmodified { font-style: italic; }
+
+.system-message { background-color: rgb(255, 221, 170); padding: 5px; borde=
+r: 3px solid red; }
+
+.footnote:target { background-color: rgb(255, 255, 170); }
+
+.line-block { display: block; margin-top: 1em; margin-bottom: 1em; }
+
+.line-block .line-block { margin-top: 0px; margin-bottom: 0px; margin-left:=
+ 1.5em; }
+
+.guilabel, .menuselection { font-family: sans-serif; }
+
+.accelerator { text-decoration: underline; }
+
+.classifier { font-style: oblique; }
+
+.classifier::before { font-style: normal; margin: 0.5em; content: ":"; }
+
+abbr, acronym { border-bottom: 1px dotted; cursor: help; }
+
+pre { overflow: auto hidden; }
+
+span.pre { hyphens: none; }
+
+td.linenos pre { padding: 5px 0px; border: 0px; background-color: transpare=
+nt; color: rgb(170, 170, 170); }
+
+table.highlighttable { margin-left: 0.5em; }
+
+table.highlighttable td { padding: 0px 0.5em; }
+
+div.code-block-caption { padding: 2px 5px; font-size: small; }
+
+div.code-block-caption code { background-color: transparent; }
+
+div.code-block-caption + div > div.highlight > pre { margin-top: 0px; }
+
+div.doctest > div.highlight span.gp { user-select: none; }
+
+div.code-block-caption span.caption-number { padding: 0.1em 0.3em; font-sty=
+le: italic; }
+
+div.code-block-caption span.caption-text { }
+
+div.literal-block-wrapper { padding: 1em 1em 0px; }
+
+div.literal-block-wrapper div.highlight { margin: 0px; }
+
+code.descname { background-color: transparent; font-weight: bold; font-size=
+: 1.2em; }
+
+code.descclassname { background-color: transparent; }
+
+code.xref, a code { background-color: transparent; font-weight: bold; }
+
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code { background-color: tr=
+ansparent; }
+
+.viewcode-link { float: right; }
+
+.viewcode-back { float: right; font-family: sans-serif; }
+
+div.viewcode-block:target { margin: -1px -10px; padding: 0px 10px; }
+
+img.math { vertical-align: middle; }
+
+div.body div.math p { text-align: center; }
+
+span.eqno { float: right; }
+
+span.eqno a.headerlink { position: relative; left: 0px; z-index: 1; }
+
+div.math:hover a.headerlink { visibility: visible; }
+
+@media print {
+  div.document, div.documentwrapper, div.bodywrapper { width: 100%; margin:=
+ 0px !important; }
+  div.sphinxsidebar, div.related, div.footer, #top-link { display: none; }
+}
+------MultipartBoundary--7xWz3inVwFWIZGYUEdcIrzHbYxpVg2WdZo438ypLJw----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/_static/pygments.css
+
+@charset "utf-8";
+
+.highlight .hll { background-color: rgb(255, 255, 204); }
+
+.highlight { background: rgb(238, 255, 204); }
+
+.highlight .c { color: rgb(64, 128, 144); font-style: italic; }
+
+.highlight .err { border: 1px solid rgb(255, 0, 0); }
+
+.highlight .k { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .o { color: rgb(102, 102, 102); }
+
+.highlight .ch { color: rgb(64, 128, 144); font-style: italic; }
+
+.highlight .cm { color: rgb(64, 128, 144); font-style: italic; }
+
+.highlight .cp { color: rgb(0, 112, 32); }
+
+.highlight .cpf { color: rgb(64, 128, 144); font-style: italic; }
+
+.highlight .c1 { color: rgb(64, 128, 144); font-style: italic; }
+
+.highlight .cs { color: rgb(64, 128, 144); background-color: rgb(255, 240, =
+240); }
+
+.highlight .gd { color: rgb(160, 0, 0); }
+
+.highlight .ge { font-style: italic; }
+
+.highlight .gr { color: rgb(255, 0, 0); }
+
+.highlight .gh { color: rgb(0, 0, 128); font-weight: bold; }
+
+.highlight .gi { color: rgb(0, 160, 0); }
+
+.highlight .go { color: rgb(51, 51, 51); }
+
+.highlight .gp { color: rgb(198, 93, 9); font-weight: bold; }
+
+.highlight .gs { font-weight: bold; }
+
+.highlight .gu { color: rgb(128, 0, 128); font-weight: bold; }
+
+.highlight .gt { color: rgb(0, 68, 221); }
+
+.highlight .kc { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .kd { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .kn { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .kp { color: rgb(0, 112, 32); }
+
+.highlight .kr { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .kt { color: rgb(144, 32, 0); }
+
+.highlight .m { color: rgb(32, 128, 80); }
+
+.highlight .s { color: rgb(64, 112, 160); }
+
+.highlight .na { color: rgb(64, 112, 160); }
+
+.highlight .nb { color: rgb(0, 112, 32); }
+
+.highlight .nc { color: rgb(14, 132, 181); font-weight: bold; }
+
+.highlight .no { color: rgb(96, 173, 213); }
+
+.highlight .nd { color: rgb(85, 85, 85); font-weight: bold; }
+
+.highlight .ni { color: rgb(213, 85, 55); font-weight: bold; }
+
+.highlight .ne { color: rgb(0, 112, 32); }
+
+.highlight .nf { color: rgb(6, 40, 126); }
+
+.highlight .nl { color: rgb(0, 32, 112); font-weight: bold; }
+
+.highlight .nn { color: rgb(14, 132, 181); font-weight: bold; }
+
+.highlight .nt { color: rgb(6, 40, 115); font-weight: bold; }
+
+.highlight .nv { color: rgb(187, 96, 213); }
+
+.highlight .ow { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .w { color: rgb(187, 187, 187); }
+
+.highlight .mb { color: rgb(32, 128, 80); }
+
+.highlight .mf { color: rgb(32, 128, 80); }
+
+.highlight .mh { color: rgb(32, 128, 80); }
+
+.highlight .mi { color: rgb(32, 128, 80); }
+
+.highlight .mo { color: rgb(32, 128, 80); }
+
+.highlight .sa { color: rgb(64, 112, 160); }
+
+.highlight .sb { color: rgb(64, 112, 160); }
+
+.highlight .sc { color: rgb(64, 112, 160); }
+
+.highlight .dl { color: rgb(64, 112, 160); }
+
+.highlight .sd { color: rgb(64, 112, 160); font-style: italic; }
+
+.highlight .s2 { color: rgb(64, 112, 160); }
+
+.highlight .se { color: rgb(64, 112, 160); font-weight: bold; }
+
+.highlight .sh { color: rgb(64, 112, 160); }
+
+.highlight .si { color: rgb(112, 160, 208); font-style: italic; }
+
+.highlight .sx { color: rgb(198, 93, 9); }
+
+.highlight .sr { color: rgb(35, 83, 136); }
+
+.highlight .s1 { color: rgb(64, 112, 160); }
+
+.highlight .ss { color: rgb(81, 121, 24); }
+
+.highlight .bp { color: rgb(0, 112, 32); }
+
+.highlight .fm { color: rgb(6, 40, 126); }
+
+.highlight .vc { color: rgb(187, 96, 213); }
+
+.highlight .vg { color: rgb(187, 96, 213); }
+
+.highlight .vi { color: rgb(187, 96, 213); }
+
+.highlight .vm { color: rgb(187, 96, 213); }
+
+.highlight .il { color: rgb(32, 128, 80); }
+------MultipartBoundary--7xWz3inVwFWIZGYUEdcIrzHbYxpVg2WdZo438ypLJw----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://docs.python.org/3/_static/py.png
+
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A
+/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9gEGxE4IQYzJ14AAAI3SURBVDjL
+ZZNPSFVBFIe/e9+zd3silBCl0SZoU4s2rVq0EB5tQip4UNvATVGu3QRBiyAi2iltWkgbF5EgRhFF
+RpiWtrWIzDIV1Pzz7p15M2fmtvDevOqBw8DM9zvnN8ycgF3R/eDtM2mac96ZdrFNxBikqbRV+vHH
+/ut9gAZczoe7C3gnF0f6au1OLM5avFi8d1Ea+JvAMSAq8nsKOGs5f2cYJ3Y7rc2PO4BqkS8DdD98
+f9tbe1ysCoxOBo1qlEXHJWcM4b5KPU19zleA0o4Clx99eO3EdqVewHsCoFRugUoVghJO7A6H6Vx9
+wdtYi27cr5x6dy/03nVtWTU7bWeZh6jNUcAiCaFTURl9A+gs56AviHzh3mnqtdPxm6knfQPLU7Ua
+okASQq/agY7yDrG16Mba6Pz48NP56VdrgAApYObGaicPtkovToFLQBKA/WUxTe3FRk4san15aGKg
+d3Dj560rrdGJS6FT0X9YYvLuiMKL1kAQOpHZ3PqfyZfP41+9PW1VfzX0RXFSECfgNEmSTgImdDru
+F2O0E8vvqZG1auQubAsKooIYYHpGvwA2g+xndQBHgWa6cG0ih5cW/w6VvEq3nChwCoBvs+bL2Z7V
+ceBHGTDAIrABpMVuhw+4OiLgLIglOLPYBTQAlfErIeCzjRVg1dtEb1kt5Omv+DTV2YssAN+zNdkz
+C42N9brV8WdvYp07seOdM2Of1F3AAknW0AJpwN6IgEPAEaANaMlcbmZdl7KRBuAfAb+v//yMAJoA
+AAAASUVORK5CYII=
+
+------MultipartBoundary--7xWz3inVwFWIZGYUEdcIrzHbYxpVg2WdZo438ypLJw------

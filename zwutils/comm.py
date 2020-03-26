@@ -4,6 +4,8 @@ import time
 import subprocess
 import codecs
 import json
+import csv
+import logging
 
 from pathlib import Path
 from difflib import SequenceMatcher
@@ -15,21 +17,36 @@ def ismac():
 def iswin():
     return True if sys.platform == 'win32' else False
 
-def writefile(path, dat, isbin=False):
-    flag = 'wb' if isbin else 'w'
-    if not isbin and not isinstance(dat, str):
-        dat = str(dat)
+def writefile(path, txt, enc='utf-8'):
+    if not isinstance(txt, str):
+        txt = str(txt)
     if not Path(path).parent.exists():
         Path(path).parent.mkdir(parents=True, exist_ok=True)
-    with codecs.open(path, flag, 'utf-8') as fp:
+    with codecs.open(path, 'w', enc) as fp:
+        fp.write(txt)
+        fp.flush()
+
+def readfile(path, enc='utf-8'):
+    rtn = None
+    with codecs.open(path, 'r', enc) as fp:
+        rtn = fp.read()
+    return rtn
+
+def writebin(path, dat):
+    if not isinstance(dat, bytes):
+        logging.error('[zwutils] dat is not bytes when write bin.')
+        return
+    if not Path(path).parent.exists():
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+    with open(path, 'wb') as fp:
         fp.write(dat)
         fp.flush()
 
-def readfile(path):
-    rtn = None
-    with codecs.open(path, 'r', 'utf-8') as fp:
-        rtn = fp.read()
-    return rtn
+def readbin(path):
+    r = None
+    with open(path, 'rb') as fp:
+        r = fp.read()
+    return r
 
 def writejson(path, o):
     if not Path(path).parent.exists():
@@ -40,9 +57,33 @@ def writejson(path, o):
 def readjson(path):
     rtn = None
     if os.path.exists(path):
-        with codecs.open(path, 'r', 'utf-8') as f:
-            rtn = json.load(f)
+        with codecs.open(path, 'r', 'utf-8') as fp:
+            rtn = json.load(fp)
     return rtn
+
+def writecsv(path, array2d, delimiter=','):
+    if not Path(path).parent.exists():
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+    with codecs.open(path, 'w', 'utf-8') as fp:
+        writer = csv.writer(fp, delimiter=delimiter)
+        writer.writerows(array2d)
+
+def readcsv(path):
+    rtn = None
+    if os.path.exists(path):
+        with codecs.open(path, 'r', 'utf-8') as fp:
+            reader = csv.reader(fp)
+            rtn = list(reader)
+    return rtn
+
+def file_encode_convert(src, dst, src_encode='utf-8', dst_encode='gbk'):
+    src_encode = src_encode.lower()
+    dst_encode = dst_encode.lower()
+    with codecs.open(src, 'r', src_encode) as fp:
+        new_content = fp.read()
+    with codecs.open(src, 'w', dst_encode) as fp:
+        fp.write(new_content)
+        fp.flush()
 
 def similarity(a, b):
     return SequenceMatcher(None, a, b).ratio()
@@ -108,3 +149,9 @@ def multiprocess_run(cbfunc, args, max_workers=3):
             r = future.result()
             rtn.append(r)
     return rtn
+
+def list_intersection(a, b, ordered=False):
+    if ordered:
+        return [i for i, j in zip(a, b) if i == j]
+    else:
+        return list(set(a).intersection(b)) # choose smaller to a or b?

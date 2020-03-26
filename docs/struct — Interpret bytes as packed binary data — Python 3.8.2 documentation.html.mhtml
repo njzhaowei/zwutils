@@ -1,0 +1,2051 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://docs.python.org/3/library/struct.html
+Subject: =?utf-8?Q?struct=20=E2=80=94=20Interpret=20bytes=20as=20packed=20binary?=
+ =?utf-8?Q?=20data=20=E2=80=94=20Python=203.8.2=20documentation?=
+Date: Thu, 26 Mar 2020 15:58:56 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--HeUEptkUZKFSRK8ds54CiHe2wXxaaL6wlHViArlOwz----"
+
+
+------MultipartBoundary--HeUEptkUZKFSRK8ds54CiHe2wXxaaL6wlHViArlOwz----
+Content-Type: text/html
+Content-ID: <frame-EC9A1EF6BD7E02CE847C51CBD6CCC6D6@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/library/struct.html
+
+<!DOCTYPE html><html xmlns=3D"http://www.w3.org/1999/xhtml"><head><meta htt=
+p-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8"><link rel=
+=3D"stylesheet" type=3D"text/css" href=3D"cid:css-71b98651-1bfd-41b5-bb95-1=
+36163431407@mhtml.blink" />
+   =20
+    <title>struct =E2=80=94 Interpret bytes as packed binary data =E2=80=94=
+ Python 3.8.2 documentation</title>
+    <link rel=3D"stylesheet" href=3D"https://docs.python.org/3/_static/pydo=
+ctheme.css" type=3D"text/css">
+    <link rel=3D"stylesheet" href=3D"https://docs.python.org/3/_static/pygm=
+ents.css" type=3D"text/css">
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    <link rel=3D"search" type=3D"application/opensearchdescription+xml" tit=
+le=3D"Search within Python 3.8.2 documentation" href=3D"https://docs.python=
+.org/3/_static/opensearch.xml">
+    <link rel=3D"author" title=3D"About these documents" href=3D"https://do=
+cs.python.org/3/about.html">
+    <link rel=3D"index" title=3D"Index" href=3D"https://docs.python.org/3/g=
+enindex.html">
+    <link rel=3D"search" title=3D"Search" href=3D"https://docs.python.org/3=
+/search.html">
+    <link rel=3D"copyright" title=3D"Copyright" href=3D"https://docs.python=
+.org/3/copyright.html">
+    <link rel=3D"next" title=3D"codecs =E2=80=94 Codec registry and base cl=
+asses" href=3D"https://docs.python.org/3/library/codecs.html">
+    <link rel=3D"prev" title=3D"Binary Data Services" href=3D"https://docs.=
+python.org/3/library/binary.html">
+    <link rel=3D"canonical" href=3D"https://docs.python.org/3/library/struc=
+t.html">
+   =20
+     =20
+     =20
+     =20
+   =20
+
+   =20
+   =20
+
+    <link rel=3D"shortcut icon" type=3D"image/png" href=3D"https://docs.pyt=
+hon.org/3/_static/py.png">
+   =20
+   =20
+   =20
+    =20
+
+
+  </head><body>
+ =20
+    <div class=3D"related" role=3D"navigation" aria-label=3D"related naviga=
+tion">
+      <h3>Navigation</h3>
+      <ul>
+        <li class=3D"right" style=3D"margin-right: 10px">
+          <a href=3D"https://docs.python.org/3/genindex.html" title=3D"Gene=
+ral Index" accesskey=3D"I">index</a></li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/py-modindex.html" title=3D"P=
+ython Module Index">modules</a> |</li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/library/codecs.html" title=
+=3D"codecs =E2=80=94 Codec registry and base classes" accesskey=3D"N">next<=
+/a> |</li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/library/binary.html" title=
+=3D"Binary Data Services" accesskey=3D"P">previous</a> |</li>
+
+    <li><img src=3D"https://docs.python.org/3/_static/py.png" alt=3D"" styl=
+e=3D"vertical-align: middle; margin-top: -1px"></li>
+    <li><a href=3D"https://www.python.org/">Python</a> =C2=BB</li>
+   =20
+
+    <li>
+      <span class=3D"language_switcher_placeholder"><select><option value=
+=3D"en" selected=3D"selected">English</option><option value=3D"fr">French</=
+option><option value=3D"ja">Japanese</option><option value=3D"ko">Korean</o=
+ption><option value=3D"pt-br">Brazilian Portuguese</option><option value=3D=
+"zh-cn">Simplified Chinese</option></select></span>
+      <span class=3D"version_switcher_placeholder"><select><option value=3D=
+"3.9">dev (3.9)</option><option value=3D"3.8" selected=3D"selected">3.8.2</=
+option><option value=3D"3.7">3.7</option><option value=3D"3.6">3.6</option>=
+<option value=3D"3.5">3.5</option><option value=3D"2.7">2.7</option></selec=
+t></span>
+      <a href=3D"https://docs.python.org/3/index.html">Documentation </a> =
+=C2=BB
+    </li>
+
+          <li class=3D"nav-item nav-item-1"><a href=3D"https://docs.python.=
+org/3/library/index.html">The Python Standard Library</a> =C2=BB</li>
+          <li class=3D"nav-item nav-item-2"><a href=3D"https://docs.python.=
+org/3/library/binary.html" accesskey=3D"U">Binary Data Services</a> =C2=BB<=
+/li>
+    <li class=3D"right">
+       =20
+
+    <div class=3D"inline-search" style=3D"" role=3D"search">
+        <form class=3D"inline-search" action=3D"https://docs.python.org/3/s=
+earch.html" method=3D"get">
+          <input placeholder=3D"Quick search" type=3D"text" name=3D"q">
+          <input type=3D"submit" value=3D"Go">
+         =20
+         =20
+        </form>
+    </div>
+   =20
+         |
+    </li>
+
+      </ul>
+    </div>   =20
+
+    <div class=3D"document">
+      <div class=3D"documentwrapper">
+        <div class=3D"bodywrapper">
+          <div class=3D"body" role=3D"main">
+           =20
+  <div class=3D"section" id=3D"module-struct">
+<span id=3D"struct-interpret-bytes-as-packed-binary-data"></span><h1><a cla=
+ss=3D"reference internal" href=3D"https://docs.python.org/3/library/struct.=
+html#module-struct" title=3D"struct: Interpret bytes as packed binary data.=
+"><code class=3D"xref py py-mod docutils literal notranslate"><span class=
+=3D"pre">struct</span></code></a> =E2=80=94 Interpret bytes as packed binar=
+y data<a class=3D"headerlink" href=3D"https://docs.python.org/3/library/str=
+uct.html#module-struct" title=3D"Permalink to this headline">=C2=B6</a></h1=
+>
+<p><strong>Source code:</strong> <a class=3D"reference external" href=3D"ht=
+tps://github.com/python/cpython/tree/3.8/Lib/struct.py">Lib/struct.py</a></=
+p>
+<hr class=3D"docutils" id=3D"index-0">
+<p>This module performs conversions between Python values and C structs rep=
+resented
+as Python <a class=3D"reference internal" href=3D"https://docs.python.org/3=
+/library/stdtypes.html#bytes" title=3D"bytes"><code class=3D"xref py py-cla=
+ss docutils literal notranslate"><span class=3D"pre">bytes</span></code></a=
+> objects.  This can be used in handling binary data
+stored in files or from network connections, among other sources.  It uses
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+truct.html#struct-format-strings"><span class=3D"std std-ref">Format String=
+s</span></a> as compact descriptions of the layout of the C
+structs and the intended conversion to/from Python values.</p>
+<div class=3D"admonition note">
+<p class=3D"admonition-title">Note</p>
+<p>By default, the result of packing a given C struct includes pad bytes in
+order to maintain proper alignment for the C types involved; similarly,
+alignment is taken into account when unpacking.  This behavior is chosen so
+that the bytes of a packed struct correspond exactly to the layout in memor=
+y
+of the corresponding C struct.  To handle platform-independent data formats
+or omit implicit pad bytes, use <code class=3D"docutils literal notranslate=
+"><span class=3D"pre">standard</span></code> size and alignment instead of
+<code class=3D"docutils literal notranslate"><span class=3D"pre">native</sp=
+an></code> size and alignment: see <a class=3D"reference internal" href=3D"=
+https://docs.python.org/3/library/struct.html#struct-alignment"><span class=
+=3D"std std-ref">Byte Order, Size, and Alignment</span></a> for details.</p=
+>
+</div>
+<p>Several <a class=3D"reference internal" href=3D"https://docs.python.org/=
+3/library/struct.html#module-struct" title=3D"struct: Interpret bytes as pa=
+cked binary data."><code class=3D"xref py py-mod docutils literal notransla=
+te"><span class=3D"pre">struct</span></code></a> functions (and methods of =
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+truct.html#struct.Struct" title=3D"struct.Struct"><code class=3D"xref py py=
+-class docutils literal notranslate"><span class=3D"pre">Struct</span></cod=
+e></a>) take a <em>buffer</em>
+argument.  This refers to objects that implement the <a class=3D"reference =
+internal" href=3D"https://docs.python.org/3/c-api/buffer.html#bufferobjects=
+"><span class=3D"std std-ref">Buffer Protocol</span></a> and
+provide either a readable or read-writable buffer.  The most common types u=
+sed
+for that purpose are <a class=3D"reference internal" href=3D"https://docs.p=
+ython.org/3/library/stdtypes.html#bytes" title=3D"bytes"><code class=3D"xre=
+f py py-class docutils literal notranslate"><span class=3D"pre">bytes</span=
+></code></a> and <a class=3D"reference internal" href=3D"https://docs.pytho=
+n.org/3/library/stdtypes.html#bytearray" title=3D"bytearray"><code class=3D=
+"xref py py-class docutils literal notranslate"><span class=3D"pre">bytearr=
+ay</span></code></a>, but many other types
+that can be viewed as an array of bytes implement the buffer protocol, so t=
+hat
+they can be read/filled without additional copying from a <a class=3D"refer=
+ence internal" href=3D"https://docs.python.org/3/library/stdtypes.html#byte=
+s" title=3D"bytes"><code class=3D"xref py py-class docutils literal notrans=
+late"><span class=3D"pre">bytes</span></code></a> object.</p>
+<div class=3D"section" id=3D"functions-and-exceptions">
+<h2>Functions and Exceptions<a class=3D"headerlink" href=3D"https://docs.py=
+thon.org/3/library/struct.html#functions-and-exceptions" title=3D"Permalink=
+ to this headline">=C2=B6</a></h2>
+<p>The module defines the following exception and functions:</p>
+<dl class=3D"exception">
+<dt id=3D"struct.error">
+<em class=3D"property">exception </em><code class=3D"sig-prename descclassn=
+ame">struct.</code><code class=3D"sig-name descname">error</code><a class=
+=3D"headerlink" href=3D"https://docs.python.org/3/library/struct.html#struc=
+t.error" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Exception raised on various occasions; argument is a string describi=
+ng what
+is wrong.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"struct.pack">
+<code class=3D"sig-prename descclassname">struct.</code><code class=3D"sig-=
+name descname">pack</code><span class=3D"sig-paren">(</span><em class=3D"si=
+g-param">format</em>, <em class=3D"sig-param">v1</em>, <em class=3D"sig-par=
+am">v2</em>, <em class=3D"sig-param">...</em><span class=3D"sig-paren">)</s=
+pan><a class=3D"headerlink" href=3D"https://docs.python.org/3/library/struc=
+t.html#struct.pack" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Return a bytes object containing the values <em>v1</em>, <em>v2</em>=
+, =E2=80=A6 packed according
+to the format string <em>format</em>.  The arguments must match the values =
+required by
+the format exactly.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"struct.pack_into">
+<code class=3D"sig-prename descclassname">struct.</code><code class=3D"sig-=
+name descname">pack_into</code><span class=3D"sig-paren">(</span><em class=
+=3D"sig-param">format</em>, <em class=3D"sig-param">buffer</em>, <em class=
+=3D"sig-param">offset</em>, <em class=3D"sig-param">v1</em>, <em class=3D"s=
+ig-param">v2</em>, <em class=3D"sig-param">...</em><span class=3D"sig-paren=
+">)</span><a class=3D"headerlink" href=3D"https://docs.python.org/3/library=
+/struct.html#struct.pack_into" title=3D"Permalink to this definition">=C2=
+=B6</a></dt>
+<dd><p>Pack the values <em>v1</em>, <em>v2</em>, =E2=80=A6 according to the=
+ format string <em>format</em> and
+write the packed bytes into the writable buffer <em>buffer</em> starting at
+position <em>offset</em>.  Note that <em>offset</em> is a required argument=
+.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"struct.unpack">
+<code class=3D"sig-prename descclassname">struct.</code><code class=3D"sig-=
+name descname">unpack</code><span class=3D"sig-paren">(</span><em class=3D"=
+sig-param">format</em>, <em class=3D"sig-param">buffer</em><span class=3D"s=
+ig-paren">)</span><a class=3D"headerlink" href=3D"https://docs.python.org/3=
+/library/struct.html#struct.unpack" title=3D"Permalink to this definition">=
+=C2=B6</a></dt>
+<dd><p>Unpack from the buffer <em>buffer</em> (presumably packed by <code c=
+lass=3D"docutils literal notranslate"><span class=3D"pre">pack(format,</spa=
+n> <span class=3D"pre">...)</span></code>)
+according to the format string <em>format</em>.  The result is a tuple even=
+ if it
+contains exactly one item.  The buffer=E2=80=99s size in bytes must match t=
+he
+size required by the format, as reflected by <a class=3D"reference internal=
+" href=3D"https://docs.python.org/3/library/struct.html#struct.calcsize" ti=
+tle=3D"struct.calcsize"><code class=3D"xref py py-func docutils literal not=
+ranslate"><span class=3D"pre">calcsize()</span></code></a>.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"struct.unpack_from">
+<code class=3D"sig-prename descclassname">struct.</code><code class=3D"sig-=
+name descname">unpack_from</code><span class=3D"sig-paren">(</span><em clas=
+s=3D"sig-param">format</em>, <em class=3D"sig-param">buffer</em>, <em class=
+=3D"sig-param">offset=3D0</em><span class=3D"sig-paren">)</span><a class=3D=
+"headerlink" href=3D"https://docs.python.org/3/library/struct.html#struct.u=
+npack_from" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Unpack from <em>buffer</em> starting at position <em>offset</em>, ac=
+cording to the format
+string <em>format</em>.  The result is a tuple even if it contains exactly =
+one
+item.  The buffer=E2=80=99s size in bytes, starting at position <em>offset<=
+/em>, must be at
+least the size required by the format, as reflected by <a class=3D"referenc=
+e internal" href=3D"https://docs.python.org/3/library/struct.html#struct.ca=
+lcsize" title=3D"struct.calcsize"><code class=3D"xref py py-func docutils l=
+iteral notranslate"><span class=3D"pre">calcsize()</span></code></a>.</p>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"struct.iter_unpack">
+<code class=3D"sig-prename descclassname">struct.</code><code class=3D"sig-=
+name descname">iter_unpack</code><span class=3D"sig-paren">(</span><em clas=
+s=3D"sig-param">format</em>, <em class=3D"sig-param">buffer</em><span class=
+=3D"sig-paren">)</span><a class=3D"headerlink" href=3D"https://docs.python.=
+org/3/library/struct.html#struct.iter_unpack" title=3D"Permalink to this de=
+finition">=C2=B6</a></dt>
+<dd><p>Iteratively unpack from the buffer <em>buffer</em> according to the =
+format
+string <em>format</em>.  This function returns an iterator which will read
+equally-sized chunks from the buffer until all its contents have been
+consumed.  The buffer=E2=80=99s size in bytes must be a multiple of the siz=
+e
+required by the format, as reflected by <a class=3D"reference internal" hre=
+f=3D"https://docs.python.org/3/library/struct.html#struct.calcsize" title=
+=3D"struct.calcsize"><code class=3D"xref py py-func docutils literal notran=
+slate"><span class=3D"pre">calcsize()</span></code></a>.</p>
+<p>Each iteration yields a tuple as specified by the format string.</p>
+<div class=3D"versionadded">
+<p><span class=3D"versionmodified added">New in version 3.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class=3D"function">
+<dt id=3D"struct.calcsize">
+<code class=3D"sig-prename descclassname">struct.</code><code class=3D"sig-=
+name descname">calcsize</code><span class=3D"sig-paren">(</span><em class=
+=3D"sig-param">format</em><span class=3D"sig-paren">)</span><a class=3D"hea=
+derlink" href=3D"https://docs.python.org/3/library/struct.html#struct.calcs=
+ize" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Return the size of the struct (and hence of the bytes object produce=
+d by
+<code class=3D"docutils literal notranslate"><span class=3D"pre">pack(forma=
+t,</span> <span class=3D"pre">...)</span></code>) corresponding to the form=
+at string <em>format</em>.</p>
+</dd></dl>
+
+</div>
+<div class=3D"section" id=3D"format-strings">
+<span id=3D"struct-format-strings"></span><h2>Format Strings<a class=3D"hea=
+derlink" href=3D"https://docs.python.org/3/library/struct.html#format-strin=
+gs" title=3D"Permalink to this headline">=C2=B6</a></h2>
+<p>Format strings are the mechanism used to specify the expected layout whe=
+n
+packing and unpacking data.  They are built up from <a class=3D"reference i=
+nternal" href=3D"https://docs.python.org/3/library/struct.html#format-chara=
+cters"><span class=3D"std std-ref">Format Characters</span></a>,
+which specify the type of data being packed/unpacked.  In addition, there a=
+re
+special characters for controlling the <a class=3D"reference internal" href=
+=3D"https://docs.python.org/3/library/struct.html#struct-alignment"><span c=
+lass=3D"std std-ref">Byte Order, Size, and Alignment</span></a>.</p>
+<div class=3D"section" id=3D"byte-order-size-and-alignment">
+<span id=3D"struct-alignment"></span><h3>Byte Order, Size, and Alignment<a =
+class=3D"headerlink" href=3D"https://docs.python.org/3/library/struct.html#=
+byte-order-size-and-alignment" title=3D"Permalink to this headline">=C2=B6<=
+/a></h3>
+<p>By default, C types are represented in the machine=E2=80=99s native form=
+at and byte
+order, and properly aligned by skipping pad bytes if necessary (according t=
+o the
+rules used by the C compiler).</p>
+<p id=3D"index-1">Alternatively, the first character of the format string c=
+an be used to indicate
+the byte order, size and alignment of the packed data, according to the
+following table:</p>
+<table class=3D"docutils align-default">
+<colgroup>
+<col style=3D"width: 20%">
+<col style=3D"width: 43%">
+<col style=3D"width: 18%">
+<col style=3D"width: 20%">
+</colgroup>
+<thead>
+<tr class=3D"row-odd"><th class=3D"head"><p>Character</p></th>
+<th class=3D"head"><p>Byte order</p></th>
+<th class=3D"head"><p>Size</p></th>
+<th class=3D"head"><p>Alignment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">@</span></code></p></td>
+<td><p>native</p></td>
+<td><p>native</p></td>
+<td><p>native</p></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">=3D</span></code></p></td>
+<td><p>native</p></td>
+<td><p>standard</p></td>
+<td><p>none</p></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">&lt;</span></code></p></td>
+<td><p>little-endian</p></td>
+<td><p>standard</p></td>
+<td><p>none</p></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">&gt;</span></code></p></td>
+<td><p>big-endian</p></td>
+<td><p>standard</p></td>
+<td><p>none</p></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">!</span></code></p></td>
+<td><p>network (=3D big-endian)</p></td>
+<td><p>standard</p></td>
+<td><p>none</p></td>
+</tr>
+</tbody>
+</table>
+<p>If the first character is not one of these, <code class=3D"docutils lite=
+ral notranslate"><span class=3D"pre">'@'</span></code> is assumed.</p>
+<p>Native byte order is big-endian or little-endian, depending on the host
+system. For example, Intel x86 and AMD64 (x86-64) are little-endian;
+Motorola 68000 and PowerPC G5 are big-endian; ARM and Intel Itanium feature
+switchable endianness (bi-endian). Use <code class=3D"docutils literal notr=
+anslate"><span class=3D"pre">sys.byteorder</span></code> to check the
+endianness of your system.</p>
+<p>Native size and alignment are determined using the C compiler=E2=80=99s
+<code class=3D"docutils literal notranslate"><span class=3D"pre">sizeof</sp=
+an></code> expression.  This is always combined with native byte order.</p>
+<p>Standard size depends only on the format character;  see the table in
+the <a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/struct.html#format-characters"><span class=3D"std std-ref">Format Charac=
+ters</span></a> section.</p>
+<p>Note the difference between <code class=3D"docutils literal notranslate"=
+><span class=3D"pre">'@'</span></code> and <code class=3D"docutils literal =
+notranslate"><span class=3D"pre">'=3D'</span></code>: both use native byte =
+order, but
+the size and alignment of the latter is standardized.</p>
+<p>The form <code class=3D"docutils literal notranslate"><span class=3D"pre=
+">'!'</span></code> is available for those poor souls who claim they can=E2=
+=80=99t remember
+whether network byte order is big-endian or little-endian.</p>
+<p>There is no way to indicate non-native byte order (force byte-swapping);=
+ use the
+appropriate choice of <code class=3D"docutils literal notranslate"><span cl=
+ass=3D"pre">'&lt;'</span></code> or <code class=3D"docutils literal notrans=
+late"><span class=3D"pre">'&gt;'</span></code>.</p>
+<p>Notes:</p>
+<ol class=3D"arabic simple">
+<li><p>Padding is only automatically added between successive structure mem=
+bers.
+No padding is added at the beginning or the end of the encoded struct.</p><=
+/li>
+<li><p>No padding is added when using non-native size and alignment, e.g.
+with =E2=80=98&lt;=E2=80=99, =E2=80=98&gt;=E2=80=99, =E2=80=98=3D=E2=80=99,=
+ and =E2=80=98!=E2=80=99.</p></li>
+<li><p>To align the end of a structure to the alignment requirement of a
+particular type, end the format with the code for that type with a repeat
+count of zero.  See <a class=3D"reference internal" href=3D"https://docs.py=
+thon.org/3/library/struct.html#struct-examples"><span class=3D"std std-ref"=
+>Examples</span></a>.</p></li>
+</ol>
+</div>
+<div class=3D"section" id=3D"format-characters">
+<span id=3D"id1"></span><h3>Format Characters<a class=3D"headerlink" href=
+=3D"https://docs.python.org/3/library/struct.html#format-characters" title=
+=3D"Permalink to this headline">=C2=B6</a></h3>
+<p>Format characters have the following meaning; the conversion between C a=
+nd
+Python values should be obvious given their types.  The =E2=80=98Standard s=
+ize=E2=80=99 column
+refers to the size of the packed value in bytes when using standard size; t=
+hat
+is, when the format string starts with one of <code class=3D"docutils liter=
+al notranslate"><span class=3D"pre">'&lt;'</span></code>, <code class=3D"do=
+cutils literal notranslate"><span class=3D"pre">'&gt;'</span></code>, <code=
+ class=3D"docutils literal notranslate"><span class=3D"pre">'!'</span></cod=
+e> or
+<code class=3D"docutils literal notranslate"><span class=3D"pre">'=3D'</spa=
+n></code>.  When using native size, the size of the packed value is
+platform-dependent.</p>
+<table class=3D"docutils align-default">
+<colgroup>
+<col style=3D"width: 10%">
+<col style=3D"width: 32%">
+<col style=3D"width: 24%">
+<col style=3D"width: 20%">
+<col style=3D"width: 15%">
+</colgroup>
+<thead>
+<tr class=3D"row-odd"><th class=3D"head"><p>Format</p></th>
+<th class=3D"head"><p>C Type</p></th>
+<th class=3D"head"><p>Python type</p></th>
+<th class=3D"head"><p>Standard size</p></th>
+<th class=3D"head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">x</span></code></p></td>
+<td><p>pad byte</p></td>
+<td><p>no value</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">c</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">char</span></code></p></td>
+<td><p>bytes of length 1</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">b</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">signed</span> <span class=3D"pre">char</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>1</p></td>
+<td><p>(1), (2)</p></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">B</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">unsigned</span> <span class=3D"pre">char</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>1</p></td>
+<td><p>(2)</p></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">?</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">_Bool</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>1</p></td>
+<td><p>(1)</p></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">h</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">short</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>2</p></td>
+<td><p>(2)</p></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">H</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">unsigned</span> <span class=3D"pre">short</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>2</p></td>
+<td><p>(2)</p></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">i</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">int</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>4</p></td>
+<td><p>(2)</p></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">I</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">unsigned</span> <span class=3D"pre">int</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>4</p></td>
+<td><p>(2)</p></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">l</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">long</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>4</p></td>
+<td><p>(2)</p></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">L</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">unsigned</span> <span class=3D"pre">long</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>4</p></td>
+<td><p>(2)</p></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">q</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">long</span> <span class=3D"pre">long</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>8</p></td>
+<td><p>(2)</p></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">Q</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">unsigned</span> <span class=3D"pre">long</span>
+<span class=3D"pre">long</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>8</p></td>
+<td><p>(2)</p></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">n</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">ssize_t</span></code></p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>(3)</p></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">N</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">size_t</span></code></p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>(3)</p></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">e</span></code></p></td>
+<td><p>(6)</p></td>
+<td><p>float</p></td>
+<td><p>2</p></td>
+<td><p>(4)</p></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">f</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">float</span></code></p></td>
+<td><p>float</p></td>
+<td><p>4</p></td>
+<td><p>(4)</p></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">d</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">double</span></code></p></td>
+<td><p>float</p></td>
+<td><p>8</p></td>
+<td><p>(4)</p></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">s</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">char[]</span></code></p></td>
+<td><p>bytes</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class=3D"row-odd"><td><p><code class=3D"docutils literal notranslate"><=
+span class=3D"pre">p</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">char[]</span></code></p></td>
+<td><p>bytes</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class=3D"row-even"><td><p><code class=3D"docutils literal notranslate">=
+<span class=3D"pre">P</span></code></p></td>
+<td><p><code class=3D"xref c c-type docutils literal notranslate"><span cla=
+ss=3D"pre">void</span> <span class=3D"pre">*</span></code></p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>(5)</p></td>
+</tr>
+</tbody>
+</table>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.3: </span>A=
+dded support for the <code class=3D"docutils literal notranslate"><span cla=
+ss=3D"pre">'n'</span></code> and <code class=3D"docutils literal notranslat=
+e"><span class=3D"pre">'N'</span></code> formats.</p>
+</div>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.6: </span>A=
+dded support for the <code class=3D"docutils literal notranslate"><span cla=
+ss=3D"pre">'e'</span></code> format.</p>
+</div>
+<p>Notes:</p>
+<ol class=3D"arabic">
+<li><p id=3D"index-2">The <code class=3D"docutils literal notranslate"><spa=
+n class=3D"pre">'?'</span></code> conversion code corresponds to the <code =
+class=3D"xref c c-type docutils literal notranslate"><span class=3D"pre">_B=
+ool</span></code> type defined by
+C99. If this type is not available, it is simulated using a <code class=3D"=
+xref c c-type docutils literal notranslate"><span class=3D"pre">char</span>=
+</code>. In
+standard mode, it is always represented by one byte.</p>
+</li>
+<li><p>When attempting to pack a non-integer using any of the integer conve=
+rsion
+codes, if the non-integer has a <a class=3D"reference internal" href=3D"htt=
+ps://docs.python.org/3/reference/datamodel.html#object.__index__" title=3D"=
+object.__index__"><code class=3D"xref py py-meth docutils literal notransla=
+te"><span class=3D"pre">__index__()</span></code></a> method then that meth=
+od is
+called to convert the argument to an integer before packing.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.2: </span>U=
+se of the <a class=3D"reference internal" href=3D"https://docs.python.org/3=
+/reference/datamodel.html#object.__index__" title=3D"object.__index__"><cod=
+e class=3D"xref py py-meth docutils literal notranslate"><span class=3D"pre=
+">__index__()</span></code></a> method for non-integers is new in 3.2.</p>
+</div>
+</li>
+<li><p>The <code class=3D"docutils literal notranslate"><span class=3D"pre"=
+>'n'</span></code> and <code class=3D"docutils literal notranslate"><span c=
+lass=3D"pre">'N'</span></code> conversion codes are only available for the =
+native
+size (selected as the default or with the <code class=3D"docutils literal n=
+otranslate"><span class=3D"pre">'@'</span></code> byte order character).
+For the standard size, you can use whichever of the other integer formats
+fits your application.</p></li>
+<li><p>For the <code class=3D"docutils literal notranslate"><span class=3D"=
+pre">'f'</span></code>, <code class=3D"docutils literal notranslate"><span =
+class=3D"pre">'d'</span></code> and <code class=3D"docutils literal notrans=
+late"><span class=3D"pre">'e'</span></code> conversion codes, the packed
+representation uses the IEEE 754 binary32, binary64 or binary16 format (for
+<code class=3D"docutils literal notranslate"><span class=3D"pre">'f'</span>=
+</code>, <code class=3D"docutils literal notranslate"><span class=3D"pre">'=
+d'</span></code> or <code class=3D"docutils literal notranslate"><span clas=
+s=3D"pre">'e'</span></code> respectively), regardless of the floating-point
+format used by the platform.</p></li>
+<li><p>The <code class=3D"docutils literal notranslate"><span class=3D"pre"=
+>'P'</span></code> format character is only available for the native byte o=
+rdering
+(selected as the default or with the <code class=3D"docutils literal notran=
+slate"><span class=3D"pre">'@'</span></code> byte order character). The byt=
+e
+order character <code class=3D"docutils literal notranslate"><span class=3D=
+"pre">'=3D'</span></code> chooses to use little- or big-endian ordering bas=
+ed
+on the host system. The struct module does not interpret this as native
+ordering, so the <code class=3D"docutils literal notranslate"><span class=
+=3D"pre">'P'</span></code> format is not available.</p></li>
+<li><p>The IEEE 754 binary16 =E2=80=9Chalf precision=E2=80=9D type was intr=
+oduced in the 2008
+revision of the <a class=3D"reference external" href=3D"https://en.wikipedi=
+a.org/wiki/IEEE_floating_point#IEEE_754-2008">IEEE 754 standard</a>. It has=
+ a sign
+bit, a 5-bit exponent and 11-bit precision (with 10 bits explicitly stored)=
+,
+and can represent numbers between approximately <code class=3D"docutils lit=
+eral notranslate"><span class=3D"pre">6.1e-05</span></code> and <code class=
+=3D"docutils literal notranslate"><span class=3D"pre">6.5e+04</span></code>
+at full precision. This type is not widely supported by C compilers: on a
+typical machine, an unsigned short can be used for storage, but not for mat=
+h
+operations. See the Wikipedia page on the <a class=3D"reference external" h=
+ref=3D"https://en.wikipedia.org/wiki/Half-precision_floating-point_format">=
+half-precision floating-point
+format</a> for more information.</p></li>
+</ol>
+<p>A format character may be preceded by an integral repeat count.  For exa=
+mple,
+the format string <code class=3D"docutils literal notranslate"><span class=
+=3D"pre">'4h'</span></code> means exactly the same as <code class=3D"docuti=
+ls literal notranslate"><span class=3D"pre">'hhhh'</span></code>.</p>
+<p>Whitespace characters between formats are ignored; a count and its forma=
+t must
+not contain whitespace though.</p>
+<p>For the <code class=3D"docutils literal notranslate"><span class=3D"pre"=
+>'s'</span></code> format character, the count is interpreted as the length=
+ of the
+bytes, not a repeat count like for the other format characters; for example=
+,
+<code class=3D"docutils literal notranslate"><span class=3D"pre">'10s'</spa=
+n></code> means a single 10-byte string, while <code class=3D"docutils lite=
+ral notranslate"><span class=3D"pre">'10c'</span></code> means 10 character=
+s.
+If a count is not given, it defaults to 1.  For packing, the string is
+truncated or padded with null bytes as appropriate to make it fit. For
+unpacking, the resulting bytes object always has exactly the specified numb=
+er
+of bytes.  As a special case, <code class=3D"docutils literal notranslate">=
+<span class=3D"pre">'0s'</span></code> means a single, empty string (while
+<code class=3D"docutils literal notranslate"><span class=3D"pre">'0c'</span=
+></code> means 0 characters).</p>
+<p>When packing a value <code class=3D"docutils literal notranslate"><span =
+class=3D"pre">x</span></code> using one of the integer formats (<code class=
+=3D"docutils literal notranslate"><span class=3D"pre">'b'</span></code>,
+<code class=3D"docutils literal notranslate"><span class=3D"pre">'B'</span>=
+</code>, <code class=3D"docutils literal notranslate"><span class=3D"pre">'=
+h'</span></code>, <code class=3D"docutils literal notranslate"><span class=
+=3D"pre">'H'</span></code>, <code class=3D"docutils literal notranslate"><s=
+pan class=3D"pre">'i'</span></code>, <code class=3D"docutils literal notran=
+slate"><span class=3D"pre">'I'</span></code>, <code class=3D"docutils liter=
+al notranslate"><span class=3D"pre">'l'</span></code>, <code class=3D"docut=
+ils literal notranslate"><span class=3D"pre">'L'</span></code>,
+<code class=3D"docutils literal notranslate"><span class=3D"pre">'q'</span>=
+</code>, <code class=3D"docutils literal notranslate"><span class=3D"pre">'=
+Q'</span></code>), if <code class=3D"docutils literal notranslate"><span cl=
+ass=3D"pre">x</span></code> is outside the valid range for that format
+then <a class=3D"reference internal" href=3D"https://docs.python.org/3/libr=
+ary/struct.html#struct.error" title=3D"struct.error"><code class=3D"xref py=
+ py-exc docutils literal notranslate"><span class=3D"pre">struct.error</spa=
+n></code></a> is raised.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.1: </span>I=
+n 3.0, some of the integer formats wrapped out-of-range values and
+raised <a class=3D"reference internal" href=3D"https://docs.python.org/3/li=
+brary/exceptions.html#DeprecationWarning" title=3D"DeprecationWarning"><cod=
+e class=3D"xref py py-exc docutils literal notranslate"><span class=3D"pre"=
+>DeprecationWarning</span></code></a> instead of <a class=3D"reference inte=
+rnal" href=3D"https://docs.python.org/3/library/struct.html#struct.error" t=
+itle=3D"struct.error"><code class=3D"xref py py-exc docutils literal notran=
+slate"><span class=3D"pre">struct.error</span></code></a>.</p>
+</div>
+<p>The <code class=3D"docutils literal notranslate"><span class=3D"pre">'p'=
+</span></code> format character encodes a =E2=80=9CPascal string=E2=80=9D, =
+meaning a short
+variable-length string stored in a <em>fixed number of bytes</em>, given by=
+ the count.
+The first byte stored is the length of the string, or 255, whichever is
+smaller.  The bytes of the string follow.  If the string passed in to
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+truct.html#struct.pack" title=3D"struct.pack"><code class=3D"xref py py-fun=
+c docutils literal notranslate"><span class=3D"pre">pack()</span></code></a=
+> is too long (longer than the count minus 1), only the leading
+<code class=3D"docutils literal notranslate"><span class=3D"pre">count-1</s=
+pan></code> bytes of the string are stored.  If the string is shorter than
+<code class=3D"docutils literal notranslate"><span class=3D"pre">count-1</s=
+pan></code>, it is padded with null bytes so that exactly count bytes in al=
+l
+are used.  Note that for <a class=3D"reference internal" href=3D"https://do=
+cs.python.org/3/library/struct.html#struct.unpack" title=3D"struct.unpack">=
+<code class=3D"xref py py-func docutils literal notranslate"><span class=3D=
+"pre">unpack()</span></code></a>, the <code class=3D"docutils literal notra=
+nslate"><span class=3D"pre">'p'</span></code> format character consumes
+<code class=3D"docutils literal notranslate"><span class=3D"pre">count</spa=
+n></code> bytes, but that the string returned can never contain more than 2=
+55
+bytes.</p>
+<p id=3D"index-3">For the <code class=3D"docutils literal notranslate"><spa=
+n class=3D"pre">'?'</span></code> format character, the return value is eit=
+her <a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/constants.html#True" title=3D"True"><code class=3D"xref py py-const docu=
+tils literal notranslate"><span class=3D"pre">True</span></code></a> or
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/c=
+onstants.html#False" title=3D"False"><code class=3D"xref py py-const docuti=
+ls literal notranslate"><span class=3D"pre">False</span></code></a>. When p=
+acking, the truth value of the argument object is used.
+Either 0 or 1 in the native or standard bool representation will be packed,=
+ and
+any non-zero value will be <code class=3D"docutils literal notranslate"><sp=
+an class=3D"pre">True</span></code> when unpacking.</p>
+</div>
+<div class=3D"section" id=3D"examples">
+<span id=3D"struct-examples"></span><h3>Examples<a class=3D"headerlink" hre=
+f=3D"https://docs.python.org/3/library/struct.html#examples" title=3D"Perma=
+link to this headline">=C2=B6</a></h3>
+<div class=3D"admonition note">
+<p class=3D"admonition-title">Note</p>
+<p>All examples assume a native byte order, size, and alignment with a
+big-endian machine.</p>
+</div>
+<p>A basic example of packing/unpacking three integers:</p>
+<div class=3D"highlight-python3 notranslate" style=3D"position: relative;">=
+<div class=3D"highlight"><span class=3D"copybutton" title=3D"Hide the promp=
+ts and output" style=3D"cursor: pointer; position: absolute; top: 0px; righ=
+t: 0px; border-color: rgb(170, 204, 153); border-style: solid; border-width=
+: 1px; color: rgb(170, 204, 153); font-family: monospace; padding-left: 0.2=
+em; padding-right: 0.2em; border-radius: 0px 3px 0px 0px;">&gt;&gt;&gt;</sp=
+an><pre><span></span><span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"=
+kn">from</span> <span class=3D"nn">struct</span> <span class=3D"kn">import<=
+/span> <span class=3D"o">*</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">pack</span><span c=
+lass=3D"p">(</span><span class=3D"s1">'hhl'</span><span class=3D"p">,</span=
+> <span class=3D"mi">1</span><span class=3D"p">,</span> <span class=3D"mi">=
+2</span><span class=3D"p">,</span> <span class=3D"mi">3</span><span class=
+=3D"p">)</span>
+<span class=3D"go">b'\x00\x01\x00\x02\x00\x00\x00\x03'</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">unpack</span><span=
+ class=3D"p">(</span><span class=3D"s1">'hhl'</span><span class=3D"p">,</sp=
+an> <span class=3D"sa">b</span><span class=3D"s1">'</span><span class=3D"se=
+">\x00\x01\x00\x02\x00\x00\x00\x03</span><span class=3D"s1">'</span><span c=
+lass=3D"p">)</span>
+<span class=3D"go">(1, 2, 3)</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">calcsize</span><sp=
+an class=3D"p">(</span><span class=3D"s1">'hhl'</span><span class=3D"p">)</=
+span>
+<span class=3D"go">8</span>
+</pre></div>
+</div>
+<p>Unpacked fields can be named by assigning them to variables or by wrappi=
+ng
+the result in a named tuple:</p>
+<div class=3D"highlight-python3 notranslate" style=3D"position: relative;">=
+<div class=3D"highlight"><span class=3D"copybutton" title=3D"Hide the promp=
+ts and output" style=3D"cursor: pointer; position: absolute; top: 0px; righ=
+t: 0px; border-color: rgb(170, 204, 153); border-style: solid; border-width=
+: 1px; color: rgb(170, 204, 153); font-family: monospace; padding-left: 0.2=
+em; padding-right: 0.2em; border-radius: 0px 3px 0px 0px;">&gt;&gt;&gt;</sp=
+an><pre><span></span><span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"=
+n">record</span> <span class=3D"o">=3D</span> <span class=3D"sa">b</span><s=
+pan class=3D"s1">'raymond   </span><span class=3D"se">\x32\x12\x08\x01\x08<=
+/span><span class=3D"s1">'</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">name</span><span c=
+lass=3D"p">,</span> <span class=3D"n">serialnum</span><span class=3D"p">,</=
+span> <span class=3D"n">school</span><span class=3D"p">,</span> <span class=
+=3D"n">gradelevel</span> <span class=3D"o">=3D</span> <span class=3D"n">unp=
+ack</span><span class=3D"p">(</span><span class=3D"s1">'&lt;10sHHb'</span><=
+span class=3D"p">,</span> <span class=3D"n">record</span><span class=3D"p">=
+)</span>
+
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"kn">from</span> <span=
+ class=3D"nn">collections</span> <span class=3D"kn">import</span> <span cla=
+ss=3D"n">namedtuple</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">Student</span> <sp=
+an class=3D"o">=3D</span> <span class=3D"n">namedtuple</span><span class=3D=
+"p">(</span><span class=3D"s1">'Student'</span><span class=3D"p">,</span> <=
+span class=3D"s1">'name serialnum school gradelevel'</span><span class=3D"p=
+">)</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">Student</span><spa=
+n class=3D"o">.</span><span class=3D"n">_make</span><span class=3D"p">(</sp=
+an><span class=3D"n">unpack</span><span class=3D"p">(</span><span class=3D"=
+s1">'&lt;10sHHb'</span><span class=3D"p">,</span> <span class=3D"n">record<=
+/span><span class=3D"p">))</span>
+<span class=3D"go">Student(name=3Db'raymond   ', serialnum=3D4658, school=
+=3D264, gradelevel=3D8)</span>
+</pre></div>
+</div>
+<p>The ordering of format characters may have an impact on size since the p=
+adding
+needed to satisfy alignment requirements is different:</p>
+<div class=3D"highlight-python3 notranslate" style=3D"position: relative;">=
+<div class=3D"highlight"><span class=3D"copybutton" title=3D"Hide the promp=
+ts and output" style=3D"cursor: pointer; position: absolute; top: 0px; righ=
+t: 0px; border-color: rgb(170, 204, 153); border-style: solid; border-width=
+: 1px; color: rgb(170, 204, 153); font-family: monospace; padding-left: 0.2=
+em; padding-right: 0.2em; border-radius: 0px 3px 0px 0px;">&gt;&gt;&gt;</sp=
+an><pre><span></span><span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"=
+n">pack</span><span class=3D"p">(</span><span class=3D"s1">'ci'</span><span=
+ class=3D"p">,</span> <span class=3D"sa">b</span><span class=3D"s1">'*'</sp=
+an><span class=3D"p">,</span> <span class=3D"mh">0x12131415</span><span cla=
+ss=3D"p">)</span>
+<span class=3D"go">b'*\x00\x00\x00\x12\x13\x14\x15'</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">pack</span><span c=
+lass=3D"p">(</span><span class=3D"s1">'ic'</span><span class=3D"p">,</span>=
+ <span class=3D"mh">0x12131415</span><span class=3D"p">,</span> <span class=
+=3D"sa">b</span><span class=3D"s1">'*'</span><span class=3D"p">)</span>
+<span class=3D"go">b'\x12\x13\x14\x15*'</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">calcsize</span><sp=
+an class=3D"p">(</span><span class=3D"s1">'ci'</span><span class=3D"p">)</s=
+pan>
+<span class=3D"go">8</span>
+<span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"n">calcsize</span><sp=
+an class=3D"p">(</span><span class=3D"s1">'ic'</span><span class=3D"p">)</s=
+pan>
+<span class=3D"go">5</span>
+</pre></div>
+</div>
+<p>The following format <code class=3D"docutils literal notranslate"><span =
+class=3D"pre">'llh0l'</span></code> specifies two pad bytes at the end, ass=
+uming
+longs are aligned on 4-byte boundaries:</p>
+<div class=3D"highlight-python3 notranslate" style=3D"position: relative;">=
+<div class=3D"highlight"><span class=3D"copybutton" title=3D"Hide the promp=
+ts and output" style=3D"cursor: pointer; position: absolute; top: 0px; righ=
+t: 0px; border-color: rgb(170, 204, 153); border-style: solid; border-width=
+: 1px; color: rgb(170, 204, 153); font-family: monospace; padding-left: 0.2=
+em; padding-right: 0.2em; border-radius: 0px 3px 0px 0px;">&gt;&gt;&gt;</sp=
+an><pre><span></span><span class=3D"gp">&gt;&gt;&gt; </span><span class=3D"=
+n">pack</span><span class=3D"p">(</span><span class=3D"s1">'llh0l'</span><s=
+pan class=3D"p">,</span> <span class=3D"mi">1</span><span class=3D"p">,</sp=
+an> <span class=3D"mi">2</span><span class=3D"p">,</span> <span class=3D"mi=
+">3</span><span class=3D"p">)</span>
+<span class=3D"go">b'\x00\x00\x00\x01\x00\x00\x00\x02\x00\x03\x00\x00'</spa=
+n>
+</pre></div>
+</div>
+<p>This only works when native size and alignment are in effect; standard s=
+ize and
+alignment does not enforce any alignment.</p>
+<div class=3D"admonition seealso">
+<p class=3D"admonition-title">See also</p>
+<dl class=3D"simple">
+<dt>Module <a class=3D"reference internal" href=3D"https://docs.python.org/=
+3/library/array.html#module-array" title=3D"array: Space efficient arrays o=
+f uniformly typed numeric values."><code class=3D"xref py py-mod docutils l=
+iteral notranslate"><span class=3D"pre">array</span></code></a></dt><dd><p>=
+Packed binary storage of homogeneous data.</p>
+</dd>
+<dt>Module <a class=3D"reference internal" href=3D"https://docs.python.org/=
+3/library/xdrlib.html#module-xdrlib" title=3D"xdrlib: Encoders and decoders=
+ for the External Data Representation (XDR)."><code class=3D"xref py py-mod=
+ docutils literal notranslate"><span class=3D"pre">xdrlib</span></code></a>=
+</dt><dd><p>Packing and unpacking of XDR data.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class=3D"section" id=3D"classes">
+<span id=3D"struct-objects"></span><h2>Classes<a class=3D"headerlink" href=
+=3D"https://docs.python.org/3/library/struct.html#classes" title=3D"Permali=
+nk to this headline">=C2=B6</a></h2>
+<p>The <a class=3D"reference internal" href=3D"https://docs.python.org/3/li=
+brary/struct.html#module-struct" title=3D"struct: Interpret bytes as packed=
+ binary data."><code class=3D"xref py py-mod docutils literal notranslate">=
+<span class=3D"pre">struct</span></code></a> module also defines the follow=
+ing type:</p>
+<dl class=3D"class">
+<dt id=3D"struct.Struct">
+<em class=3D"property">class </em><code class=3D"sig-prename descclassname"=
+>struct.</code><code class=3D"sig-name descname">Struct</code><span class=
+=3D"sig-paren">(</span><em class=3D"sig-param">format</em><span class=3D"si=
+g-paren">)</span><a class=3D"headerlink" href=3D"https://docs.python.org/3/=
+library/struct.html#struct.Struct" title=3D"Permalink to this definition">=
+=C2=B6</a></dt>
+<dd><p>Return a new Struct object which writes and reads binary data accord=
+ing to
+the format string <em>format</em>.  Creating a Struct object once and calli=
+ng its
+methods is more efficient than calling the <a class=3D"reference internal" =
+href=3D"https://docs.python.org/3/library/struct.html#module-struct" title=
+=3D"struct: Interpret bytes as packed binary data."><code class=3D"xref py =
+py-mod docutils literal notranslate"><span class=3D"pre">struct</span></cod=
+e></a> functions with the
+same format since the format string only needs to be compiled once.</p>
+<div class=3D"admonition note">
+<p class=3D"admonition-title">Note</p>
+<p>The compiled versions of the most recent format strings passed to
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+truct.html#struct.Struct" title=3D"struct.Struct"><code class=3D"xref py py=
+-class docutils literal notranslate"><span class=3D"pre">Struct</span></cod=
+e></a> and the module-level functions are cached, so programs
+that use only a few format strings needn=E2=80=99t worry about reusing a si=
+ngle
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+truct.html#struct.Struct" title=3D"struct.Struct"><code class=3D"xref py py=
+-class docutils literal notranslate"><span class=3D"pre">Struct</span></cod=
+e></a> instance.</p>
+</div>
+<p>Compiled Struct objects support the following methods and attributes:</p=
+>
+<dl class=3D"method">
+<dt id=3D"struct.Struct.pack">
+<code class=3D"sig-name descname">pack</code><span class=3D"sig-paren">(</s=
+pan><em class=3D"sig-param">v1</em>, <em class=3D"sig-param">v2</em>, <em c=
+lass=3D"sig-param">...</em><span class=3D"sig-paren">)</span><a class=3D"he=
+aderlink" href=3D"https://docs.python.org/3/library/struct.html#struct.Stru=
+ct.pack" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Identical to the <a class=3D"reference internal" href=3D"https://doc=
+s.python.org/3/library/struct.html#struct.pack" title=3D"struct.pack"><code=
+ class=3D"xref py py-func docutils literal notranslate"><span class=3D"pre"=
+>pack()</span></code></a> function, using the compiled format.
+(<code class=3D"docutils literal notranslate"><span class=3D"pre">len(resul=
+t)</span></code> will equal <a class=3D"reference internal" href=3D"https:/=
+/docs.python.org/3/library/struct.html#struct.Struct.size" title=3D"struct.=
+Struct.size"><code class=3D"xref py py-attr docutils literal notranslate"><=
+span class=3D"pre">size</span></code></a>.)</p>
+</dd></dl>
+
+<dl class=3D"method">
+<dt id=3D"struct.Struct.pack_into">
+<code class=3D"sig-name descname">pack_into</code><span class=3D"sig-paren"=
+>(</span><em class=3D"sig-param">buffer</em>, <em class=3D"sig-param">offse=
+t</em>, <em class=3D"sig-param">v1</em>, <em class=3D"sig-param">v2</em>, <=
+em class=3D"sig-param">...</em><span class=3D"sig-paren">)</span><a class=
+=3D"headerlink" href=3D"https://docs.python.org/3/library/struct.html#struc=
+t.Struct.pack_into" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Identical to the <a class=3D"reference internal" href=3D"https://doc=
+s.python.org/3/library/struct.html#struct.pack_into" title=3D"struct.pack_i=
+nto"><code class=3D"xref py py-func docutils literal notranslate"><span cla=
+ss=3D"pre">pack_into()</span></code></a> function, using the compiled forma=
+t.</p>
+</dd></dl>
+
+<dl class=3D"method">
+<dt id=3D"struct.Struct.unpack">
+<code class=3D"sig-name descname">unpack</code><span class=3D"sig-paren">(<=
+/span><em class=3D"sig-param">buffer</em><span class=3D"sig-paren">)</span>=
+<a class=3D"headerlink" href=3D"https://docs.python.org/3/library/struct.ht=
+ml#struct.Struct.unpack" title=3D"Permalink to this definition">=C2=B6</a><=
+/dt>
+<dd><p>Identical to the <a class=3D"reference internal" href=3D"https://doc=
+s.python.org/3/library/struct.html#struct.unpack" title=3D"struct.unpack"><=
+code class=3D"xref py py-func docutils literal notranslate"><span class=3D"=
+pre">unpack()</span></code></a> function, using the compiled format.
+The buffer=E2=80=99s size in bytes must equal <a class=3D"reference interna=
+l" href=3D"https://docs.python.org/3/library/struct.html#struct.Struct.size=
+" title=3D"struct.Struct.size"><code class=3D"xref py py-attr docutils lite=
+ral notranslate"><span class=3D"pre">size</span></code></a>.</p>
+</dd></dl>
+
+<dl class=3D"method">
+<dt id=3D"struct.Struct.unpack_from">
+<code class=3D"sig-name descname">unpack_from</code><span class=3D"sig-pare=
+n">(</span><em class=3D"sig-param">buffer</em>, <em class=3D"sig-param">off=
+set=3D0</em><span class=3D"sig-paren">)</span><a class=3D"headerlink" href=
+=3D"https://docs.python.org/3/library/struct.html#struct.Struct.unpack_from=
+" title=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>Identical to the <a class=3D"reference internal" href=3D"https://doc=
+s.python.org/3/library/struct.html#struct.unpack_from" title=3D"struct.unpa=
+ck_from"><code class=3D"xref py py-func docutils literal notranslate"><span=
+ class=3D"pre">unpack_from()</span></code></a> function, using the compiled=
+ format.
+The buffer=E2=80=99s size in bytes, starting at position <em>offset</em>, m=
+ust be at least
+<a class=3D"reference internal" href=3D"https://docs.python.org/3/library/s=
+truct.html#struct.Struct.size" title=3D"struct.Struct.size"><code class=3D"=
+xref py py-attr docutils literal notranslate"><span class=3D"pre">size</spa=
+n></code></a>.</p>
+</dd></dl>
+
+<dl class=3D"method">
+<dt id=3D"struct.Struct.iter_unpack">
+<code class=3D"sig-name descname">iter_unpack</code><span class=3D"sig-pare=
+n">(</span><em class=3D"sig-param">buffer</em><span class=3D"sig-paren">)</=
+span><a class=3D"headerlink" href=3D"https://docs.python.org/3/library/stru=
+ct.html#struct.Struct.iter_unpack" title=3D"Permalink to this definition">=
+=C2=B6</a></dt>
+<dd><p>Identical to the <a class=3D"reference internal" href=3D"https://doc=
+s.python.org/3/library/struct.html#struct.iter_unpack" title=3D"struct.iter=
+_unpack"><code class=3D"xref py py-func docutils literal notranslate"><span=
+ class=3D"pre">iter_unpack()</span></code></a> function, using the compiled=
+ format.
+The buffer=E2=80=99s size in bytes must be a multiple of <a class=3D"refere=
+nce internal" href=3D"https://docs.python.org/3/library/struct.html#struct.=
+Struct.size" title=3D"struct.Struct.size"><code class=3D"xref py py-attr do=
+cutils literal notranslate"><span class=3D"pre">size</span></code></a>.</p>
+<div class=3D"versionadded">
+<p><span class=3D"versionmodified added">New in version 3.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class=3D"attribute">
+<dt id=3D"struct.Struct.format">
+<code class=3D"sig-name descname">format</code><a class=3D"headerlink" href=
+=3D"https://docs.python.org/3/library/struct.html#struct.Struct.format" tit=
+le=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>The format string used to construct this Struct object.</p>
+<div class=3D"versionchanged">
+<p><span class=3D"versionmodified changed">Changed in version 3.7: </span>T=
+he format string type is now <a class=3D"reference internal" href=3D"https:=
+//docs.python.org/3/library/stdtypes.html#str" title=3D"str"><code class=3D=
+"xref py py-class docutils literal notranslate"><span class=3D"pre">str</sp=
+an></code></a> instead of <a class=3D"reference internal" href=3D"https://d=
+ocs.python.org/3/library/stdtypes.html#bytes" title=3D"bytes"><code class=
+=3D"xref py py-class docutils literal notranslate"><span class=3D"pre">byte=
+s</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class=3D"attribute">
+<dt id=3D"struct.Struct.size">
+<code class=3D"sig-name descname">size</code><a class=3D"headerlink" href=
+=3D"https://docs.python.org/3/library/struct.html#struct.Struct.size" title=
+=3D"Permalink to this definition">=C2=B6</a></dt>
+<dd><p>The calculated size of the struct (and hence of the bytes object pro=
+duced
+by the <a class=3D"reference internal" href=3D"https://docs.python.org/3/li=
+brary/struct.html#struct.pack" title=3D"struct.pack"><code class=3D"xref py=
+ py-meth docutils literal notranslate"><span class=3D"pre">pack()</span></c=
+ode></a> method) corresponding to <a class=3D"reference internal" href=3D"h=
+ttps://docs.python.org/3/library/functions.html#format" title=3D"format"><c=
+ode class=3D"xref py py-attr docutils literal notranslate"><span class=3D"p=
+re">format</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class=3D"sphinxsidebar" role=3D"navigation" aria-label=3D"main n=
+avigation">
+        <div class=3D"sphinxsidebarwrapper" style=3D"float: left; margin-ri=
+ght: 0px; width: 202px;">
+  <h3><a href=3D"https://docs.python.org/3/contents.html">Table of Contents=
+</a></h3>
+  <ul>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/struct.html#"><code class=3D"xref py py-mod docutils literal notranslate=
+"><span class=3D"pre">struct</span></code> =E2=80=94 Interpret bytes as pac=
+ked binary data</a><ul>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/struct.html#functions-and-exceptions">Functions and Exceptions</a></li>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/struct.html#format-strings">Format Strings</a><ul>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/struct.html#byte-order-size-and-alignment">Byte Order, Size, and Alignme=
+nt</a></li>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/struct.html#format-characters">Format Characters</a></li>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/struct.html#examples">Examples</a></li>
+</ul>
+</li>
+<li><a class=3D"reference internal" href=3D"https://docs.python.org/3/libra=
+ry/struct.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class=3D"topless"><a href=3D"https://docs.python.org/3/library/binary.=
+html" title=3D"previous chapter">Binary Data Services</a></p>
+  <h4>Next topic</h4>
+  <p class=3D"topless"><a href=3D"https://docs.python.org/3/library/codecs.=
+html" title=3D"next chapter"><code class=3D"xref py py-mod docutils literal=
+ notranslate"><span class=3D"pre">codecs</span></code> =E2=80=94 Codec regi=
+stry and base classes</a></p>
+  <div role=3D"note" aria-label=3D"source link">
+    <h3>This Page</h3>
+    <ul class=3D"this-page-menu">
+      <li><a href=3D"https://docs.python.org/3/bugs.html">Report a Bug</a><=
+/li>
+      <li>
+        <a href=3D"https://github.com/python/cpython/blob/3.8/Doc/library/s=
+truct.rst" rel=3D"nofollow">Show Source
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      <div id=3D"sidebarbutton" title=3D"Collapse sidebar" style=3D"border-=
+radius: 0px 5px 5px 0px; color: rgb(68, 68, 68); background-color: rgb(204,=
+ 204, 204); font-size: 1.2em; cursor: pointer; height: 6787.53px; padding-t=
+op: 1px; padding-left: 1px; margin-left: 218px;"><span style=3D"display: bl=
+ock; position: fixed; top: 296px;">=C2=AB</span></div></div>
+      <div class=3D"clearer"></div>
+    </div> =20
+    <div class=3D"related" role=3D"navigation" aria-label=3D"related naviga=
+tion">
+      <h3>Navigation</h3>
+      <ul>
+        <li class=3D"right" style=3D"margin-right: 10px">
+          <a href=3D"https://docs.python.org/3/genindex.html" title=3D"Gene=
+ral Index">index</a></li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/py-modindex.html" title=3D"P=
+ython Module Index">modules</a> |</li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/library/codecs.html" title=
+=3D"codecs =E2=80=94 Codec registry and base classes">next</a> |</li>
+        <li class=3D"right">
+          <a href=3D"https://docs.python.org/3/library/binary.html" title=
+=3D"Binary Data Services">previous</a> |</li>
+
+    <li><img src=3D"https://docs.python.org/3/_static/py.png" alt=3D"" styl=
+e=3D"vertical-align: middle; margin-top: -1px"></li>
+    <li><a href=3D"https://www.python.org/">Python</a> =C2=BB</li>
+   =20
+
+    <li>
+      <span class=3D"language_switcher_placeholder"><select><option value=
+=3D"en" selected=3D"selected">English</option><option value=3D"fr">French</=
+option><option value=3D"ja">Japanese</option><option value=3D"ko">Korean</o=
+ption><option value=3D"pt-br">Brazilian Portuguese</option><option value=3D=
+"zh-cn">Simplified Chinese</option></select></span>
+      <span class=3D"version_switcher_placeholder"><select><option value=3D=
+"3.9">dev (3.9)</option><option value=3D"3.8" selected=3D"selected">3.8.2</=
+option><option value=3D"3.7">3.7</option><option value=3D"3.6">3.6</option>=
+<option value=3D"3.5">3.5</option><option value=3D"2.7">2.7</option></selec=
+t></span>
+      <a href=3D"https://docs.python.org/3/index.html">Documentation </a> =
+=C2=BB
+    </li>
+
+          <li class=3D"nav-item nav-item-1"><a href=3D"https://docs.python.=
+org/3/library/index.html">The Python Standard Library</a> =C2=BB</li>
+          <li class=3D"nav-item nav-item-2"><a href=3D"https://docs.python.=
+org/3/library/binary.html">Binary Data Services</a> =C2=BB</li>
+    <li class=3D"right">
+       =20
+
+    <div class=3D"inline-search" style=3D"" role=3D"search">
+        <form class=3D"inline-search" action=3D"https://docs.python.org/3/s=
+earch.html" method=3D"get">
+          <input placeholder=3D"Quick search" type=3D"text" name=3D"q">
+          <input type=3D"submit" value=3D"Go">
+         =20
+         =20
+        </form>
+    </div>
+   =20
+         |
+    </li>
+
+      </ul>
+    </div> =20
+    <div class=3D"footer">
+    =C2=A9 <a href=3D"https://docs.python.org/3/copyright.html">Copyright</=
+a> 2001-2020, Python Software Foundation.
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href=3D"https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+
+    Last updated on Mar 26, 2020.
+    <a href=3D"https://docs.python.org/3/bugs.html">Found a bug</a>?
+    <br>
+
+    Created using <a href=3D"https://www.sphinx-doc.org/">Sphinx</a> 2.3.1.
+    </div>
+
+ =20
+</body></html>
+------MultipartBoundary--HeUEptkUZKFSRK8ds54CiHe2wXxaaL6wlHViArlOwz----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-71b98651-1bfd-41b5-bb95-136163431407@mhtml.blink
+
+@charset "utf-8";
+
+@media only screen {
+  table.full-width-table { width: 100%; }
+}
+------MultipartBoundary--HeUEptkUZKFSRK8ds54CiHe2wXxaaL6wlHViArlOwz----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/_static/pydoctheme.css
+
+@charset "utf-8";
+
+@import url("default.css");
+
+body { background-color: white; margin-left: 1em; margin-right: 1em; }
+
+div.related { margin-bottom: 1.2em; padding: 0.5em 0px; border-top: 1px sol=
+id rgb(204, 204, 204); margin-top: 0.5em; }
+
+div.related a:hover { color: rgb(0, 149, 196); }
+
+div.related:first-child { border-top: 0px; border-bottom: 1px solid rgb(204=
+, 204, 204); }
+
+.inline-search { display: inline; }
+
+form.inline-search input { display: inline; }
+
+form.inline-search input[type=3D"submit"] { width: 40px; }
+
+div.sphinxsidebar { background-color: rgb(238, 238, 238); border-radius: 5p=
+x; line-height: 130%; font-size: smaller; }
+
+div.sphinxsidebar h3, div.sphinxsidebar h4 { margin-top: 1.5em; }
+
+div.sphinxsidebarwrapper > h3:first-child { margin-top: 0.2em; }
+
+div.sphinxsidebarwrapper > ul > li > ul > li { margin-bottom: 0.4em; }
+
+div.sphinxsidebar a:hover { color: rgb(0, 149, 196); }
+
+form.inline-search input, div.sphinxsidebar input { font-family: "Lucida Gr=
+ande", Arial, sans-serif; border: 1px solid rgb(153, 153, 153); font-size: =
+smaller; border-radius: 3px; }
+
+div.sphinxsidebar input[type=3D"text"] { max-width: 150px; }
+
+div.body { padding: 0px 0px 0px 1.2em; }
+
+div.body p { line-height: 140%; }
+
+div.body h1, div.body h2, div.body h3, div.body h4, div.body h5, div.body h=
+6 { margin: 0px; border: 0px; padding: 0.3em 0px; }
+
+div.body hr { border: 0px; background-color: rgb(204, 204, 204); height: 1p=
+x; }
+
+div.body pre { border-radius: 3px; border: 1px solid rgb(170, 204, 153); }
+
+div.body div.admonition, div.body div.impl-detail { border-radius: 3px; }
+
+div.body div.impl-detail > p { margin: 0px; }
+
+div.body div.seealso { border: 1px solid rgb(221, 221, 102); }
+
+div.body a { color: rgb(0, 114, 170); }
+
+div.body a:visited { color: rgb(99, 99, 187); }
+
+div.body a:hover { color: rgb(0, 176, 228); }
+
+tt, code, pre { font-family: monospace, sans-serif; font-size: 96.5%; }
+
+div.body tt, div.body code { border-radius: 3px; }
+
+div.body tt.descname, div.body code.descname { font-size: 120%; }
+
+div.body tt.xref, div.body a tt, div.body code.xref, div.body a code { font=
+-weight: normal; }
+
+table.docutils { border: 1px solid rgb(221, 221, 221); min-width: 20%; bord=
+er-radius: 3px; margin-top: 10px; margin-bottom: 10px; }
+
+table.docutils td, table.docutils th { border-radius: 3px; border: 1px soli=
+d rgb(221, 221, 221) !important; }
+
+table p, table li { text-align: left !important; }
+
+table.docutils th { background-color: rgb(238, 238, 238); padding: 0.3em 0.=
+5em; }
+
+table.docutils td { background-color: white; padding: 0.3em 0.5em; }
+
+table.footnote, table.footnote td { border: 0px !important; }
+
+div.footer { line-height: 150%; margin-top: -2em; text-align: right; width:=
+ auto; margin-right: 10px; }
+
+div.footer a:hover { color: rgb(0, 149, 196); }
+
+.refcount { color: rgb(0, 102, 0); }
+
+.stableabi { color: rgb(34, 34, 153); }
+
+.highlight { background: none !important; }
+
+dl > dt span ~ em { font-family: monospace, sans-serif; }
+------MultipartBoundary--HeUEptkUZKFSRK8ds54CiHe2wXxaaL6wlHViArlOwz----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/_static/default.css
+
+@charset "utf-8";
+
+@import url("classic.css");
+------MultipartBoundary--HeUEptkUZKFSRK8ds54CiHe2wXxaaL6wlHViArlOwz----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/_static/classic.css
+
+@charset "utf-8";
+
+@import url("basic.css");
+
+html { background-color: rgb(255, 255, 255); }
+
+body { font-family: "Lucida Grande", Arial, sans-serif; font-size: 100%; ba=
+ckground-color: white; color: rgb(0, 0, 0); margin: 0px; padding: 0px; }
+
+div.document { background-color: white; }
+
+div.documentwrapper { float: left; width: 100%; }
+
+div.bodywrapper { margin: 0px 0px 0px 230px; }
+
+div.body { background-color: white; color: rgb(34, 34, 34); padding: 0px 20=
+px 30px; }
+
+div.footer { color: rgb(85, 85, 85); width: 100%; padding: 9px 0px; text-al=
+ign: center; font-size: 75%; }
+
+div.footer a { color: rgb(85, 85, 85); text-decoration: underline; }
+
+div.related { background-color: white; line-height: 30px; color: rgb(102, 1=
+02, 102); }
+
+div.related a { color: rgb(68, 68, 68); }
+
+div.sphinxsidebar { }
+
+div.sphinxsidebar h3 { font-family: "Lucida Grande", Arial, sans-serif; col=
+or: rgb(68, 68, 68); font-size: 1.4em; font-weight: normal; margin: 0px; pa=
+dding: 0px; }
+
+div.sphinxsidebar h3 a { color: rgb(68, 68, 68); }
+
+div.sphinxsidebar h4 { font-family: "Lucida Grande", Arial, sans-serif; col=
+or: rgb(68, 68, 68); font-size: 1.3em; font-weight: normal; margin: 5px 0px=
+ 0px; padding: 0px; }
+
+div.sphinxsidebar p { color: rgb(68, 68, 68); }
+
+div.sphinxsidebar p.topless { margin: 5px 10px 10px; }
+
+div.sphinxsidebar ul { margin: 10px; padding: 0px; color: rgb(68, 68, 68); =
+}
+
+div.sphinxsidebar a { color: rgb(68, 68, 68); }
+
+div.sphinxsidebar input { border: 1px solid rgb(68, 68, 68); font-family: s=
+ans-serif; font-size: 1em; }
+
+div#sidebarbutton { background-color: rgb(60, 110, 131); }
+
+a { color: rgb(0, 144, 192); text-decoration: none; }
+
+a:visited { color: rgb(0, 96, 143); text-decoration: none; }
+
+a:hover { text-decoration: underline; }
+
+div.body h1, div.body h2, div.body h3, div.body h4, div.body h5, div.body h=
+6 { font-family: "Lucida Grande", Arial, sans-serif; background-color: whit=
+e; font-weight: normal; color: rgb(26, 26, 26); border-bottom: 1px solid rg=
+b(204, 204, 204); margin: 20px -20px 10px; padding: 3px 0px 3px 10px; }
+
+div.body h1 { margin-top: 0px; font-size: 200%; }
+
+div.body h2 { font-size: 160%; }
+
+div.body h3 { font-size: 140%; }
+
+div.body h4 { font-size: 120%; }
+
+div.body h5 { font-size: 110%; }
+
+div.body h6 { font-size: 100%; }
+
+a.headerlink { color: rgb(170, 170, 170); font-size: 0.8em; padding: 0px 4p=
+x; text-decoration: none; }
+
+a.headerlink:hover { background-color: rgb(170, 170, 170); color: white; }
+
+div.body p, div.body dd, div.body li, div.body blockquote { text-align: jus=
+tify; line-height: 130%; }
+
+div.admonition p.admonition-title + p { display: inline; }
+
+div.admonition p { margin-bottom: 5px; }
+
+div.admonition pre { margin-bottom: 5px; }
+
+div.admonition ul, div.admonition ol { margin-bottom: 5px; }
+
+div.note { background-color: rgb(238, 238, 238); border: 1px solid rgb(204,=
+ 204, 204); }
+
+div.seealso { background-color: rgb(255, 255, 204); border: 1px solid rgb(2=
+55, 255, 102); }
+
+div.topic { background-color: rgb(238, 238, 238); }
+
+div.warning { background-color: rgb(255, 228, 228); border: 1px solid rgb(2=
+55, 102, 102); }
+
+p.admonition-title { display: inline; }
+
+p.admonition-title::after { content: ":"; }
+
+pre { padding: 5px; background-color: rgb(238, 255, 204); color: rgb(51, 51=
+, 51); line-height: 120%; border-top: 1px solid rgb(170, 204, 153); border-=
+bottom: 1px solid rgb(170, 204, 153); border-image: initial; border-left: n=
+one; border-right: none; }
+
+code { background-color: rgb(236, 240, 243); padding: 0px 1px; font-size: 0=
+.95em; }
+
+th, dl.field-list > dt { background-color: rgb(238, 221, 238); }
+
+.warning code { background: rgb(239, 194, 194); }
+
+.note code { background: rgb(214, 214, 214); }
+
+.viewcode-back { font-family: "Lucida Grande", Arial, sans-serif; }
+
+div.viewcode-block:target { background-color: rgb(244, 222, 191); border-to=
+p: 1px solid rgb(170, 204, 153); border-bottom: 1px solid rgb(170, 204, 153=
+); }
+
+div.code-block-caption { color: rgb(239, 239, 239); background-color: rgb(2=
+8, 78, 99); }
+------MultipartBoundary--HeUEptkUZKFSRK8ds54CiHe2wXxaaL6wlHViArlOwz----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/_static/basic.css
+
+@charset "utf-8";
+
+div.clearer { clear: both; }
+
+div.related { width: 100%; font-size: 90%; }
+
+div.related h3 { display: none; }
+
+div.related ul { margin: 0px; padding: 0px 0px 0px 10px; list-style: none; =
+}
+
+div.related li { display: inline; }
+
+div.related li.right { float: right; margin-right: 5px; }
+
+div.sphinxsidebarwrapper { padding: 10px 5px 0px 10px; }
+
+div.sphinxsidebar { float: left; width: 230px; margin-left: -100%; font-siz=
+e: 90%; overflow-wrap: break-word; }
+
+div.sphinxsidebar ul { list-style: none; }
+
+div.sphinxsidebar ul ul, div.sphinxsidebar ul.want-points { margin-left: 20=
+px; list-style: square; }
+
+div.sphinxsidebar ul ul { margin-top: 0px; margin-bottom: 0px; }
+
+div.sphinxsidebar form { margin-top: 10px; }
+
+div.sphinxsidebar input { border: 1px solid rgb(152, 219, 204); font-family=
+: sans-serif; font-size: 1em; }
+
+div.sphinxsidebar #searchbox form.search { overflow: hidden; }
+
+div.sphinxsidebar #searchbox input[type=3D"text"] { float: left; width: 80%=
+; padding: 0.25em; box-sizing: border-box; }
+
+div.sphinxsidebar #searchbox input[type=3D"submit"] { float: left; width: 2=
+0%; border-left: none; padding: 0.25em; box-sizing: border-box; }
+
+img { border: 0px; max-width: 100%; }
+
+ul.search { margin: 10px 0px 0px 20px; padding: 0px; }
+
+ul.search li { padding: 5px 0px 5px 20px; background-image: url("file.png")=
+; background-repeat: no-repeat; background-position: 0px 7px; }
+
+ul.search li a { font-weight: bold; }
+
+ul.search li div.context { color: rgb(136, 136, 136); margin: 2px 0px 0px 3=
+0px; text-align: left; }
+
+ul.keywordmatches li.goodmatch a { font-weight: bold; }
+
+table.contentstable { width: 90%; margin-left: auto; margin-right: auto; }
+
+table.contentstable p.biglink { line-height: 150%; }
+
+a.biglink { font-size: 1.3em; }
+
+span.linkdescr { font-style: italic; padding-top: 5px; font-size: 90%; }
+
+table.indextable { width: 100%; }
+
+table.indextable td { text-align: left; vertical-align: top; }
+
+table.indextable ul { margin-top: 0px; margin-bottom: 0px; list-style-type:=
+ none; }
+
+table.indextable > tbody > tr > td > ul { padding-left: 0em; }
+
+table.indextable tr.pcap { height: 10px; }
+
+table.indextable tr.cap { margin-top: 10px; background-color: rgb(242, 242,=
+ 242); }
+
+img.toggler { margin-right: 3px; margin-top: 3px; cursor: pointer; }
+
+div.modindex-jumpbox { border-top: 1px solid rgb(221, 221, 221); border-bot=
+tom: 1px solid rgb(221, 221, 221); margin: 1em 0px; padding: 0.4em; }
+
+div.genindex-jumpbox { border-top: 1px solid rgb(221, 221, 221); border-bot=
+tom: 1px solid rgb(221, 221, 221); margin: 1em 0px; padding: 0.4em; }
+
+table.modindextable td { padding: 2px; border-collapse: collapse; }
+
+div.body { min-width: 450px; max-width: 800px; }
+
+div.body p, div.body dd, div.body li, div.body blockquote { hyphens: auto; =
+}
+
+a.headerlink { visibility: hidden; }
+
+a.brackets::before, span.brackets > a::before { content: "["; }
+
+a.brackets::after, span.brackets > a::after { content: "]"; }
+
+h1:hover > a.headerlink, h2:hover > a.headerlink, h3:hover > a.headerlink, =
+h4:hover > a.headerlink, h5:hover > a.headerlink, h6:hover > a.headerlink, =
+dt:hover > a.headerlink, caption:hover > a.headerlink, p.caption:hover > a.=
+headerlink, div.code-block-caption:hover > a.headerlink { visibility: visib=
+le; }
+
+div.body p.caption { text-align: inherit; }
+
+div.body td { text-align: left; }
+
+.first { margin-top: 0px !important; }
+
+p.rubric { margin-top: 30px; font-weight: bold; }
+
+img.align-left, .figure.align-left, object.align-left { clear: left; float:=
+ left; margin-right: 1em; }
+
+img.align-right, .figure.align-right, object.align-right { clear: right; fl=
+oat: right; margin-left: 1em; }
+
+img.align-center, .figure.align-center, object.align-center { display: bloc=
+k; margin-left: auto; margin-right: auto; }
+
+img.align-default, .figure.align-default { display: block; margin-left: aut=
+o; margin-right: auto; }
+
+.align-left { text-align: left; }
+
+.align-center { text-align: center; }
+
+.align-default { text-align: center; }
+
+.align-right { text-align: right; }
+
+div.sidebar { margin: 0px 0px 0.5em 1em; border: 1px solid rgb(221, 221, 18=
+7); padding: 7px 7px 0px; background-color: rgb(255, 255, 238); width: 40%;=
+ float: right; }
+
+p.sidebar-title { font-weight: bold; }
+
+div.topic { border: 1px solid rgb(204, 204, 204); padding: 7px 7px 0px; mar=
+gin: 10px 0px; }
+
+p.topic-title { font-size: 1.1em; font-weight: bold; margin-top: 10px; }
+
+div.admonition { margin-top: 10px; margin-bottom: 10px; padding: 7px; }
+
+div.admonition dt { font-weight: bold; }
+
+div.admonition dl { margin-bottom: 0px; }
+
+p.admonition-title { margin: 0px 10px 5px 0px; font-weight: bold; }
+
+div.body p.centered { text-align: center; margin-top: 25px; }
+
+table.docutils { border: 0px; border-collapse: collapse; }
+
+table.align-center { margin-left: auto; margin-right: auto; }
+
+table.align-default { margin-left: auto; margin-right: auto; }
+
+table caption span.caption-number { font-style: italic; }
+
+table caption span.caption-text { }
+
+table.docutils td, table.docutils th { padding: 1px 8px 1px 5px; border-wid=
+th: 0px 0px 1px; border-top-style: initial; border-top-color: initial; bord=
+er-left-style: initial; border-left-color: initial; border-right-style: ini=
+tial; border-right-color: initial; border-bottom-style: solid; border-botto=
+m-color: rgb(170, 170, 170); }
+
+table.footnote td, table.footnote th { border: 0px !important; }
+
+th { text-align: left; padding-right: 5px; }
+
+table.citation { border-left: 1px solid gray; margin-left: 1px; }
+
+table.citation td { border-bottom: none; }
+
+th > p:first-child, td > p:first-child { margin-top: 0px; }
+
+th > p:last-child, td > p:last-child { margin-bottom: 0px; }
+
+div.figure { margin: 0.5em; padding: 0.5em; }
+
+div.figure p.caption { padding: 0.3em; }
+
+div.figure p.caption span.caption-number { font-style: italic; }
+
+div.figure p.caption span.caption-text { }
+
+table.field-list td, table.field-list th { border: 0px !important; }
+
+.field-list ul { margin: 0px; padding-left: 1em; }
+
+.field-list p { margin: 0px; }
+
+.field-name { hyphens: manual; }
+
+table.hlist td { vertical-align: top; }
+
+ol.arabic { list-style: decimal; }
+
+ol.loweralpha { list-style: lower-alpha; }
+
+ol.upperalpha { list-style: upper-alpha; }
+
+ol.lowerroman { list-style: lower-roman; }
+
+ol.upperroman { list-style: upper-roman; }
+
+li > p:first-child { margin-top: 0px; }
+
+li > p:last-child { margin-bottom: 0px; }
+
+dl.footnote > dt, dl.citation > dt { float: left; }
+
+dl.footnote > dd, dl.citation > dd { margin-bottom: 0em; }
+
+dl.footnote > dd::after, dl.citation > dd::after { content: ""; clear: both=
+; }
+
+dl.field-list { display: grid; grid-template-columns: fit-content(30%) auto=
+; }
+
+dl.field-list > dt { font-weight: bold; word-break: break-word; padding-lef=
+t: 0.5em; padding-right: 5px; }
+
+dl.field-list > dt::after { content: ":"; }
+
+dl.field-list > dd { padding-left: 0.5em; margin-top: 0em; margin-left: 0em=
+; margin-bottom: 0em; }
+
+dl { margin-bottom: 15px; }
+
+dd > p:first-child { margin-top: 0px; }
+
+dd ul, dd table { margin-bottom: 10px; }
+
+dd { margin-top: 3px; margin-bottom: 10px; margin-left: 30px; }
+
+dt:target, span.highlighted { background-color: rgb(251, 229, 78); }
+
+rect.highlighted { fill: rgb(251, 229, 78); }
+
+dl.glossary dt { font-weight: bold; font-size: 1.1em; }
+
+.optional { font-size: 1.3em; }
+
+.sig-paren { font-size: larger; }
+
+.versionmodified { font-style: italic; }
+
+.system-message { background-color: rgb(255, 221, 170); padding: 5px; borde=
+r: 3px solid red; }
+
+.footnote:target { background-color: rgb(255, 255, 170); }
+
+.line-block { display: block; margin-top: 1em; margin-bottom: 1em; }
+
+.line-block .line-block { margin-top: 0px; margin-bottom: 0px; margin-left:=
+ 1.5em; }
+
+.guilabel, .menuselection { font-family: sans-serif; }
+
+.accelerator { text-decoration: underline; }
+
+.classifier { font-style: oblique; }
+
+.classifier::before { font-style: normal; margin: 0.5em; content: ":"; }
+
+abbr, acronym { border-bottom: 1px dotted; cursor: help; }
+
+pre { overflow: auto hidden; }
+
+span.pre { hyphens: none; }
+
+td.linenos pre { padding: 5px 0px; border: 0px; background-color: transpare=
+nt; color: rgb(170, 170, 170); }
+
+table.highlighttable { margin-left: 0.5em; }
+
+table.highlighttable td { padding: 0px 0.5em; }
+
+div.code-block-caption { padding: 2px 5px; font-size: small; }
+
+div.code-block-caption code { background-color: transparent; }
+
+div.code-block-caption + div > div.highlight > pre { margin-top: 0px; }
+
+div.doctest > div.highlight span.gp { user-select: none; }
+
+div.code-block-caption span.caption-number { padding: 0.1em 0.3em; font-sty=
+le: italic; }
+
+div.code-block-caption span.caption-text { }
+
+div.literal-block-wrapper { padding: 1em 1em 0px; }
+
+div.literal-block-wrapper div.highlight { margin: 0px; }
+
+code.descname { background-color: transparent; font-weight: bold; font-size=
+: 1.2em; }
+
+code.descclassname { background-color: transparent; }
+
+code.xref, a code { background-color: transparent; font-weight: bold; }
+
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code { background-color: tr=
+ansparent; }
+
+.viewcode-link { float: right; }
+
+.viewcode-back { float: right; font-family: sans-serif; }
+
+div.viewcode-block:target { margin: -1px -10px; padding: 0px 10px; }
+
+img.math { vertical-align: middle; }
+
+div.body div.math p { text-align: center; }
+
+span.eqno { float: right; }
+
+span.eqno a.headerlink { position: relative; left: 0px; z-index: 1; }
+
+div.math:hover a.headerlink { visibility: visible; }
+
+@media print {
+  div.document, div.documentwrapper, div.bodywrapper { width: 100%; margin:=
+ 0px !important; }
+  div.sphinxsidebar, div.related, div.footer, #top-link { display: none; }
+}
+------MultipartBoundary--HeUEptkUZKFSRK8ds54CiHe2wXxaaL6wlHViArlOwz----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://docs.python.org/3/_static/pygments.css
+
+@charset "utf-8";
+
+.highlight .hll { background-color: rgb(255, 255, 204); }
+
+.highlight { background: rgb(238, 255, 204); }
+
+.highlight .c { color: rgb(64, 128, 144); font-style: italic; }
+
+.highlight .err { border: 1px solid rgb(255, 0, 0); }
+
+.highlight .k { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .o { color: rgb(102, 102, 102); }
+
+.highlight .ch { color: rgb(64, 128, 144); font-style: italic; }
+
+.highlight .cm { color: rgb(64, 128, 144); font-style: italic; }
+
+.highlight .cp { color: rgb(0, 112, 32); }
+
+.highlight .cpf { color: rgb(64, 128, 144); font-style: italic; }
+
+.highlight .c1 { color: rgb(64, 128, 144); font-style: italic; }
+
+.highlight .cs { color: rgb(64, 128, 144); background-color: rgb(255, 240, =
+240); }
+
+.highlight .gd { color: rgb(160, 0, 0); }
+
+.highlight .ge { font-style: italic; }
+
+.highlight .gr { color: rgb(255, 0, 0); }
+
+.highlight .gh { color: rgb(0, 0, 128); font-weight: bold; }
+
+.highlight .gi { color: rgb(0, 160, 0); }
+
+.highlight .go { color: rgb(51, 51, 51); }
+
+.highlight .gp { color: rgb(198, 93, 9); font-weight: bold; }
+
+.highlight .gs { font-weight: bold; }
+
+.highlight .gu { color: rgb(128, 0, 128); font-weight: bold; }
+
+.highlight .gt { color: rgb(0, 68, 221); }
+
+.highlight .kc { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .kd { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .kn { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .kp { color: rgb(0, 112, 32); }
+
+.highlight .kr { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .kt { color: rgb(144, 32, 0); }
+
+.highlight .m { color: rgb(32, 128, 80); }
+
+.highlight .s { color: rgb(64, 112, 160); }
+
+.highlight .na { color: rgb(64, 112, 160); }
+
+.highlight .nb { color: rgb(0, 112, 32); }
+
+.highlight .nc { color: rgb(14, 132, 181); font-weight: bold; }
+
+.highlight .no { color: rgb(96, 173, 213); }
+
+.highlight .nd { color: rgb(85, 85, 85); font-weight: bold; }
+
+.highlight .ni { color: rgb(213, 85, 55); font-weight: bold; }
+
+.highlight .ne { color: rgb(0, 112, 32); }
+
+.highlight .nf { color: rgb(6, 40, 126); }
+
+.highlight .nl { color: rgb(0, 32, 112); font-weight: bold; }
+
+.highlight .nn { color: rgb(14, 132, 181); font-weight: bold; }
+
+.highlight .nt { color: rgb(6, 40, 115); font-weight: bold; }
+
+.highlight .nv { color: rgb(187, 96, 213); }
+
+.highlight .ow { color: rgb(0, 112, 32); font-weight: bold; }
+
+.highlight .w { color: rgb(187, 187, 187); }
+
+.highlight .mb { color: rgb(32, 128, 80); }
+
+.highlight .mf { color: rgb(32, 128, 80); }
+
+.highlight .mh { color: rgb(32, 128, 80); }
+
+.highlight .mi { color: rgb(32, 128, 80); }
+
+.highlight .mo { color: rgb(32, 128, 80); }
+
+.highlight .sa { color: rgb(64, 112, 160); }
+
+.highlight .sb { color: rgb(64, 112, 160); }
+
+.highlight .sc { color: rgb(64, 112, 160); }
+
+.highlight .dl { color: rgb(64, 112, 160); }
+
+.highlight .sd { color: rgb(64, 112, 160); font-style: italic; }
+
+.highlight .s2 { color: rgb(64, 112, 160); }
+
+.highlight .se { color: rgb(64, 112, 160); font-weight: bold; }
+
+.highlight .sh { color: rgb(64, 112, 160); }
+
+.highlight .si { color: rgb(112, 160, 208); font-style: italic; }
+
+.highlight .sx { color: rgb(198, 93, 9); }
+
+.highlight .sr { color: rgb(35, 83, 136); }
+
+.highlight .s1 { color: rgb(64, 112, 160); }
+
+.highlight .ss { color: rgb(81, 121, 24); }
+
+.highlight .bp { color: rgb(0, 112, 32); }
+
+.highlight .fm { color: rgb(6, 40, 126); }
+
+.highlight .vc { color: rgb(187, 96, 213); }
+
+.highlight .vg { color: rgb(187, 96, 213); }
+
+.highlight .vi { color: rgb(187, 96, 213); }
+
+.highlight .vm { color: rgb(187, 96, 213); }
+
+.highlight .il { color: rgb(32, 128, 80); }
+------MultipartBoundary--HeUEptkUZKFSRK8ds54CiHe2wXxaaL6wlHViArlOwz----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://docs.python.org/3/_static/py.png
+
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A
+/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9gEGxE4IQYzJ14AAAI3SURBVDjL
+ZZNPSFVBFIe/e9+zd3silBCl0SZoU4s2rVq0EB5tQip4UNvATVGu3QRBiyAi2iltWkgbF5EgRhFF
+RpiWtrWIzDIV1Pzz7p15M2fmtvDevOqBw8DM9zvnN8ycgF3R/eDtM2mac96ZdrFNxBikqbRV+vHH
+/ut9gAZczoe7C3gnF0f6au1OLM5avFi8d1Ea+JvAMSAq8nsKOGs5f2cYJ3Y7rc2PO4BqkS8DdD98
+f9tbe1ysCoxOBo1qlEXHJWcM4b5KPU19zleA0o4Clx99eO3EdqVewHsCoFRugUoVghJO7A6H6Vx9
+wdtYi27cr5x6dy/03nVtWTU7bWeZh6jNUcAiCaFTURl9A+gs56AviHzh3mnqtdPxm6knfQPLU7Ua
+okASQq/agY7yDrG16Mba6Pz48NP56VdrgAApYObGaicPtkovToFLQBKA/WUxTe3FRk4san15aGKg
+d3Dj560rrdGJS6FT0X9YYvLuiMKL1kAQOpHZ3PqfyZfP41+9PW1VfzX0RXFSECfgNEmSTgImdDru
+F2O0E8vvqZG1auQubAsKooIYYHpGvwA2g+xndQBHgWa6cG0ih5cW/w6VvEq3nChwCoBvs+bL2Z7V
+ceBHGTDAIrABpMVuhw+4OiLgLIglOLPYBTQAlfErIeCzjRVg1dtEb1kt5Omv+DTV2YssAN+zNdkz
+C42N9brV8WdvYp07seOdM2Of1F3AAknW0AJpwN6IgEPAEaANaMlcbmZdl7KRBuAfAb+v//yMAJoA
+AAAASUVORK5CYII=
+
+------MultipartBoundary--HeUEptkUZKFSRK8ds54CiHe2wXxaaL6wlHViArlOwz------

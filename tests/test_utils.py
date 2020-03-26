@@ -3,6 +3,7 @@ import os
 import time
 import pytest
 import shutil
+import struct
 
 import zwutils.comm as comm
 from zwutils.mthreading import multithread_task
@@ -50,7 +51,7 @@ class TestUtils:
     def test_mtask(self):
         num = 100
         shutil.rmtree('data', ignore_errors=True)
-        args = [{'path':'data/p%s'%i, 'dat':i} for i in range(num)]
+        args = [{'path':'data/p%s'%i, 'txt':i} for i in range(num)]
         multithread_task(comm.writefile, args)
         count = len(os.listdir('data'))
         shutil.rmtree('data', ignore_errors=True)
@@ -76,3 +77,14 @@ class TestUtils:
         args = list(range(num))
         r = comm.multiprocess_run(multirun_cbfunc, args)
         assert len(r) == num
+    
+    def test_binfile(self):
+        p = 'data/binfile'
+        arr = [10, 20, 30, 40, 92]
+        dat = struct.pack('5B', *arr)
+        comm.writebin(p, dat)
+        s = os.path.getsize(p)
+        d = comm.readbin(p)
+        a = struct.unpack('5B', d)
+        shutil.rmtree('data', ignore_errors=True)
+        assert s == len(arr) and len(comm.list_intersection(arr, a)) == 5
