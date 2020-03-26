@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 import os
+import time
 import pytest
 import shutil
 
 import zwutils.comm as comm
 from zwutils.mthreading import multithread_task
 from zwutils.network import multithread_request
+
+def multirun_cbfunc(s):
+    return 'result: %s'%s
 
 class TestUtils:
     # pylint: disable=no-member
@@ -53,10 +57,22 @@ class TestUtils:
         assert count == num
 
     def test_mrequest(self):
-        num = 10
+        num = 3
         urls = ['http://httpbin.org/get' for i in range(num)]
         settings = {
             'useragent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36'
         }
         rtn = multithread_request(urls, settings)
         assert len(rtn) == num
+    
+    def test_multicmd(self):
+        args = ['.', '/']
+        cmds = [['ls', '-l', a] for a in args]
+        r = comm.multiprocess_cmd(cmds)
+        assert len(r) == len(args)
+    
+    def test_multirun(self):
+        num = 10
+        args = list(range(num))
+        r = comm.multiprocess_run(multirun_cbfunc, args)
+        assert len(r) == num
