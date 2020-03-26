@@ -5,7 +5,7 @@ from codecs import open
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-pkg_name = 'zwnlp'
+pkg_name = 'zwutils'
 packages = [pkg_name]
 
 requires = [s.strip() for s in open('requirements.txt').readlines()]
