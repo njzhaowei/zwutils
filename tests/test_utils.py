@@ -4,6 +4,7 @@ import time
 import pytest
 import shutil
 import struct
+from pathlib import Path
 
 import zwutils.comm as comm
 from zwutils.mthreading import multithread_task
@@ -51,9 +52,9 @@ class TestUtils:
     def test_mtask(self):
         num = 100
         shutil.rmtree('data', ignore_errors=True)
-        args = [{'path':'data/p%s'%i, 'txt':i} for i in range(num)]
+        args = [{'path':'data/p%s.txt'%i, 'txt':i} for i in range(num)]
         multithread_task(comm.writefile, args)
-        count = len(os.listdir('data'))
+        count = len( list(Path('data').glob('*.txt')) )
         shutil.rmtree('data', ignore_errors=True)
         assert count == num
 
@@ -74,7 +75,7 @@ class TestUtils:
     
     def test_multirun(self):
         num = 10
-        args = list(range(num))
+        args = [(a,) for a in range(num)]
         r = comm.multiprocess_run(multirun_cbfunc, args)
         assert len(r) == num
     
