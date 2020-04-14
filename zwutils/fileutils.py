@@ -21,9 +21,6 @@ def readfile(path, enc='utf-8'):
     return rtn
 
 def writebin(path, dat):
-    if not isinstance(dat, bytes):
-        logging.error('[zwutils] dat is not bytes when write bin.')
-        return
     if not Path(path).parent.exists():
         Path(path).parent.mkdir(parents=True, exist_ok=True)
     with open(path, 'wb') as fp:
