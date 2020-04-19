@@ -6,43 +6,120 @@ from .comm import update_attrs
 
 FAIL_ENCODING = 'ISO-8859-1'
 
-def get_request_kwargs(timeout, useragent, proxies, headers=None, cookies=None):
+def get_request_kwargs(useragent, **kwargs):
     """This Wrapper method exists b/c some values in req_kwargs dict
     are methods which need to be called every time we make a request
     """
+    kv = kwargs.copy()
+    kv['headers'] = kv.get('headers', {'User-Agent': useragent})
+    kv['proxies'] = kv.get('proxies', None)
+    cb = kv['proxies']
+    if callable(cb):
+        kv['proxies'] = cb()
+    kv['allow_redirects'] = True
+    return kv
 
-    return {
-        'headers': headers if headers else {'User-Agent': useragent},
-        'cookies': cookies if cookies else {},
-        'timeout': timeout,
-        'allow_redirects': True,
-        'proxies': proxies
+class MRequest(object):
+    """Wrapper for request object for multithreading. If the domain we are
+    crawling is under heavy load, the self.resp will be left as None.
+    If this is the case, we still want to report the url which has failed
+    so (perhaps) we can try again later.
+    """
+    def __init__(self, url, settings=None, params=None, json=None, data=None, **kwargs):
+        self.url = url
+        self.settings   = settings
+        self.method     = settings.method
+        self.useragent  = settings.useragent
+        self.params = params
+        self.json   = json
+        self.data   = data
+        self.kwargs = kwargs
+        self.resp   = None
+
+    def send(self):
+        try:
+            self.resp = requests.request(
+                self.method, self.url, params=self.params, json=self.json, data=self.data, 
+                **get_request_kwargs(self.useragent, **self.kwargs))
+            if self.settings.http_success_only:
+                self.resp.raise_for_status()
+        except requests.exceptions.RequestException as e:
+            logging.critical('[zwutils][REQUEST FAILED] ' + str(e))
+
+# pylint: disable=no-member
+def multithread_request(urls, settings=None, params_list=None, json_list=None, data_list=None, **kwargs):
+    """Request multiple urls via mthreading, order of urls & requests is stable
+    returns same requests but with response variables filled.
+
+    thread_timeout: in seconds
+    timeout: in seconds, 连接超时设为比3的倍数略大的一个数值
+    """
+    defaut_settings = {
+        'method': 'get',
+        'thread_num': 5,
+        'thread_timeout': 6,
+        'timeout': 5,
+        'useragent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
+        'cookies': None,
+        'proxies': None,
+        'http_success_only': True,
     }
+    settings = update_attrs(defaut_settings, settings or {})
+    kwargs['timeout'] = kwargs.get('timeout', settings.timeout)
+    kwargs['cookies'] = kwargs.get('cookies', settings.cookies)
+    kwargs['proxies'] = kwargs.get('proxies', settings.proxies)
 
-def get_html(url, settings=None, cookies=None, response=None):
+    thread_num = settings.thread_num
+    timeout = settings.thread_timeout
+    pool = ThreadPool(thread_num, timeout)
+    m_requests = []
+    for i,url in enumerate(urls):
+        params  = params_list[i] if params_list and i<len(params_list) else None
+        json    = json_list[i] if json_list and i<len(json_list) else None
+        data    = data_list[i] if data_list and i<len(data_list) else None
+        m_requests.append(MRequest(url, settings, params, json, data, **kwargs))
+
+    for req in m_requests:
+        pool.add_task(req.send)
+
+    pool.wait_completion()
+    return m_requests
+
+
+def get_html(url, settings=None, response=None, **kwargs):
     """HTTP response code agnostic
     """
+    defaut_settings = {
+        'method': 'get',
+        'timeout': 5,
+        'useragent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
+        'cookies': None,
+        'proxies': None,
+        'http_success_only': True,
+        'content_types_ignored': {},
+    }
+    settings = update_attrs(defaut_settings, settings or {})
+    kwargs['timeout'] = kwargs.get('timeout', settings.timeout)
+    kwargs['cookies'] = kwargs.get('cookies', settings.cookies)
+    kwargs['proxies'] = kwargs.get('proxies', settings.proxies)
     try:
-        return get_html_2XX_only(url, settings, cookies, response)
+        return get_html_2XX_only(url, settings, response, **kwargs)
     except requests.exceptions.RequestException as e:
         logging.error('[zwutils] get_html() error. %s on URL: %s', e, url)
         return ''
 
-def get_html_2XX_only(url, settings=None, cookies=None, response=None):
-    """Consolidated logic for http requests from gnews. We handle error cases:
+def get_html_2XX_only(url, settings=None, response=None, **kwargs):
+    """We handle error cases:
     - Attempt to find encoding of the html by using HTTP header. Fallback to
       'ISO-8859-1' if not provided.
     - Error out if a non 2XX HTTP response code is returned.
     """
+    method = settings.method
     useragent = settings.useragent
-    timeout = settings.request_timeout
-    proxies = settings.proxies
-    headers = settings.headers
 
     if response is not None:
         return _get_html_from_response(response, settings)
-    response = requests.get(
-        url=url, **get_request_kwargs(timeout, useragent, proxies, headers, cookies))
+    response = requests.request(method, url, **get_request_kwargs(useragent, **kwargs))
     html = _get_html_from_response(response, settings)
     if settings.http_success_only:
         # fail if HTTP sends a non 2XX response
@@ -50,8 +127,8 @@ def get_html_2XX_only(url, settings=None, cookies=None, response=None):
     return html
 
 def _get_html_from_response(response, settings):
-    if response.headers.get('content-type') in settings.ignored_content_types_defaults:
-        return settings.ignored_content_types_defaults[response.headers.get('content-type')]
+    if response.headers.get('content-type') in settings.content_types_ignored:
+        return settings.content_types_ignored[response.headers.get('content-type')]
     if response.encoding != FAIL_ENCODING:
         # return response as a unicode string
         html = response.text
@@ -63,60 +140,3 @@ def _get_html_from_response(response, settings):
                 response.encoding = encodings[0]
                 html = response.text
     return html or ''
-
-class MRequest(object):
-    """Wrapper for request object for multithreading. If the domain we are
-    crawling is under heavy load, the self.resp will be left as None.
-    If this is the case, we still want to report the url which has failed
-    so (perhaps) we can try again later.
-    """
-    def __init__(self, url, settings=None, cookies=None):
-        self.url = url
-        self.settings = settings
-        self.useragent = settings.useragent
-        self.timeout = settings.request_timeout
-        self.proxies = settings.proxies if not callable(settings.proxies) else settings.proxies()
-        self.headers = settings.headers
-        self.cookies = cookies
-        self.resp = None
-
-    def send(self):
-        try:
-            self.resp = requests.get(self.url, **get_request_kwargs(
-                self.timeout, self.useragent, self.proxies, self.headers, self.cookies))
-            if self.settings.http_success_only:
-                self.resp.raise_for_status()
-        except requests.exceptions.RequestException as e:
-            logging.critical('[zwutils][REQUEST FAILED] ' + str(e))
-
-# pylint: disable=no-member
-def multithread_request(urls, settings=None, cookies=None):
-    """Request multiple urls via mthreading, order of urls & requests is stable
-    returns same requests but with response variables filled.
-
-    thread_timeout: in seconds
-    request_timeout: in seconds, 连接超时设为比3的倍数略大的一个数值
-    """
-    defaut_settings = {
-        'thread_num': 5,
-        'thread_timeout': 6,
-        'request_timeout': 5,
-        'headers': {},
-        'proxies': {},
-        'useragent': '',
-        'http_success_only': True
-    }
-    settings = update_attrs(defaut_settings, settings)
-
-    thread_num = settings.thread_num
-    timeout = settings.thread_timeout
-    pool = ThreadPool(thread_num, timeout)
-    m_requests = []
-    for url in urls:
-        m_requests.append(MRequest(url, settings, cookies))
-
-    for req in m_requests:
-        pool.add_task(req.send)
-
-    pool.wait_completion()
-    return m_requests
