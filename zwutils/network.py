@@ -75,7 +75,7 @@ class MRequest(object):
         self.settings = settings
         self.useragent = settings.useragent
         self.timeout = settings.request_timeout
-        self.proxies = settings.proxies
+        self.proxies = settings.proxies if not callable(settings.proxies) else settings.proxies()
         self.headers = settings.headers
         self.cookies = cookies
         self.resp = None
@@ -99,7 +99,7 @@ def multithread_request(urls, settings=None, cookies=None):
     """
     defaut_settings = {
         'thread_num': 5,
-        'thread_timeout': 3,
+        'thread_timeout': 6,
         'request_timeout': 5,
         'headers': {},
         'proxies': {},
@@ -120,4 +120,3 @@ def multithread_request(urls, settings=None, cookies=None):
 
     pool.wait_completion()
     return m_requests
-

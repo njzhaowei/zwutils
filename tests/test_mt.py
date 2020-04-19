@@ -19,8 +19,11 @@ class TestMP:
     def test_mrequest(self):
         num = 3
         urls = ['http://httpbin.org/get' for i in range(num)]
+        def gen_proxy():
+            return {'yew':'111'}
         settings = {
-            'useragent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36'
+            'useragent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
+            'proxies': gen_proxy
         }
         rtn = multithread_request(urls, settings)
         assert len(rtn) == num
