@@ -27,20 +27,29 @@ def attr2dict(o):
     return r
 
 def extend_attrs(o, kv):
+    o = o or type('', (), {})()
     kv = kv or {}
+    if isinstance(o, dict):
+        o = dict2attr(o)
+    if not isinstance(kv, dict):
+        kv = attr2dict(kv)
+
     for key, val in kv.items():
         setattr(o, key, val)
     return o
 
-def update_attrs(settings, kv):
-    settings = settings or type('', (), {})()
-    if isinstance(settings, dict):
-        settings = dict2attr(settings)
+def update_attrs(o, kv):
+    o = o or type('', (), {})()
+    kv = kv or {}
+    if isinstance(o, dict):
+        o = dict2attr(o)
+    if not isinstance(kv, dict):
+        kv = attr2dict(kv)
 
     for key, val in kv.items():
-        if hasattr(settings, key):
-            setattr(settings, key, val)
-    return settings
+        if hasattr(o, key):
+            setattr(o, key, val)
+    return o
 
 def print_duration(method):
     """Prints out the runtime duration of a method in seconds

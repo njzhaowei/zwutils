@@ -25,17 +25,32 @@ class TestUtils:
         assert r['a1'] == 'a'
 
     def test_extend_attr(self):
-        o = comm.dict2attr({'a':'a', 'b':'b'})
-        comm.extend_attrs(o, {'a':'aa', 'c':1})
-        assert o.a == 'aa' and o.c == 1
+        b = {'a':'a', 'b':'b'}
+        e = {'b':'bb', 'c':'c', 'd':1}
+        o = comm.extend_attrs(comm.dict2attr(b), e)
+        assert o.b == 'bb' and o.c == 'c' and o.d == 1
+        o = comm.extend_attrs(b, e)
+        assert o.b == 'bb' and o.c == 'c' and o.d == 1
+        o = comm.extend_attrs(comm.dict2attr(b), comm.dict2attr(e))
+        assert o.b == 'bb' and o.c == 'c' and o.d == 1
+
+        o = comm.extend_attrs(None, e)
+        assert o.b == 'bb' and o.c == 'c' and o.d == 1
+        o = comm.extend_attrs(comm.dict2attr(b), None)
+        assert o.a == 'a' and o.b == 'b'
 
     def test_update_attrs(self):
-        o = comm.dict2attr({'a':'a', 'b':'b'})
-        comm.update_attrs(o, {'a':'aa', 'c':1})
-        assert o.a == 'aa' and not hasattr(o, 'c')
+        b = {'a':'a', 'b':'b'}
+        e = {'b':'bb', 'c':'c'}
+        o = comm.update_attrs(comm.dict2attr(b), e)
+        assert o.b == 'bb' and not hasattr(o, 'c')
+        o = comm.update_attrs(b, e)
+        assert o.b == 'bb' and not hasattr(o, 'c')
+        o = comm.update_attrs(comm.dict2attr(b), comm.dict2attr(e))
+        assert o.b == 'bb' and not hasattr(o, 'c')
 
-        o = comm.update_attrs({'a':'a', 'b':'b'}, {'a':'aa', 'c':1})
-        assert o.a == 'aa' and not hasattr(o, 'c')
+        o = comm.update_attrs(None, e)
+        assert not hasattr(o, 'b') and not hasattr(o, 'c')
+        o = comm.update_attrs(comm.dict2attr(b), None)
+        assert o.a == 'a' and o.b == 'b'
 
-        o = comm.update_attrs(None, {'a':'aa', 'c':1})
-        assert not comm.attr2dict(o) # {}

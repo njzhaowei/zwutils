@@ -14,8 +14,19 @@ test_requirements = [s.strip() for s in open('requirements_dev.txt').readlines()
 
 shutil.rmtree('dist', ignore_errors=True)
 about = {}
+lines = []
 with open(os.path.join(here, pkg_name, '__version__.py'), 'r', 'utf-8') as f:
     exec(f.read(), about)
+    # auto update min version number for every dist upload
+    verarr = about['__version__'].split('.')
+    verarr[2] = str(int(verarr[2])+1)
+    about['__version__'] = '.'.join(verarr)
+    f.seek(0)
+    lines = f.readlines()
+    lines[0] = "__version__ = '%s'\n"%about['__version__']
+
+with open(os.path.join(here, pkg_name, '__version__.py'), 'w', 'utf-8') as f:
+    f.writelines(lines)
 
 with open('README.md', 'r') as f:
     readme = f.read()
