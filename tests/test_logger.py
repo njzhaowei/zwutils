@@ -6,7 +6,7 @@ PARENT_DIR = os.path.join(TEST_DIR, '..')
 sys.path.insert(0, PARENT_DIR)
 
 from zwutils import logger
-LOG = logger.logger(__name__, cfg='./data/log.json')
+LOG = logger.logger(__name__, cfg='./data/test_log.json')
 
 if __name__ == '__main__':
     LOG.debug('xixi')

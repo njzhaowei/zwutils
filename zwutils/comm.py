@@ -26,6 +26,12 @@ def attr2dict(o):
         r[attr] = getattr(o, attr)
     return r
 
+def tbl2dict(h, rs):
+    '''h：表头list，rs：数据二维list。
+    将每条数据（r）与表头按顺序匹配，形成dict list
+    '''
+    return [dict(zip(h, r)) for r in rs]
+
 def extend_attrs(o, kv):
     o = o or type('', (), {})()
     kv = kv or {}
