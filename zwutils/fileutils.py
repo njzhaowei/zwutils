@@ -2,7 +2,7 @@ import os
 import codecs
 import json
 import csv
-import logging
+import hashlib
 from pathlib import Path
 
 def writefile(path, txt, enc='utf-8'):
@@ -69,3 +69,10 @@ def file_encode_convert(src, dst, src_encode='utf-8', dst_encode='gbk'):
     with codecs.open(src, 'w', dst_encode) as fp:
         fp.write(new_content)
         fp.flush()
+
+def md5(fp):
+    hash_md5 = hashlib.md5()
+    with open(fp, 'rb') as f:
+        for chunk in iter(lambda: f.read(4096), b''):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
