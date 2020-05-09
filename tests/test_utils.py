@@ -53,4 +53,8 @@ class TestUtils:
         assert not hasattr(o, 'b') and not hasattr(o, 'c')
         o = comm.update_attrs(comm.dict2attr(b), None)
         assert o.a == 'a' and o.b == 'b'
+    
+    def test_contains_digits(self):
+        assert comm.contains_digits('aaabb, 332 44 -adaf')
+        assert not comm.contains_digits('aaabb,-adaf')
 

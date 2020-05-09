@@ -1,3 +1,4 @@
+import re
 import sys
 import time
 from difflib import SequenceMatcher
@@ -73,3 +74,7 @@ def list_intersection(a, b, ordered=False):
         return [i for i, j in zip(a, b) if i == j]
     else:
         return list(set(a).intersection(b)) # choose smaller to a or b?
+
+def contains_digits(s):
+    _digits = re.compile(r'\d')
+    return bool(_digits.search(s))
