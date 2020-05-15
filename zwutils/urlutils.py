@@ -50,6 +50,9 @@ def get_path(abs_url, **kwargs):
         return None
     return urlparse(abs_url, **kwargs).path
 
+def get_base(abs_url, **kwargs):
+    return '%s://%s' % ( get_scheme(abs_url, **kwargs),get_domain(abs_url, **kwargs) )
+
 def is_abs_url(url):
     """
     this regex was brought to you by django!
