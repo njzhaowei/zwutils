@@ -1,10 +1,15 @@
+import re
+import time
 import logging
 import requests
+import chardet
+from pathlib import Path
 from .mthreading import ThreadPool
 from .comm import dict2attr
 from .comm import update_attrs
 
 FAIL_ENCODING = 'ISO-8859-1'
+DEFAULT_USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36'
 
 def get_request_kwargs(useragent, **kwargs):
     """This Wrapper method exists b/c some values in req_kwargs dict
@@ -126,6 +131,16 @@ def get_html_2XX_only(url, settings=None, response=None, **kwargs):
         response.raise_for_status()
     return html
 
+def get_content_2XX_only(url, settings=None, params=None, json=None, data=None, **kwargs):
+    resp = requests.request(
+        settings.method, url, params=params, json=json, data=data, 
+        **get_request_kwargs(settings.useragent, **kwargs))
+    rtn = resp.content
+    if settings.http_success_only:
+        # fail if HTTP sends a non 2XX response
+        resp.raise_for_status()
+    return rtn
+
 def _get_html_from_response(response, settings):
     if response.headers.get('content-type') in settings.content_types_ignored:
         return settings.content_types_ignored[response.headers.get('content-type')]
@@ -140,3 +155,51 @@ def _get_html_from_response(response, settings):
                 response.encoding = encodings[0]
                 html = response.text
     return html or ''
+
+def downfile(url, settings=None, params=None, json=None, data=None, outpath='.', filename=None, **kwargs):
+    defaut_settings = {
+        'method': 'get',
+        'timeout': 5,
+        'useragent': DEFAULT_USER_AGENT,
+        'cookies': None,
+        'proxies': None,
+        'http_success_only': True,
+    }
+    settings = update_attrs(defaut_settings, settings or {})
+    kwargs['timeout'] = kwargs.get('timeout', settings.timeout)
+    kwargs['cookies'] = kwargs.get('cookies', settings.cookies)
+    kwargs['proxies'] = kwargs.get('proxies', settings.proxies)
+    kwargs['stream']  = kwargs.get('stream', True)
+
+    resp = requests.request(
+        settings.method, url, params=params, json=json, data=data, 
+        **get_request_kwargs(settings.useragent, **kwargs))
+    if settings.http_success_only:
+        # fail if HTTP sends a non 2XX response
+        resp.raise_for_status()
+    # resp.encoding = resp.apparent_encoding
+
+    outpath = Path(outpath)
+    if outpath.is_dir():
+        fname = None
+        if 'content-disposition' in resp.headers:
+            dis = resp.headers['content-disposition']
+            arr = re.findall('filename=(.+)', dis)
+            fname = arr[0].strip() if len(arr)>0 else None
+            if fname:
+                # enc = chardet.detect(str.encode(fname))
+                # fname = fname.encode().decode('utf-8')
+                fname = fname[1:-1] if fname.startswith('"') and fname.endswith('"') else fname
+                fname = '%s%s' % ( int(time.time()), fname ) if fname.startswith('.') else fname
+        fname = fname or '%s' % int(time.time())
+        fname = filename+Path(fname).suffix if filename else fname
+        outpath = outpath / fname
+
+    outpath = outpath.resolve()
+    with open(str(outpath), 'wb') as f:
+        for chunk in resp.iter_content(chunk_size=512 * 1024): 
+            # If you have chunk encoded response uncomment if
+            # and set chunk_size parameter to None.
+            #if chunk: 
+            f.write(chunk)
+    return outpath
