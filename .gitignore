@@ -37,4 +37,3 @@ nosetests.xml
 # project
 .venv
 logs
-data
