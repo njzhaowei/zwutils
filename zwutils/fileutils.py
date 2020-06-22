@@ -10,8 +10,8 @@ import shutil
 from pathlib import Path
 
 def rmfile(pth):
-    if os.path.isfile(pth):
-        os.remove(pth)
+    if os.path.isfile(str(pth)):
+        os.remove(str(pth))
     else:
         print('[FILEUTILS][WARN] %s file not found'%pth)
 
@@ -20,55 +20,53 @@ def writefile(path, txt, enc='utf-8'):
         txt = str(txt)
     if not Path(path).parent.exists():
         Path(path).parent.mkdir(parents=True, exist_ok=True)
-    with codecs.open(path, 'w', enc) as fp:
+    with codecs.open(str(path), 'w', enc) as fp:
         fp.write(txt)
         fp.flush()
 
 def readfile(path, enc='utf-8'):
     rtn = None
-    with codecs.open(path, 'r', enc) as fp:
+    with codecs.open(str(path), 'r', enc) as fp:
         rtn = fp.read()
     return rtn
 
 def writebin(path, dat):
     if not Path(path).parent.exists():
         Path(path).parent.mkdir(parents=True, exist_ok=True)
-    with open(path, 'wb') as fp:
+    with open(str(path), 'wb') as fp:
         fp.write(dat)
         fp.flush()
 
 def readbin(path):
-    r = None
-    with open(path, 'rb') as fp:
-        r = fp.read()
-    return r
-
-def writejson(path, o):
-    if not Path(path).parent.exists():
-        Path(path).parent.mkdir(parents=True, exist_ok=True)
-    with codecs.open(path, 'w', 'utf-8') as fp:
-        json.dump(o, fp)
-
-def readjson(path):
     rtn = None
-    if os.path.exists(path):
-        with codecs.open(path, 'r', 'utf-8') as fp:
-            rtn = json.load(fp)
+    with open(str(path), 'rb') as fp:
+        rtn = fp.read()
     return rtn
 
-def writecsv(path, array2d, delimiter=','):
+def writejson(path, o, enc='utf-8'):
     if not Path(path).parent.exists():
         Path(path).parent.mkdir(parents=True, exist_ok=True)
-    with codecs.open(path, 'w', 'utf-8') as fp:
+    with codecs.open(str(path), 'w', enc) as fp:
+        json.dump(o, fp)
+
+def readjson(path, enc='utf-8'):
+    rtn = None
+    with codecs.open(str(path), 'r',enc) as fp:
+        rtn = json.load(fp)
+    return rtn
+
+def writecsv(path, array2d, delimiter=',', enc='utf-8'):
+    if not Path(path).parent.exists():
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+    with codecs.open(str(path), 'w', enc) as fp:
         writer = csv.writer(fp, delimiter=delimiter)
         writer.writerows(array2d)
 
-def readcsv(path):
+def readcsv(path, enc='utf-8'):
     rtn = None
-    if os.path.exists(path):
-        with codecs.open(path, 'r', 'utf-8') as fp:
-            reader = csv.reader(fp)
-            rtn = list(reader)
+    with codecs.open(str(path), 'r', enc) as fp:
+        reader = csv.reader(fp)
+        rtn = list(reader)
     return rtn
 
 def file_encode_convert(src, dst, src_encode='utf-8', dst_encode='gbk'):
