@@ -21,3 +21,13 @@ def test_find_ip(input, result):
 def test_find_port(input, result):
     r = reutils.find_port(input)
     assert r[0] == result
+
+@pytest.mark.parametrize(
+    'input, result', (
+        ('http://wb.jiangsu.gov.cn   http://www.jsfao.gov.cn', 2),
+        ('http://www.jiangsu.gov.cn；http://www.js.gov.cn', 2),
+    )
+)
+def test_urls_from_str(input, result):
+    r = reutils.urls_from_str(input)
+    assert len(r) == result

@@ -1,9 +1,20 @@
 import re
+from zwutils import textutils
 
 def is_url(s):
     re_str = r'[a-zA-z]+://[^\s]*'
     rtn = re.findall(re_str, s)
     return len(rtn)>0
+
+def urls_from_str(s):
+    arr = list(s)
+    for i,c in enumerate(arr):
+        if textutils.is_chinese_punctuation(c):
+            arr[i] = ' '
+    s = ''.join(arr)
+    re_str = r'[a-zA-z]+://[^\s]*'
+    rtn = re.findall(re_str, s)
+    return rtn
 
 def find_ip(s):
     # re_str = r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}[:\d{1,5}]*'
