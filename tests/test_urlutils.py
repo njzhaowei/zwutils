@@ -28,3 +28,18 @@ def test_urlutils():
 
     d = ('http://a.com/b/c?p1=1', 'http://a.com')
     assert get_base(d[0]) == d[1]
+
+    d = ('http://example.com/../thing///wrong/../multiple-slashes-yeah/.', 'http://example.com/thing///multiple-slashes-yeah/')
+    assert resolve_url(d[0]) == d[1]
+
+    d = ('http://blahblah/images/car.jpg', True)
+    assert is_url_image(d[0]) == d[1]
+
+    d = ( ['abc.yew.com', 'abc.def.yew.com'], 2)
+    assert subdomain_compare(d[0][0], d[0][1]) == d[1]
+
+    d = ( 'http://scjg.taizhou.gov.cn/', '47.96.196.4')
+    assert domain2ip(d[0]) == d[1]
+    d = ( 'scjg.taizhou.gov.cn', '47.96.196.4')
+    assert domain2ip(d[0]) == d[1]
+

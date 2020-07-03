@@ -1,5 +1,7 @@
 
 import re
+import socket
+import mimetypes
 from urllib.parse import parse_qs, urljoin, urlparse, urlsplit, urlunsplit
 
 def remove_args(url, keep_params=(), frags=False):
@@ -92,3 +94,55 @@ def url_to_filetype(abs_url):
     if len(file_type) <= 5:
         return file_type.lower()
     return None
+
+def resolve_url(url):
+    '''From https://stackoverflow.com/questions/4317242/python-how-to-resolve-urls-containing/40536115#40536115
+    >>> resolve_url('http://example.com/../thing///wrong/../multiple-slashes-yeah/.')
+    'http://example.com/thing///multiple-slashes-yeah/'
+
+    '''
+    if url is None:
+        return None
+    parts = list(urlsplit(url))
+    parts[2] = resolve_url_path(parts[2])
+    return urlunsplit(parts)
+
+def resolve_url_path(path):
+    segments = path.split('/')
+    segments = [segment + '/' for segment in segments[:-1]] + [segments[-1]]
+    resolved = []
+    for segment in segments:
+        if segment in ('../', '..'):
+            if resolved[1:]:
+                resolved.pop()
+        elif segment not in ('./', '.'):
+            resolved.append(segment)
+    return ''.join(resolved)
+
+def is_url_image(path):
+    mt, _ = mimetypes.guess_type(path)
+    return mt is not None and mt.startswith('image/')
+
+def subdomain_compare(urla, urlb):
+    a, b = urla.split('.'), urlb.split('.')
+    a.reverse(), b.reverse()
+    minlen = min(len(a), len(b))
+    rtn = 0
+    for i in range(minlen):
+        sa, sb = a[i], b[i]
+        if sa != sb:
+            break
+        else:
+            rtn +=1
+    return rtn
+
+def domain2ip(domain):
+    rtn = None
+    if domain.startswith('http'):
+        url = urlparse(domain)
+        domain = url.netloc
+    try:
+        rtn = socket.gethostbyname(domain)
+    except:
+        pass
+    return rtn
