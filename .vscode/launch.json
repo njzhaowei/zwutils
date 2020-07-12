@@ -24,7 +24,7 @@
             "module": "pytest",
             "args": [
                 "-v",
-                // "-s",
+                "-s",
                 "${file}"
             ],
             "cwd": "${workspaceRoot}"

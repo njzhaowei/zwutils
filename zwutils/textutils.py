@@ -40,3 +40,12 @@ def remove_space_in_sentence(sentence):
         else:
             rtn += c
     return rtn
+
+def inner_trim(value):
+    if isinstance(value, str):
+        TABSSPACE = re.compile(r'[\s\t]+')
+        # remove tab and white space
+        value = re.sub(TABSSPACE, ' ', value)
+        value = ''.join(value.splitlines())
+        return value.strip()
+    return ''

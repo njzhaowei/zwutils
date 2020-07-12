@@ -71,7 +71,7 @@ def is_abs_url(url):
     c_regex = re.compile(regex)
     return (c_regex.search(url) is not None)
 
-def url_to_filetype(abs_url):
+def url_to_filetype(abs_url, allowed=None):
     """
     Input a URL and output the filetype of the file
     specified by the url. Returns None for no filetype.
@@ -79,6 +79,7 @@ def url_to_filetype(abs_url):
     'http://yahoo.com'               -> None
     """
     path = urlparse(abs_url).path
+    allowed = allowed or []
     # Eliminate the trailing '/', we are extracting the file
     if path.endswith('/'):
         path = path[:-1]
@@ -91,7 +92,7 @@ def url_to_filetype(abs_url):
         return None
     file_type = last_chunk[-1]
     # Assume that file extension is maximum 5 characters long
-    if len(file_type) <= 5:
+    if len(file_type) <= 5 or file_type.lower() in allowed::
         return file_type.lower()
     return None
 
