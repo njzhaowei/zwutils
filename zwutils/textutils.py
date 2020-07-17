@@ -1,3 +1,4 @@
+import re
 
 def is_chinese(c):
     '''https://stackoverflow.com/questions/1366068/whats-the-complete-range-for-chinese-characters-in-unicode'''
