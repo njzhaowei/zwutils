@@ -1,5 +1,6 @@
 import re
 import psutil
+import subprocess
 
 def pids_by_name(nm=None):
     rtn = []
@@ -7,12 +8,12 @@ def pids_by_name(nm=None):
         pinfo = proc.info
         pname = pinfo['name']
         if nm:
-            arr = re.findall(pname, nm)
-            if len(arr)>0:
+            _regex = re.compile(nm)
+            iscontained = bool(_regex.search(pname))
+            if iscontained:
                 rtn.append(pinfo)
                 continue
         else:
             rtn.append(pinfo)
+    rtn = sorted(rtn, key=lambda o: o['name'])
     return rtn
-            
-
