@@ -34,10 +34,21 @@ def test_urls_from_str(input, result):
 
 @pytest.mark.parametrize(
     's, arr, result', (
-        ('编号 索引号 名称 文号', ['索引号', '名称'], True),
-        ('编号 索引号 名称 文号', ('索引号', '文号'), True),
+        ('\n\n索引号\n文号', ('索引号', '文号'), True),
+        ('\n\n索引号 名称\n文号\n生成日期\n', ('索引号', '文号'), True),
+        ('\n\n索引号 名称\n文号\n生成日期\n', ['索引号', '文号'], True),
+        ('\n\n索引号 名称\n文号\n生成日期\n', ['索引号', '编号'], False),
     )
 )
 def test_multi_match(s, arr, result):
     r = reutils.multi_match(s, arr)
     assert r == result
+
+def test_htmltag_by_name():
+    htmlstr = '''
+    <div>
+        <iframe name="subinfo" width="100%" height="530" id="subinfo" src="/module/xxgk/subjectinfo.jsp?area=014000335" frameborder="0"></iframe>
+    </div>
+    '''
+    r = reutils.htmltag_by_name(htmlstr, 'iframe')
+    a = 0

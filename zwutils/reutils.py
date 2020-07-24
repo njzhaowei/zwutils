@@ -30,7 +30,12 @@ def find_port(s, port_start=1024, port_end=65535):
     return rtn
 
 def multi_match(s, arr):
-    tarr = ['(?=.*%s)'%a for a in arr]
-    re_str = r'%s.*$'%(''.join(tarr))
+    tarr = ['(?=.*%s)(.|\n|\r)*'%a for a in arr]
+    re_str = r'%s(.|\n|\r)*$'%(''.join(tarr))
     rtn = re.findall(re_str, s)
     return len(rtn)>0
+
+def htmltag_by_name(s, tagnm, close=True):
+    re_str = r'<%s.*>'%tagnm if close else r'<%s.*?>'%tagnm
+    rtn = re.findall(re_str, s)
+    return rtn
