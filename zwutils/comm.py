@@ -1,6 +1,7 @@
 import re
 import sys
 import time
+import collections
 from difflib import SequenceMatcher
 
 def ismac():
@@ -106,6 +107,10 @@ def list_uniqify(arr):
         seen[item.lower()] = 1
         result.append(item.title())
     return result
+
+def list_compare(a, b):
+    compare = lambda x, y: collections.Counter(x) == collections.Counter(y)
+    return compare(a, b)
 
 def contains_digits(s):
     _digits = re.compile(r'\d')

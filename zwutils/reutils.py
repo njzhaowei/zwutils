@@ -28,3 +28,9 @@ def find_port(s, port_start=1024, port_end=65535):
     rtn = [int(r) for r in rtn]
     rtn = [r for r in rtn if r>=port_start and r<=port_end]
     return rtn
+
+def multi_match(s, arr):
+    tarr = ['(?=.*%s)'%a for a in arr]
+    re_str = r'%s.*$'%(''.join(tarr))
+    rtn = re.findall(re_str, s)
+    return len(rtn)>0

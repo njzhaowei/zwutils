@@ -59,7 +59,7 @@ def multithread_request(urls, settings=None, params_list=None, json_list=None, d
     thread_timeout: in seconds
     timeout: in seconds, 连接超时设为比3的倍数略大的一个数值
     """
-    defaut_settings = {
+    default_settings = {
         'method': 'get',
         'thread_num': 5,
         'thread_timeout': 6,
@@ -69,7 +69,7 @@ def multithread_request(urls, settings=None, params_list=None, json_list=None, d
         'proxies': None,
         'http_success_only': True,
     }
-    settings = update_attrs(defaut_settings, settings or {})
+    settings = update_attrs(default_settings, settings or {})
     kwargs['timeout'] = kwargs.get('timeout', settings.timeout)
     kwargs['cookies'] = kwargs.get('cookies', settings.cookies)
     kwargs['proxies'] = kwargs.get('proxies', settings.proxies)
@@ -94,7 +94,7 @@ def multithread_request(urls, settings=None, params_list=None, json_list=None, d
 def get_html(url, settings=None, response=None, **kwargs):
     """HTTP response code agnostic
     """
-    defaut_settings = {
+    default_settings = {
         'method': 'get',
         'timeout': 5,
         'useragent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
@@ -103,7 +103,7 @@ def get_html(url, settings=None, response=None, **kwargs):
         'http_success_only': True,
         'content_types_ignored': {},
     }
-    settings = update_attrs(defaut_settings, settings or {})
+    settings = update_attrs(default_settings, settings or {})
     kwargs['timeout'] = kwargs.get('timeout', settings.timeout)
     kwargs['cookies'] = kwargs.get('cookies', settings.cookies)
     kwargs['proxies'] = kwargs.get('proxies', settings.proxies)
@@ -157,7 +157,7 @@ def _get_html_from_response(response, settings):
     return html or ''
 
 def downfile(url, settings=None, params=None, json=None, data=None, outpath='.', filename=None, **kwargs):
-    defaut_settings = {
+    default_settings = {
         'method': 'get',
         'timeout': 5,
         'useragent': DEFAULT_USER_AGENT,
@@ -165,7 +165,7 @@ def downfile(url, settings=None, params=None, json=None, data=None, outpath='.',
         'proxies': None,
         'http_success_only': True,
     }
-    settings = update_attrs(defaut_settings, settings or {})
+    settings = update_attrs(default_settings, settings or {})
     kwargs['timeout'] = kwargs.get('timeout', settings.timeout)
     kwargs['cookies'] = kwargs.get('cookies', settings.cookies)
     kwargs['proxies'] = kwargs.get('proxies', settings.proxies)
@@ -203,3 +203,62 @@ def downfile(url, settings=None, params=None, json=None, data=None, outpath='.',
             #if chunk: 
             f.write(chunk)
     return outpath
+
+def get_head(url, settings=None, params=None, json=None, data=None, **kwargs):
+    default_settings = {
+        'method': 'head',
+        'timeout': 5,
+        'useragent': DEFAULT_USER_AGENT,
+        'cookies': None,
+        'proxies': None
+    }
+    settings = update_attrs(default_settings, settings or {})
+    kwargs['timeout'] = kwargs.get('timeout', settings.timeout)
+    kwargs['cookies'] = kwargs.get('cookies', settings.cookies)
+    kwargs['proxies'] = kwargs.get('proxies', settings.proxies)
+    kwargs['stream']  = kwargs.get('stream', True)
+
+    resp = requests.request(
+        settings.method, url, params=params, json=json, data=data, 
+        **get_request_kwargs(settings.useragent, **kwargs))
+    return resp
+
+def get_request(url, settings=None, params=None, json=None, data=None, **kwargs):
+    default_settings = {
+        'method': 'get',
+        'timeout': 5,
+        'useragent': DEFAULT_USER_AGENT,
+        'cookies': None,
+        'proxies': None
+    }
+    settings = update_attrs(default_settings, settings or {})
+    kwargs['timeout'] = kwargs.get('timeout', settings.timeout)
+    kwargs['cookies'] = kwargs.get('cookies', settings.cookies)
+    kwargs['proxies'] = kwargs.get('proxies', settings.proxies)
+    kwargs['stream']  = kwargs.get('stream', True)
+
+    resp = requests.request(
+        settings.method, url, params=params, json=json, data=data, 
+        **get_request_kwargs(settings.useragent, **kwargs))
+    return resp
+
+def check_connect(urls):
+    rtn = []
+    for u in urls:
+        r = (u, False)
+        try:
+            resp = get_head(u)
+            status_code = resp.status_code
+            if status_code == 200:
+                r = (u, True)
+            elif status_code == 301 or status_code == 302:
+                url = resp.headers['Location']
+                r = (url, True)
+            elif status_code == 403:
+                resp_get = get_request(u)
+                if resp_get.status_code == 200:
+                    r = (u, True)
+        except Exception:
+            pass
+        rtn.append(r)
+    return rtn

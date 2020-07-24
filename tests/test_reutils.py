@@ -31,3 +31,13 @@ def test_find_port(input, result):
 def test_urls_from_str(input, result):
     r = reutils.urls_from_str(input)
     assert len(r) == result
+
+@pytest.mark.parametrize(
+    's, arr, result', (
+        ('编号 索引号 名称 文号', ['索引号', '名称'], True),
+        ('编号 索引号 名称 文号', ('索引号', '文号'), True),
+    )
+)
+def test_multi_match(s, arr, result):
+    r = reutils.multi_match(s, arr)
+    assert r == result

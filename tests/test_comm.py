@@ -69,4 +69,8 @@ def test_list_split():
     r = comm.list_split(list(range(11)), 3)
     assert len(r) == 3
     r = comm.list_split(list(range(5)), 6)
-    assert len(r) == 3
+    assert len(r) == 5
+
+def test_list_compare():
+    assert False == comm.list_compare([1,2,3,3], [1,2,2,3])
+    assert True == comm.list_compare([1,2,3], [2,1,3])

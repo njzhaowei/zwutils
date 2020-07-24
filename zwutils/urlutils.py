@@ -92,7 +92,7 @@ def url_to_filetype(abs_url, allowed=None):
         return None
     file_type = last_chunk[-1]
     # Assume that file extension is maximum 5 characters long
-    if len(file_type) <= 5 or file_type.lower() in allowed::
+    if len(file_type) <= 5 or file_type.lower() in allowed:
         return file_type.lower()
     return None
 
