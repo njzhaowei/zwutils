@@ -4,3 +4,4 @@ psutil
 python-dateutil
 beautifulsoup4
 lxml
+pillow
