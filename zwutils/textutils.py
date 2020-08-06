@@ -21,6 +21,16 @@ def is_chinese_punctuation(c):
     ]
     return c in arr
 
+def is_english_punctuation(c):
+    arr = [
+        '!', '"', '#', '$', '%', '&',
+        "'", '(', ')', '*', '+', ',', '-', 
+        '.', '/', ':', ';', '<', '=', '>', 
+        '?', '@', '[', '\\', ']', '\^', '_', 
+        '`', '{', '|', '}', '~'
+    ]
+    return c in arr
+
 def remove_space_in_sentence(sentence):
     s = sentence.strip()
     rtn = ''

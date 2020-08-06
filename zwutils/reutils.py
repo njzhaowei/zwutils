@@ -39,3 +39,7 @@ def htmltag_by_name(s, tagnm, close=True):
     re_str = r'<%s.*>'%tagnm if close else r'<%s.*?>'%tagnm
     rtn = re.findall(re_str, s)
     return rtn
+
+def contains_digits(s):
+    _digits = re.compile(r'\d')
+    return bool(_digits.search(s))
