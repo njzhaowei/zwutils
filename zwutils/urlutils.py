@@ -30,6 +30,35 @@ def get_redirect(url, param_name='url'):
         return query_item[param_name][0]
     return url
 
+def redirect_back(url, source_domain):
+    """
+    Some sites like Pinterest have api's that cause news
+    args to direct to their site with the real news url as a
+    GET param. This method catches that and returns our param.
+    """
+    parse_data = urlparse(url)
+    domain = parse_data.netloc
+    # If our url is even from a remotely similar domain or
+    # sub domain, we don't need to redirect.
+    if source_domain in domain or domain in source_domain:
+        return url
+    url = get_redirect(url)
+    return url
+
+def get_absolute_redirect_url(url, source_url=None):
+    """
+    Operations that purify a url, removes arguments,
+    redirects, and merges relatives with absolutes.
+    """
+    try:
+        if source_url is not None:
+            source_domain = urlparse(source_url).netloc
+            proper_url = urljoin(source_url, url)
+        proper_url = redirect_back(proper_url, source_domain)
+    except ValueError:
+        proper_url = None
+    return proper_url
+
 def get_domain(abs_url, **kwargs):
     """
     returns a url's domain

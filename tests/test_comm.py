@@ -74,3 +74,18 @@ def test_list_split():
 def test_list_compare():
     assert False == comm.list_compare([1,2,3,3], [1,2,2,3])
     assert True == comm.list_compare([1,2,3], [2,1,3])
+
+def test_upsert_config():
+    cfg = comm.dict2attr({'fld1':1, 'fld2':'b'})
+    r = comm.upsert_config(cfg, {'fld2':'bb', 'fld3':'cc'}, {'fld2':'z', 'fld4':4})
+    assert r.fld1 == 1 and r.fld2 == 'bb' and r.fld3 == 'cc' and r.fld4 == 4
+
+    r = comm.upsert_config(None, {'fld2':'bb', 'fld3':'cc'}, {'fld2':'z', 'fld4':4})
+    assert r.fld2 == 'bb' and r.fld3 == 'cc' and r.fld4 == 4
+
+    r = comm.upsert_config(None, {'fld2':'bb', 'fld3':'cc'})
+    assert r.fld2 == 'bb' and r.fld3 == 'cc'
+
+    cfg = comm.dict2attr({'fld1':1, 'fld2':'b'})
+    r = comm.upsert_config(cfg, def_val={'fld2':'z', 'fld4':4})
+    assert r.fld2 == 'b' and r.fld4 == 4

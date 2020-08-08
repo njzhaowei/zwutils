@@ -60,3 +60,19 @@ def inner_trim(value):
         value = ''.join(value.splitlines())
         return value.strip()
     return ''
+
+class ReplaceSequence(object):
+    def __init__(self):
+        self.actions = []
+
+    def append(self, pattern, replace_with=None):
+        self.actions.append( (pattern, replace_with or '') )
+        return self
+
+    def replace(self, string):
+        if not string:
+            return ''
+        mutatedString = string
+        for pattern, replace_with in self.actions:
+            mutatedString = mutatedString.replace(pattern, replace_with)
+        return mutatedString

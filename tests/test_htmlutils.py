@@ -112,3 +112,23 @@ def test_soup_calc_word():
     r = htmlutils.soup_calc_word(soup)
     arr = sorted(r, key=lambda o: o['gscore'], reverse=True)
     assert 1
+
+def test_soup_drop_tag():
+    htmlstr = '''
+    <div>
+        <p>abc</p>
+        456
+        <em>
+            def
+            <p>789</p>
+            <p>ghi</p>
+        </em>
+        <p>xxx</p>
+        zzz
+    </div>
+    '''
+    soup = BeautifulSoup(htmlstr, features='lxml')
+    # fileutils.writefile('bef.html', str(soup))
+    htmlutils.soup_drop_tag(soup.find('em'))
+    # fileutils.writefile('aft.html', str(soup))
+    assert 1

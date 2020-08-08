@@ -17,3 +17,12 @@ def test_is_chinese():
 def test_remove_space_in_sentence(sentence, result):
     out = tu.remove_space_in_sentence(sentence)
     assert out == result
+
+def test_replacesequence():
+    ss = '   \t  \n   '
+    replacements = tu.ReplaceSequence()\
+        .append('\n', '\n\n')\
+        .append('\t')\
+        .append('^\\s+$')
+    rs = replacements.replace(ss)
+    

@@ -129,3 +129,15 @@ def soup_calc_word(root, depth_weight=0.5,stoptag='body', lang='zh'):
         o['gscore'] = int(o['gscore'])
         del o['el'].attrs['_my_word_count']
     return nodes
+
+def soup_drop_tag(tag):
+    '''Drops the tag, but keeps its children and text.'''
+    arr = []
+    for c in tag.children:
+        if not isinstance(c, str):
+            c = c.extract()
+        arr.append(c)
+    for o in arr:
+        tag.insert_before(o)
+    tag.decompose()
+    a = 0
