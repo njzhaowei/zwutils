@@ -119,7 +119,7 @@ def get_html_2XX_only(url, settings=None, response=None, **kwargs):
       'ISO-8859-1' if not provided.
     - Error out if a non 2XX HTTP response code is returned.
     """
-    method = settings.method
+    method = settings.method or 'get'
     useragent = settings.useragent
 
     if response is not None:
@@ -142,8 +142,10 @@ def get_content_2XX_only(url, settings=None, params=None, json=None, data=None, 
     return rtn
 
 def _get_html_from_response(response, settings):
-    if response.headers.get('content-type') in settings.content_types_ignored:
-        return settings.content_types_ignored[response.headers.get('content-type')]
+    content_types_ignored = settings.content_types_ignored \
+        if hasattr(settings, 'content_types_ignored') else {}
+    if response.headers.get('content-type') in content_types_ignored:
+        return content_types_ignored[response.headers.get('content-type')]
     if response.encoding != FAIL_ENCODING:
         # return response as a unicode string
         html = response.text
