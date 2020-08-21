@@ -3,6 +3,7 @@ import re
 import socket
 import mimetypes
 from urllib.parse import parse_qs, urljoin, urlparse, urlsplit, urlunsplit
+import unicodedata
 
 def remove_args(url, keep_params=(), frags=False):
     """
@@ -176,3 +177,15 @@ def domain2ip(domain):
     except:
         pass
     return rtn
+
+def slugify(value):
+    """
+    URL to filename
+    Normalizes string, converts to lowercase, removes non-alpha characters,
+    and converts spaces to hyphens.
+    """
+    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
+    value = value.decode()
+    value = re.sub(r'[^\w\s-]', '', value).strip().lower()
+    value = re.sub(r'[-\s]+', '-', value)
+    return value

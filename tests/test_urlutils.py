@@ -44,3 +44,6 @@ def test_urlutils():
     d = ( 'scjg.taizhou.gov.cn', '47.96.196.4')
     assert domain2ip(d[0]) == d[1]
 
+def test_slugify():
+    s = slugify('UK vows action after record-high migrant crossing of Channel')
+    assert s == 'uk-vows-action-after-record-high-migrant-crossing-of-channel'
