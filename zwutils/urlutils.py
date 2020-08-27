@@ -51,12 +51,16 @@ def get_absolute_redirect_url(url, source_url=None):
     Operations that purify a url, removes arguments,
     redirects, and merges relatives with absolutes.
     """
+    proper_url = None
     try:
         if source_url is not None:
             source_domain = urlparse(source_url).netloc
             proper_url = urljoin(source_url, url)
-        proper_url = redirect_back(proper_url, source_domain)
-    except ValueError:
+            proper_url = redirect_back(proper_url, source_domain)
+        else:
+            proper_url = url
+    except ValueError as ex:
+        LOG.error('url %s failed on err %s', url, str(e))
         proper_url = None
     return proper_url
 
