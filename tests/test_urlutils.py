@@ -47,3 +47,6 @@ def test_urlutils():
 def test_slugify():
     s = slugify('UK vows action after record-high migrant crossing of Channel')
     assert s == 'uk-vows-action-after-record-high-migrant-crossing-of-channel'
+
+    s = slugify('ABC 走向 我们的小康生活')
+    assert s == 'abc-走向-我们的小康生活'

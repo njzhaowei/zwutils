@@ -25,4 +25,7 @@ def test_replacesequence():
         .append('\t')\
         .append('^\\s+$')
     rs = replacements.replace(ss)
-    
+
+def test_inner_trim():
+    s = '   \tAAA BBB \n   '
+    assert tu.inner_trim(s) == 'AAABBB'

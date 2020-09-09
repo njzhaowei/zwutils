@@ -52,11 +52,11 @@ def remove_space_in_sentence(sentence):
             rtn += c
     return rtn
 
-def inner_trim(value):
+def inner_trim(value, replace=''):
     if isinstance(value, str):
         TABSSPACE = re.compile(r'[\s\t]+')
         # remove tab and white space
-        value = re.sub(TABSSPACE, ' ', value)
+        value = re.sub(TABSSPACE, replace, value)
         value = ''.join(value.splitlines())
         return value.strip()
     return ''

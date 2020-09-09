@@ -188,8 +188,8 @@ def slugify(value):
     Normalizes string, converts to lowercase, removes non-alpha characters,
     and converts spaces to hyphens.
     """
-    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
-    value = value.decode()
-    value = re.sub(r'[^\w\s-]', '', value).strip().lower()
-    value = re.sub(r'[-\s]+', '-', value)
-    return value
+    val = unicodedata.normalize('NFKD', value).encode('utf-8', 'ignore')
+    val = val.decode()
+    val = re.sub(r'[^\w\s-]', '', val).strip().lower()
+    val = re.sub(r'[-\s]+', '-', val)
+    return val
