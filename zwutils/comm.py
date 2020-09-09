@@ -51,11 +51,20 @@ def upsert_config(cfg, cfg_val=None, def_val=None):
     def_val's field will be ignored if field exists in cfg_val or cfg
     cfg_val's field will upsert into cfg no matter exists in cfg or not
     """
+    def process_dict(rtn):
+        attrs = dir(rtn)
+        for attr in attrs:
+            if attr.startswith('_'):
+                continue
+            attr_val = getattr(rtn, attr)
+            if isinstance(attr_val, dict):
+                setattr(rtn, attr, dict2attr(attr_val))
+        return rtn
     if cfg_val is None:
-        return extend_attrs(def_val, cfg)
+        return process_dict(extend_attrs(def_val, cfg))
     else:
         new_cfg = extend_attrs(def_val, cfg_val)
-    return extend_attrs(cfg, new_cfg)
+    return process_dict(extend_attrs(cfg, new_cfg))
 
 def update_attrs(o, kv):
     o = o or type('', (), {})()

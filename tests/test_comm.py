@@ -89,3 +89,7 @@ def test_upsert_config():
     cfg = comm.dict2attr({'fld1':1, 'fld2':'b'})
     r = comm.upsert_config(cfg, def_val={'fld2':'z', 'fld4':4})
     assert r.fld2 == 'b' and r.fld4 == 4
+
+    cfg = comm.dict2attr({'fld1':1, 'fld2':'b'})
+    r = comm.upsert_config(cfg, {}, {'fld':'abc', 'flddict': {'a1':1, 'a2':'b'}})
+    assert r.flddict.a1 == 1
