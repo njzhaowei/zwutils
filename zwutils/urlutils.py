@@ -4,6 +4,7 @@ import socket
 import mimetypes
 from urllib.parse import parse_qs, urljoin, urlparse, urlsplit, urlunsplit
 import unicodedata
+import logging
 
 def remove_args(url, keep_params=(), frags=False):
     """
@@ -60,7 +61,7 @@ def get_absolute_redirect_url(url, source_url=None):
         else:
             proper_url = url
     except ValueError as ex:
-        LOG.error('url %s failed on err %s', url, str(e))
+        logging.error('url %s failed on err %s', url, str(ex))
         proper_url = None
     return proper_url
 

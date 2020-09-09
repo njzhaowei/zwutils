@@ -4,6 +4,7 @@ import queue
 import traceback
 
 from threading import Thread
+from .comm import dict2attr
 
 class ConcurrencyException(Exception):
     pass
@@ -63,6 +64,7 @@ def multithread_task(cbfunc, args, settings=None):
     thread_num: default is 5
     thread_timeout: in seconds
     """
+    settings = dict2attr(settings) if isinstance(settings, dict) else settings
     num_threads = getattr(settings, 'thread_num', 5)
     timeout = getattr(settings, 'thread_timeout', 3)
     pool = ThreadPool(num_threads, timeout)

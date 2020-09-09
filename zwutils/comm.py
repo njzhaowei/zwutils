@@ -60,7 +60,7 @@ def upsert_config(cfg, cfg_val=None, def_val=None):
             if isinstance(attr_val, dict):
                 setattr(rtn, attr, dict2attr(attr_val))
         return rtn
-    if cfg_val is None:
+    if not cfg_val:
         return process_dict(extend_attrs(def_val, cfg))
     else:
         new_cfg = extend_attrs(def_val, cfg_val)
