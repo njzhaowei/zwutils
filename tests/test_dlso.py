@@ -56,8 +56,8 @@ def test_update_attrs():
 def test_upsert_config():
     pcfg = type('', (), {})()
     pcfg.a = 'o'
-    dcfg = {'a': 'd', 'da':'da'}
+    dcfg = {'a': 'd', 'da':'da', 'n1':{'nn1': {'nnn1': 'nnn1'}, 'nn2': 'nn2' } }
     ncfg = {'a': 'n', 'na':'na'}
     pmcfg = {'a': 'p','pa':'pa'}
     cfg = dlso.upsert_config(pcfg, dcfg, ncfg, pmcfg)
-    assert id(cfg) == id(pcfg) and cfg.a == 'p' and hasattr(cfg, 'pa')
+    assert id(cfg) == id(pcfg) and cfg.a == 'p' and hasattr(cfg, 'pa') and cfg.n1.nn1.nnn1 == 'nnn1'

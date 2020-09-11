@@ -60,6 +60,18 @@ def upsert_config(parent_cfg, default_cfg, new_cfg, param_cfg):
     pcfg = extend_attrs(pcfg, dcfg)
     pcfg = extend_attrs(pcfg, ncfg)
     pcfg = extend_attrs(pcfg, pmcfg)
+
+    def change_nest_dict_to_obj(o):
+        attrs = dir(o)
+        attrs = [a for a in attrs if not a.startswith('_')]
+        for attr in attrs:
+            val = getattr(o, attr)
+            if isinstance(val, dict):
+                new_val = dict2obj(val)
+                new_val = change_nest_dict_to_obj(new_val)
+                setattr(o, attr, new_val)
+        return o
+    change_nest_dict_to_obj(pcfg)
     return pcfg
 
 
