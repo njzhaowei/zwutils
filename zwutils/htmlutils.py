@@ -1,5 +1,6 @@
 import re
 import jieba
+from bs4 import BeautifulSoup, Tag
 
 def replace_all_space(s):
     return s.strip().replace(' ', '').replace('\xa0', '').replace('\u3000', '')
@@ -63,6 +64,14 @@ def find_soup_next_sibling(el, tagnm=None, attrs=None):
             break
         sib = sib.next_sibling
     return rtn
+
+def find_soup_by_text(soup, restr):
+    def filter_contains_text(el):
+        if isinstance(el, Tag):
+            r = re.findall(restr, el.text)
+            return len(r)>0
+        return False
+    return soup.find_all(filter_contains_text)
 
 def soup_depth_count(el, stoptag='body'):
     if isinstance(el, str):
