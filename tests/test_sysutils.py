@@ -16,3 +16,7 @@ def test_proc():
 def test_run_shell():
     r = run_shell('dir', 'd:\\')
     assert len(r) != 0
+
+def test_sys_usage():
+    r = get_sys_usage()
+    assert len(r) == 2

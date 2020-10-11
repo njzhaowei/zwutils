@@ -23,3 +23,9 @@ def run_shell(cmd, *args):
     cmds.extend(list(args))
     r = subprocess.run(cmds, stdout=subprocess.PIPE).stdout.decode('utf-8')
     return r
+
+def get_sys_usage():
+    return {
+        'mem': psutil.virtual_memory().percent,
+        'cpu': psutil.cpu_percent(None),
+    }
