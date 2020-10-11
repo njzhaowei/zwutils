@@ -25,7 +25,26 @@ def test_replacesequence():
         .append('\t')\
         .append('^\\s+$')
     rs = replacements.replace(ss)
+    assert rs == '     \n\n   '
 
 def test_inner_trim():
     s = '   \tAAA BBB \n   '
     assert tu.inner_trim(s) == 'AAABBB'
+
+def test_find_datestr():
+    r = tu.find_datestr('http://abc/20201001/abc')
+    assert len(r)==1 and r[0] == '2020-10-01'
+    r = tu.find_datestr('http://abc/2020-10-01/abc')
+    assert len(r)==1 and r[0] == '2020-10-01'
+    r = tu.find_datestr('http://abc/202010/abc')
+    assert len(r)==1 and r[0] == '2020-10'
+    r = tu.find_datestr('http://abc/2020-10/abc')
+    assert len(r)==1 and r[0] == '2020-10'
+    r = tu.find_datestr('http://sjj.jcs.gov.cn/art/2020/10/6/art_42147_519877.html')
+    assert len(r)==1 and r[0] == '2020-10-06'
+
+
+    r = tu.find_datestr('http://abc/22020-10-01/abc')
+    assert len(r)==0
+    r = tu.find_datestr('http://abc/220201001/abc')
+    assert len(r)==0

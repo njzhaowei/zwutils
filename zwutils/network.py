@@ -141,7 +141,7 @@ def get_content_2XX_only(url, settings=None, params=None, json=None, data=None, 
         resp.raise_for_status()
     return rtn
 
-def _get_html_from_response(response, settings):
+def _get_html_from_response(response, settings=None):
     content_types_ignored = settings.content_types_ignored \
         if hasattr(settings, 'content_types_ignored') else {}
     if response.headers.get('content-type') in content_types_ignored:

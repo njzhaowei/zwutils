@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 
 def is_chinese(c):
     '''https://stackoverflow.com/questions/1366068/whats-the-complete-range-for-chinese-characters-in-unicode'''
@@ -76,3 +77,47 @@ class ReplaceSequence(object):
         for pattern, replace_with in self.actions:
             mutatedString = mutatedString.replace(pattern, replace_with)
         return mutatedString
+
+def find_datestr(s):
+    arr = []
+    rtn = []
+    
+    _arr = re.findall(r'(?:\D)([12]\d{3}-\d{1,2}-\d{1,2})(?:\D)*', s)
+    _arr = ['%s-%s-%s'%(a.split('-')[0], a.split('-')[1].rjust(2,'0'), a.split('-')[2].rjust(2,'0')) for a in _arr]
+    arr.extend(_arr)
+
+    _arr = re.findall(r'(?:\D)([12]\d{3}/\d{1,2}/\d{1,2})(?:\D)*', s)
+    _arr = ['%s-%s-%s'%(a.split('/')[0], a.split('/')[1].rjust(2,'0'), a.split('/')[2].rjust(2,'0')) for a in _arr]
+    arr.extend(_arr)
+
+    _arr = re.findall(r'(?:\D)([12]\d{3}\d{2}\d{2})(?:\D)*', s)
+    _arr = ['%s-%s-%s'%(a[:4], a[4:6], a[6:]) for a in _arr]
+    arr.extend(_arr)
+    for a in arr:
+        try:
+            datetime.strptime(a, '%Y-%m-%d')
+            rtn.append(a)
+        except Exception:
+            pass
+            
+    #TODO update re, get rid of this if
+    if len(arr) == 0:
+        _arr = re.findall(r'(?:\D)([12]\d{3}-\d{1,2})(?:\D)*', s)
+        _arr = ['%s-%s'%(a.split('-')[0], a.split('-')[1].rjust(2,'0')) for a in _arr]
+        arr.extend(_arr)
+
+        _arr = re.findall(r'(?:\D)([12]\d{3}/\d{1,2})(?:\D)*', s)
+        _arr = ['%s-%s'%(a.split('/')[0], a.split('/')[1].rjust(2,'0')) for a in _arr]
+        arr.extend(_arr)
+        
+        _arr = re.findall(r'(?:\D)([12]\d{3}\d{2})(?:\D)*', s)
+        _arr = ['%s-%s'%(a[:4], a[4:6]) for a in _arr]
+        arr.extend(_arr)
+        for a in arr:
+            try:
+                datetime.strptime(a, '%Y-%m')
+                rtn.append(a)
+            except Exception:
+                pass
+    return rtn
+
