@@ -160,6 +160,8 @@ def is_url_image(path):
     return mt is not None and mt.startswith('image/')
 
 def subdomain_compare(urla, urlb):
+    urla, urlb = urlparse(urla), urlparse(urlb)
+    urla, urlb = urla.netloc, urlb.netloc
     a, b = urla.split('.'), urlb.split('.')
     a.reverse(), b.reverse()
     minlen = min(len(a), len(b))
