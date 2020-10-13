@@ -93,12 +93,13 @@ def find_datestr(s):
     _arr = re.findall(r'(?:\D)([12]\d{3}\d{2}\d{2})(?:\D)*', s)
     _arr = ['%s-%s-%s'%(a[:4], a[4:6], a[6:]) for a in _arr]
     arr.extend(_arr)
-    for a in arr:
+    for i,a in enumerate(arr):
         try:
             datetime.strptime(a, '%Y-%m-%d')
             rtn.append(a)
         except Exception:
-            pass
+            arr[i] = None
+    arr = [o for o in arr if o]
             
     #TODO update re, get rid of this if
     if len(arr) == 0:
@@ -119,5 +120,10 @@ def find_datestr(s):
                 rtn.append(a)
             except Exception:
                 pass
+    for i,r in enumerate(rtn):
+        year = int(r.split('-')[0])
+        if year < 1949:
+            rtn[i] = None
+    rtn = [r for r in rtn if r]
     return rtn
 
