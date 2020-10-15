@@ -51,3 +51,6 @@ def test_find_datestr():
 
     r = tu.find_datestr('http://www.jinhu.gov.cn/col/1185_833426/art/202010/1602578455967HsLIulTb.html')
     assert len(r)==1 and r[0] == '2020-10'
+
+    r = tu.find_datestr('http://da.jiangsu.gov.cn/art/2020/1/15/art_65298_8910761.html')
+    assert len(r)==1 and r[0] == '2020-01-15'
