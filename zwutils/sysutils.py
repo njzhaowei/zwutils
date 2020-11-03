@@ -1,6 +1,14 @@
+import os
 import re
 import psutil
 import subprocess
+from .fileutils import writefile
+
+def write_pidfile(dir='.'):
+    pid = os.getpid()
+    pth = os.path.join(dir, '%s.pid'%pid)
+    writefile(pth, pid)
+    return pth
 
 def pids_by_name(nm=None):
     rtn = []

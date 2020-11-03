@@ -20,3 +20,7 @@ def test_run_shell():
 def test_sys_usage():
     r = get_sys_usage()
     assert len(r) == 2
+
+def test_write_pidfile():
+    write_pidfile(dir='./pids')
+    assert 1
