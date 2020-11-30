@@ -6,3 +6,5 @@ beautifulsoup4
 lxml
 pillow
 jieba
+setproctitle
+schedule
