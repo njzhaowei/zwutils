@@ -1,15 +1,20 @@
 '''
 dict list set object utils
 '''
+class ZWObject(object):
+    pass
+
 def dict2obj(kv):
     kv = kv or {}
-    o = type('', (), {})()
+    # o = type('', (), {})()
+    o = ZWObject()
     for key, val in kv.items():
         setattr(o, key, val)
     return o
 
 def obj2dict(o):
-    o = o or type('', (), {})()
+    # o = o or type('', (), {})()
+    o = o or ZWObject()
     r = {}
     attrs = [a for a in dir(o) if not a.startswith('_')]
     for attr in attrs:
@@ -27,7 +32,8 @@ def extend_attrs(o, kv):
     Extend num of o's attrs, update o's attr's value by kv
     kv: dict/obj
     '''
-    o = o or type('', (), {})()
+    # o = o or type('', (), {})()
+    o = o or ZWObject()
     kv = kv or {}
     o = dict2obj(o) if isinstance(o, dict) else o
     kv = obj2dict(kv) if not isinstance(kv, dict) else kv
@@ -40,7 +46,8 @@ def update_attrs(o, kv):
     Update o's attr's value by kv without add new attrs into o
     kv: dict/obj
     '''
-    o = o or type('', (), {})()
+    # o = o or type('', (), {})()
+    o = o or ZWObject()
     kv = kv or {}
     o = dict2obj(o) if isinstance(o, dict) else o
     kv = obj2dict(kv) if not isinstance(kv, dict) else kv
@@ -53,7 +60,8 @@ def upsert_config(parent_cfg, default_cfg, new_cfg, param_cfg):
     '''
     param_cfg overwirte new_cfg overwirte default_cfg overwirte parent_cfg
     '''
-    pcfg = parent_cfg or type('', (), {})()
+    # pcfg = parent_cfg or type('', (), {})()
+    pcfg = parent_cfg or ZWObject()
     dcfg = default_cfg or {}
     ncfg = new_cfg or {}
     pmcfg = param_cfg or {}
@@ -73,5 +81,4 @@ def upsert_config(parent_cfg, default_cfg, new_cfg, param_cfg):
         return o
     change_nest_dict_to_obj(pcfg)
     return pcfg
-
 
