@@ -2,6 +2,7 @@
 import os
 import sys
 import time
+import logging
 
 TEST_DIR = os.path.abspath(os.path.dirname(__file__))
 PARENT_DIR = os.path.join(TEST_DIR, '..')
@@ -9,9 +10,11 @@ sys.path.insert(0, PARENT_DIR)
 
 from zwutils.zwtask import ZWTask
 
+
 def test(task, a, b):
     try:
         while True:
+            task.log(logging.INFO, 'haha')
             time.sleep(3)
     except Exception as ex:
         print(ex)

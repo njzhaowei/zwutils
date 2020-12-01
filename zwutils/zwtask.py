@@ -4,7 +4,9 @@ import socket
 from multiprocessing import Process
 import psutil
 import requests
+import logging
 
+from zwutils.logger import add_filehandler
 from zwutils.dlso import upsert_config
 
 class ZWTask(Process):
@@ -18,6 +20,7 @@ class ZWTask(Process):
             'report_sleep': 3,
             'report_request_timeout': 3,
         }
+        
         self.cfg = upsert_config(None, cfgdef, cfg, kwargs)
         self.hostname = socket.gethostname()
         self.target = target
@@ -44,7 +47,7 @@ class ZWTask(Process):
                     r = requests.post(url=cfg.c2server, json=payload, timeout=cfg.report_request_timeout)
                     if r.status_code == 200:
                         r = r.json()
-                        print('%s code: %s'%(self.name, r['code']))
+                        self.log(logging.INFO, 'code: %s'%r['code'])
                         if r['code'] == 1:
                             return
                 except requests.exceptions.Timeout:
@@ -62,18 +65,18 @@ class ZWTask(Process):
             thread_worker.start()
             thread_checker.start()
             thread_checker.join()
-        print('%s return.'%self.name)
+        self.log(logging.INFO, 'return.')
         exit(0)
 
     def suspend(self):
-        print('%s suspend.'%self.name)
+        self.log(logging.INFO, 'suspend.')
         if self.is_finish():
             return
         _psobj = psutil.Process(self.pid)
         _psobj.suspend()
     
     def resume(self):
-        print('%s resume.'%self.name)
+        self.log(logging.INFO, 'resume.')
         if self.is_finish():
             return
         _psobj = psutil.Process(self.pid)
@@ -87,6 +90,13 @@ class ZWTask(Process):
     
     def is_finish(self):
         return self.exitcode == 0
+    
+    def log(self, lvl, msg):
+        logmsg = '[%s] %s'%(self.pid, msg)
+        logger = logging.getLogger(self.name)
+        if not logger.hasHandlers():
+            logger = add_filehandler(filename='./logs/%s.log'%self.name)
+        logger.log(lvl, logmsg)
     
     @classmethod
     def run_processes(cls, target=None, name_prefix=None, args_list=None, cfg=None, **kwargs):

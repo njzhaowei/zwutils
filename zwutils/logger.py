@@ -3,6 +3,7 @@ import json
 import logging
 import logging.config
 from pathlib import Path
+from logging.handlers import RotatingFileHandler
 
 def logger(name=__name__, cfg=None, filesuffix=None):
     '''Get logger with name'''
@@ -25,3 +26,16 @@ def logger(name=__name__, cfg=None, filesuffix=None):
         logging.basicConfig(level=logging.DEBUG)
     logger = logging.getLogger(name)
     return logger
+
+def add_filehandler(filename, logname=None, formatter=None, maxBytes=10485760, backupCount=20, encoding='utf8', level=logging.INFO):
+    logname = logname or (Path(filename)).stem
+    formatter = formatter or r'%(asctime)s %(process)d [%(levelname)s] %(name)s: %(message)s'
+    formatter = logging.Formatter(formatter)
+    handler = RotatingFileHandler(filename=filename, maxBytes=maxBytes, backupCount=backupCount, encoding=encoding)
+    handler.setLevel(level)
+    handler.setFormatter(formatter)
+    logger = logging.getLogger(logname)
+    logger.propagate = True
+    logger.setLevel(level)
+    logger.addHandler(handler)
+    return logging.getLogger(logname)
