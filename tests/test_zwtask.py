@@ -10,9 +10,11 @@ sys.path.insert(0, PARENT_DIR)
 from zwutils.zwtask import ZWTask
 
 def test(task, a, b):
-    while True:
-        time.sleep(3)
-        print(a+b)
+    try:
+        while True:
+            time.sleep(3)
+    except Exception as ex:
+        print(ex)
 
 if __name__ == '__main__':
     # task = ZWTask(target=test, name='yewtest', args=(1, 2), c2server='http://localhost:8080/api/spider/status')

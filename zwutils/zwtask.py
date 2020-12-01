@@ -11,7 +11,7 @@ class ZWTask(Process):
     STOP = 'stop'
     RUN = 'run'
 
-    def __init__(self, target=None, name=None, args=None, cfg=None, **kwargs):
+    def __init__(self, target=None, name=None, args=None, daemon=None, cfg=None, **kwargs):
         super().__init__(name=name)
         cfgdef = {
             'c2server': 'http://localhost:13667/api/spider/status',
@@ -21,6 +21,7 @@ class ZWTask(Process):
         self.cfg = upsert_config(None, cfgdef, cfg, kwargs)
         self.hostname = socket.gethostname()
         self.target = target
+        self.daemon = daemon
 
         _args = args or ()
         self.args = [self]
@@ -35,6 +36,10 @@ class ZWTask(Process):
                     'pid': self.pid,
                     'pname': self.name,
                 }
+                if self.daemon:
+                    o = self.daemon(self)
+                    for p in o:
+                        payload[p] = o[p]
                 try:
                     r = requests.post(url=cfg.c2server, json=payload, timeout=cfg.report_request_timeout)
                     if r.status_code == 200:
