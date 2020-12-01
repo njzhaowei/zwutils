@@ -15,6 +15,12 @@ def test(task, a, b):
         print(a+b)
 
 if __name__ == '__main__':
-    task = ZWTask(target=test, args=(1, 2))
-    task.start()
-    task.join()
+    # task = ZWTask(target=test, name='yewtest', args=(1, 2), c2server='http://localhost:8080/api/spider/status')
+    # task.start()
+    # task.join()
+
+    # args = [(i, i+1) for i in range(3)]
+    # ZWTask.run_processes(target=test, args_list=args, c2server='http://localhost:8080/api/spider/status')
+
+    args = [(i, i+1) for i in range(3)]
+    ZWTask.run_pooled(target=test, args_list=args, max_size=1, c2server='http://localhost:8080/api/spider/status')
