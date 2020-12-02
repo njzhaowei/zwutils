@@ -1,8 +1,15 @@
 import os
 import re
+import sys
 import psutil
 import subprocess
 from .fileutils import writefile
+
+def ismac():
+    return True if sys.platform == 'darwin' else False
+
+def iswin():
+    return True if sys.platform == 'win32' else False
 
 def write_pidfile(dir='.'):
     pid = os.getpid()

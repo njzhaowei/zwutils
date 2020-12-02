@@ -1,30 +1,34 @@
+import os
+import sys
 import time
 import threading
 import socket
-from multiprocessing import Process
 import psutil
 import requests
 import logging
+from multiprocessing import Process
+from pathlib import Path
 
 from zwutils.logger import add_filehandler
 from zwutils.dlso import upsert_config
+from zwutils.sysutils import iswin
 
 class ZWTask(Process):
     STOP = 'stop'
     RUN = 'run'
 
-    def __init__(self, target=None, name=None, args=None, daemon=None, cfg=None, **kwargs):
-        super().__init__(name=name)
+    def __init__(self, target=None, name=None, args=None, daemon=True, checkfunc=None, cfg=None, **kwargs):
+        super().__init__(name=name, daemon=daemon)
         cfgdef = {
             'c2server': 'http://localhost:13667/api/spider/status',
-            'report_sleep': 3,
+            'report_sleep': 30,
             'report_request_timeout': 3,
         }
         
         self.cfg = upsert_config(None, cfgdef, cfg, kwargs)
         self.hostname = socket.gethostname()
         self.target = target
-        self.daemon = daemon
+        self.checkfunc = checkfunc
 
         _args = args or ()
         self.args = [self]
@@ -39,8 +43,8 @@ class ZWTask(Process):
                     'pid': self.pid,
                     'pname': self.name,
                 }
-                if self.daemon:
-                    o = self.daemon(self)
+                if self.checkfunc:
+                    o = self.checkfunc(self)
                     for p in o:
                         payload[p] = o[p]
                 try:
@@ -72,6 +76,8 @@ class ZWTask(Process):
         self.log(logging.INFO, 'suspend.')
         if self.is_finish():
             return
+        if not psutil.pid_exists(self.pid):
+            return
         _psobj = psutil.Process(self.pid)
         _psobj.suspend()
     
@@ -79,12 +85,16 @@ class ZWTask(Process):
         self.log(logging.INFO, 'resume.')
         if self.is_finish():
             return
+        if not psutil.pid_exists(self.pid):
+            return
         _psobj = psutil.Process(self.pid)
         _psobj.resume()
     
     def status(self):
         _psobj = psutil.Process(self.pid)
         if self.is_finish():
+            return psutil.STATUS_STOPPED
+        if not psutil.pid_exists(self.pid):
             return psutil.STATUS_STOPPED
         return _psobj.status()
     
@@ -97,23 +107,9 @@ class ZWTask(Process):
         if not logger.hasHandlers():
             logger = add_filehandler(filename='./logs/%s.log'%self.name)
         logger.log(lvl, logmsg)
-    
+
     @classmethod
-    def run_processes(cls, target=None, name_prefix=None, args_list=None, cfg=None, **kwargs):
-        name_prefix = name_prefix or 'zwtask'
-        args_list = args_list or []
-        procs = []
-        if target:
-            for i,args in enumerate(args_list):
-                pname = '%s-%d' % (name_prefix, i)
-                proc = ZWTask(target=target, name=pname, args=args, cfg=cfg, **kwargs)
-                procs.append(proc)
-                proc.start()
-        for proc in procs:
-            proc.join()
-    
-    @classmethod
-    def run_pooled(cls, target=None, name_prefix=None, args_list=None, max_size=5, proc_time=5, cfg=None, **kwargs):
+    def run_processes(cls, target=None, name_prefix=None, args_list=None, max_size=5, timeslice=5, cfg=None, **kwargs):
         name_prefix = name_prefix or 'zwtask'
         args_list = args_list or []
         if not target:
@@ -145,4 +141,21 @@ class ZWTask(Process):
                 p.resume()
             if len(running)==0 and len(waiting)==0:
                 break
-            time.sleep(proc_time)
+            time.sleep(timeslice)
+    
+    @classmethod
+    def stop_processes(cls):
+        pypth = os.path.abspath(sys.executable)
+        procs = []
+        for proc in psutil.process_iter(['pid', 'name', 'exe', 'cmdline']):
+            pyexe = proc.info['exe']
+            if pyexe and 'python' in pyexe and pypth == proc.info['cmdline'][0]:
+                procs.append(proc)
+        infos = [{
+            'pid': p.info['pid'],
+            'cmd': p.info['cmdline'][0]
+        } for p in procs]
+        for proc in procs:
+            p = psutil.Process(proc.info['pid'])
+            p.kill()
+        return pypth, infos
