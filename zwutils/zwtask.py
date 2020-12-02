@@ -53,7 +53,7 @@ class ZWTask(Process):
                         r = r.json()
                         self.log(logging.INFO, 'code: %s'%r['code'])
                         if r['code'] == 1:
-                            return
+                            exit(0)
                 except requests.exceptions.Timeout:
                     pass
                 except requests.exceptions.ConnectionError:
@@ -68,7 +68,7 @@ class ZWTask(Process):
             thread_checker = threading.Thread(target=self.status_check, daemon=True)
             thread_worker.start()
             thread_checker.start()
-            thread_checker.join()
+            thread_worker.join()
         self.log(logging.INFO, 'return.')
         exit(0)
 
@@ -105,7 +105,8 @@ class ZWTask(Process):
         logmsg = '[%s] %s'%(self.pid, msg)
         logger = logging.getLogger(self.name)
         if not logger.hasHandlers():
-            logger = add_filehandler(filename='./logs/%s.log'%self.name)
+            add_filehandler(filename='./logs/%s.log'%self.name)
+        logger = logging.getLogger(self.name)
         logger.log(lvl, logmsg)
 
     @classmethod
@@ -118,7 +119,11 @@ class ZWTask(Process):
         running = []
         waiting = []
         for i,args in enumerate(args_list):
-            pname = '%s-%d' % (name_prefix, i)
+            if isinstance(args, dict):
+                pname = args['pname']
+                args = args['pargs']
+            else:
+                pname = '%s-%d' % (name_prefix, i)
             proc = ZWTask(target=target, name=pname, args=args, cfg=cfg, **kwargs)
             proc.start()
             proc.suspend()
