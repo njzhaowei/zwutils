@@ -113,7 +113,7 @@ def url_to_filetype(abs_url, allowed=None):
     'http://blahblah/images/car.jpg' -> 'jpg'
     'http://yahoo.com'               -> None
     """
-    path = urlparse(abs_url).path
+    path = str(urlparse(abs_url).path)
     allowed = allowed or []
     # Eliminate the trailing '/', we are extracting the file
     if path.endswith('/'):
