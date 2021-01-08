@@ -1,4 +1,5 @@
 import os
+import sys
 import codecs
 import json
 import csv
@@ -7,6 +8,7 @@ import zipfile
 import lzma
 import tarfile
 import shutil
+import subprocess
 from pathlib import Path
 
 def rmfile(pth):
@@ -105,6 +107,24 @@ def zipdir(pth, outpath=None, exclude=None):
                 if exclude and Path(fp).match(exclude):
                     continue
                 zipf.write(fp, zp)
+
+def zip(srcpth, destpth=None, pwd=None, _7zpth='./bin'):
+    iswin = True if sys.platform == 'win32' else False
+    cmd = Path(_7zpth) / '7z.exe' if iswin else 'zip'
+    cmd = str(cmd)
+    cmds = [cmd]
+    if iswin:
+        cmds.extend(['a', '-r', '-y'])
+        if pwd:
+            cmds.append('-p%s'%pwd)
+    else:
+        cmds.extend(['-q', '-r'])
+        if pwd:
+            cmds.append('-P %s'%pwd)
+    cmds.extend([destpth, srcpth])
+    subprocess.run(cmds, stdout=subprocess.PIPE).stdout.decode('utf-8')
+    destfile = Path(destpth)
+    return destfile.exists() and destfile.stat().st_size > 0
 
 # def tar(pth, outpath=None, flag='w:gz'):
 #     p = Path(pth)

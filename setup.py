@@ -6,7 +6,10 @@ from codecs import open
 pkg_name = 'zwutils'
 
 here = os.path.abspath(os.path.dirname(__file__))
+exclude_packages = ['tests']
 packages = find_packages()
+packages = [pkg for pkg in packages if all(p != pkg for p in exclude_packages)]
+
 requires = [s.strip() for s in open('requirements.txt').readlines()]
 test_requirements = [s.strip() for s in open('requirements_dev.txt').readlines()][4:]
 

@@ -11,6 +11,8 @@ def setup_module():
     shutil.rmtree('data/bin', ignore_errors=True)
     shutil.rmtree('data/unzip', ignore_errors=True)
     fileutils.rmfile('data/zipdir.zip')
+    fileutils.rmfile('data/zipfile.zip')
+    fileutils.rmfile('data/zipdir2.zip')
 
 def teardown_module():
     setup_module()
@@ -37,3 +39,8 @@ def test_unzip():
     fileutils.unzip('data/zipdir.zip', outdir='data/unzip')
     assert os.listdir('data/unzip')
 
+def test_zip():
+    r = fileutils.zip('data/zipdir/a.txt', 'data/zipfile.zip', pwd='123')
+    assert r
+    r = fileutils.zip('data/zipdir', 'data/zipdir2.zip', pwd='123')
+    assert r
