@@ -3,7 +3,6 @@ import os
 import json
 import codecs
 from pathlib import Path
-from .comm import extend_attrs
 
 class Config():
     def __init__(self, fp=None, default=None):
@@ -30,5 +29,11 @@ class Config():
          # Support for attr-based lookup.
         try:
             return self.data[key]
+        except KeyError as e:
+            raise AttributeError(e)
+
+    def __delattr__(self, key):
+        try:
+            del self.data[key]
         except KeyError as e:
             raise AttributeError(e)
