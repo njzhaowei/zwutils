@@ -54,3 +54,7 @@ def test_find_datestr():
 
     r = tu.find_datestr('http://da.jiangsu.gov.cn/art/2020/1/15/art_65298_8910761.html')
     assert len(r)==1 and r[0] == '2020-01-15'
+
+def test_s():
+    r = tu.similarity('中西医结合治疗糖尿病的临床观察', '中西医结合治疗糖尿病的临床观察乙')
+    assert r>0.8

@@ -1,5 +1,6 @@
 import re
 from datetime import datetime
+from difflib import SequenceMatcher
 
 def is_chinese(c):
     '''https://stackoverflow.com/questions/1366068/whats-the-complete-range-for-chinese-characters-in-unicode'''
@@ -127,3 +128,5 @@ def find_datestr(s):
     rtn = [r for r in rtn if r]
     return rtn
 
+def similarity(a, b):
+    return SequenceMatcher(None, a, b).ratio()
