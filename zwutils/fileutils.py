@@ -87,7 +87,7 @@ def md5(fp):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
-def unzip(pth, outdir=None):
+def unzip(pth, outdir=None, pwd=None):
     p = Path(pth)
     out = Path(outdir) or p.parent
     out.mkdir(parents=True, exist_ok=True)

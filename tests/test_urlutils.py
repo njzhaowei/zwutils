@@ -36,7 +36,7 @@ def test_urlutils():
     d = ('http://blahblah/images/car.jpg', True)
     assert is_url_image(d[0]) == d[1]
 
-    d = ( ['abc.yew.com', 'abc.def.yew.com'], 2)
+    d = ( ['http://abc.yew.com', 'http://abc.def.yew.com'], 2)
     assert subdomain_compare(d[0][0], d[0][1]) == d[1]
 
     d = ( 'http://scjg.taizhou.gov.cn/', '47.96.196.4')
