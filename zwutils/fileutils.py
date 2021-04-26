@@ -26,8 +26,10 @@ def writefile(path, txt, enc='utf-8'):
         fp.write(txt)
         fp.flush()
 
-def readfile(path, enc='utf-8'):
+def readfile(path, enc='utf-8', default=None):
     rtn = None
+    if not Path(path).exists() and default is not None:
+        return default
     with codecs.open(str(path), 'r', enc) as fp:
         rtn = fp.read()
     return rtn
@@ -39,8 +41,10 @@ def writebin(path, dat):
         fp.write(dat)
         fp.flush()
 
-def readbin(path):
+def readbin(path, default=None):
     rtn = None
+    if not Path(path).exists() and default is not None:
+        return default
     with open(str(path), 'rb') as fp:
         rtn = fp.read()
     return rtn
@@ -49,10 +53,12 @@ def writejson(path, o, enc='utf-8'):
     if not Path(path).parent.exists():
         Path(path).parent.mkdir(parents=True, exist_ok=True)
     with codecs.open(str(path), 'w', enc) as fp:
-        json.dump(o, fp)
+        json.dump(o, fp, ensure_ascii=False)
 
-def readjson(path, enc='utf-8'):
+def readjson(path, enc='utf-8', default=None):
     rtn = None
+    if not Path(path).exists() and default is not None:
+        return default
     with codecs.open(str(path), 'r',enc) as fp:
         rtn = json.load(fp)
     return rtn
@@ -64,8 +70,10 @@ def writecsv(path, array2d, delimiter=',', enc='utf-8'):
         writer = csv.writer(fp, delimiter=delimiter)
         writer.writerows(array2d)
 
-def readcsv(path, enc='utf-8'):
+def readcsv(path, enc='utf-8', default=None):
     rtn = None
+    if not Path(path).exists() and default is not None:
+        return default
     with codecs.open(str(path), 'r', enc) as fp:
         reader = csv.reader(fp)
         rtn = list(reader)
