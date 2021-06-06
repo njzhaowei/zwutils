@@ -33,6 +33,10 @@ def is_english_punctuation(c):
     ]
     return c in arr
 
+def hasdigit(s):
+    m = re.compile(r'\d')
+    return bool(m.search(s))
+
 def remove_space_in_sentence(sentence):
     s = sentence.strip()
     rtn = ''
