@@ -1,5 +1,4 @@
 import re
-import jieba
 from bs4 import BeautifulSoup, Tag
 
 def replace_all_space(s):
@@ -104,40 +103,6 @@ def soup_calc_child(root, tgnms, stoptag='body'):
     for o in elems:
         del o['el'].attrs['_my_child_count']
     return elems
-
-def soup_calc_word(root, depth_weight=0.5,stoptag='body', lang='zh'):
-    if isinstance(root, str):
-        return None
-    
-    def filter_node(tag):
-        ign = ['script', 'style', 'head']
-        if tag.name.lower() in ign:
-            return False
-        return True
-    nodes = root.find_all(name=filter_node, text=re.compile(r'^[^\s]*$'))
-
-    for el in nodes:
-        cur = el
-        while cur:
-            txt = ''.join(list(cur.stripped_strings))
-            segs = jieba.lcut(txt)
-            word_count = cur.attrs['_my_word_count'] if '_my_word_count' in cur.attrs else 0
-            cur.attrs['_my_word_count'] = word_count + len(segs)
-            prt = cur.parent
-            cur = prt if prt and prt.name != stoptag else None
-
-    nodes = root.find_all(True)
-    nodes = [{
-        'el': o,
-        'word_count': o.attrs['_my_word_count'],
-        'depth_count': soup_depth_count(o, stoptag) + 1
-    } for o in nodes if hasattr(o, 'attrs') and '_my_word_count' in o.attrs]
-
-    for o in nodes:
-        o['gscore'] = o['word_count']*(1-depth_weight)+o['depth_count']*depth_weight
-        o['gscore'] = int(o['gscore'])
-        del o['el'].attrs['_my_word_count']
-    return nodes
 
 def soup_drop_tag(tag):
     '''Drops the tag, but keeps its children and text.'''
