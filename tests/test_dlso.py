@@ -61,3 +61,13 @@ def test_upsert_config():
     pmcfg = {'a': 'p','pa':'pa'}
     cfg = dlso.upsert_config(pcfg, dcfg, ncfg, pmcfg)
     assert id(cfg) == id(pcfg) and cfg.a == 'p' and hasattr(cfg, 'pa') and cfg.n1.nn1.nnn1 == 'nnn1'
+
+def test_list_split():
+    r = dlso.list_split(list(range(11)), 3)
+    assert len(r) == 3
+    r = dlso.list_split(list(range(5)), 6)
+    assert len(r) == 5
+
+def test_list_compare():
+    assert False == dlso.list_compare([1,2,3,3], [1,2,2,3])
+    assert True == dlso.list_compare([1,2,3], [2,1,3])
