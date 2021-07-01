@@ -49,7 +49,7 @@ def writejson(path, o, enc='utf-8'):
     if not Path(path).parent.exists():
         Path(path).parent.mkdir(parents=True, exist_ok=True)
     with codecs.open(str(path), 'w', enc) as fp:
-        json.dump(o, fp)
+        json.dump(o, fp, ensure_ascii=False)
 
 def readjson(path, enc='utf-8'):
     rtn = None
