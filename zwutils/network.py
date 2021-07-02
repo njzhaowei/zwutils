@@ -5,8 +5,7 @@ import requests
 import chardet
 from pathlib import Path
 from .mthreading import ThreadPool
-from .comm import dict2attr
-from .comm import update_attrs
+from .dlso import update_attrs
 
 FAIL_ENCODING = 'ISO-8859-1'
 DEFAULT_USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36'

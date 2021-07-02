@@ -9,6 +9,10 @@ def test_is_chinese():
     assert tu.is_chinese('體') == True
     assert tu.is_chinese('一') == True
 
+def test_hasdigit():
+    assert tu.hasdigit('aaabb, 332 44 -adaf')
+    assert not tu.hasdigit('aaabb,-adaf')
+
 @pytest.mark.parametrize(
     'sentence, result', (
         ('  Zhaowei  is NO1, 一天吃 1 顿 ， 1 顿 吃 一 天 ', 'Zhaowei is NO1,一天吃1顿，1顿吃一天'),
@@ -23,7 +27,7 @@ def test_replacesequence():
     replacements = tu.ReplaceSequence()\
         .append('\n', '\n\n')\
         .append('\t')\
-        .append('^\\s+$')
+        .append(r'^\\s+$')
     rs = replacements.replace(ss)
     assert rs == '     \n\n   '
 
