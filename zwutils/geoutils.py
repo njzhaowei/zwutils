@@ -48,7 +48,7 @@ def address2adcode(addr, tree):
                 break
         if not found:
             return None
-    return rtn[-1]
+    return rtn[-1] if len(rtn)>0 else None
 
 
 
