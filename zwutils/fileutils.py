@@ -32,6 +32,8 @@ def readfile(path, enc='utf-8', default=None):
         return default
     with codecs.open(str(path), 'r', enc) as fp:
         rtn = fp.read()
+    if rtn.startswith('\ufeff'):# BOM
+        rtn = rtn[1:]
     return rtn
 
 def writebin(path, dat):
