@@ -23,8 +23,8 @@ def address2adcode(addr, tree):
     re_arr = []
     re_arr.append( (r'(\w+)(省|自治区|特别行政区)(\w+)(市)(\w+)(区|县|市)(\w+)(街道).+', 4) )
     re_arr.append( (r'(\w+)(省|自治区|特别行政区)(\w+)(市)(\w+)(区|县|市).+', 3) )
-    re_arr.append( (r'(\w+)(省|自治区|特别行政区).+', 1) )
     re_arr.append( (r'(\w+)(省|自治区|特别行政区)(\w+)(市|区).+', 2) )
+    re_arr.append( (r'(\w+)(省|自治区|特别行政区).+', 1) )
     re_arr.append( (r'(北京|天津|上海|重庆)(市)(\w+)(区).+', 2) )
 
     arr = []
