@@ -11,10 +11,10 @@ import shutil
 import subprocess
 from pathlib import Path
 
-def rmfile(pth):
+def rmfile(pth, ignore_miss=False):
     if os.path.isfile(str(pth)):
         os.remove(str(pth))
-    else:
+    elif not ignore_miss:
         print('[FILEUTILS][WARN] %s file not found'%pth)
 
 def writefile(path, txt, enc='utf-8'):
@@ -97,32 +97,20 @@ def md5(fp):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
-def unzip(pth, outdir=None, pwd=None):
-    p = Path(pth)
-    out = Path(outdir) or p.parent
-    out.mkdir(parents=True, exist_ok=True)
-    with zipfile.ZipFile(pth) as zf:
-        zf.extractall(str(out))
+def zip(srcpth, destpth=None, pwd=None, pth7z=None):
+    """Use 7z.exe or zip command to zip file or dir
+    :param srcpth: ./dir/file => file in zip, dir/file => dir/file in zip
+    :param destpth: zip in srcpth if None
+    :param pwd: no password if not set
+    :param pth7z: 7z.exe in ./bin in win by default, zip command in linux
 
-def zipdir(pth, outpath=None, exclude=None):
-    '''exclude: glob-style
-    '''
-    p = Path(pth)
-    out= Path(outpath) if outpath else p.parent / (p.stem + '.zip')
-    with zipfile.ZipFile(str(out), 'w', zipfile.ZIP_DEFLATED) as zipf:
-        for root, dirs, files in os.walk(pth):
-            for f in files:
-                fp = os.path.join(root, f)
-                zp = os.path.relpath(fp, os.path.join(pth, '..'))
-                if exclude and Path(fp).match(exclude):
-                    continue
-                zipf.write(fp, zp)
-
-def zip(srcpth, destpth=None, pwd=None, _7zpth='./bin'):
+    """
     iswin = True if sys.platform == 'win32' else False
-    cmd = Path(_7zpth) / '7z.exe' if iswin else 'zip'
-    cmd = str(cmd)
-    cmds = [cmd]
+    spath = Path(srcpth)
+    sname = '%s.zip'%spath.stem if spath.is_file() else '%s.zip'%spath.name
+    destpth = destpth or str(spath.parent / sname)
+    cmd = pth7z or ( './bin/7z.exe' if iswin else 'zip' )
+    cmds = [str(cmd)]
     if iswin:
         cmds.extend(['a', '-r', '-y'])
         if pwd:
@@ -132,9 +120,25 @@ def zip(srcpth, destpth=None, pwd=None, _7zpth='./bin'):
         if pwd:
             cmds.append('-P %s'%pwd)
     cmds.extend([destpth, srcpth])
-    subprocess.run(cmds, stdout=subprocess.PIPE).stdout.decode('utf-8')
+    subprocess.run(cmds)
     destfile = Path(destpth)
-    return destfile.exists() and destfile.stat().st_size > 0
+    return destfile.exists()
+
+def unzip(srcpth, destpth=None, pwd=None, pth7z=None):
+    iswin = True if sys.platform == 'win32' else False
+    cmd = pth7z or ( './bin/7z.exe' if iswin else 'unzip' )    
+    cmds = [str(cmd)]
+    if iswin:
+        cmds.extend(['x', srcpth, '-y', '-aoa', '-o%s'%destpth])
+        if pwd:
+            cmds.append('-p%s'%pwd)
+    else:
+        cmds.extend([srcpth, '-d', destpth])
+        if pwd:
+            cmds.append('-P %s'%pwd)
+    subprocess.run(cmds)
+    destfile = Path(destpth)
+    return destfile.exists()
 
 # def tar(pth, outpath=None, flag='w:gz'):
 #     p = Path(pth)
@@ -159,3 +163,24 @@ def zip(srcpth, destpth=None, pwd=None, _7zpth='./bin'):
 #                 if exclude and Path(fp).match(exclude):
 #                     continue
 #                 tar.add(fp, zp)
+
+# def unzip(pth, outdir=None, pwd=None):
+#     p = Path(pth)
+#     out = Path(outdir) or p.parent
+#     out.mkdir(parents=True, exist_ok=True)
+#     with zipfile.ZipFile(pth) as zf:
+#         zf.extractall(str(out))
+
+# def zipdir(pth, outpath=None, exclude=None):
+#     '''exclude: glob-style
+#     '''
+#     p = Path(pth)
+#     out= Path(outpath) if outpath else p.parent / (p.stem + '.zip')
+#     with zipfile.ZipFile(str(out), 'w', zipfile.ZIP_DEFLATED) as zipf:
+#         for root, dirs, files in os.walk(pth):
+#             for f in files:
+#                 fp = os.path.join(root, f)
+#                 zp = os.path.relpath(fp, os.path.join(pth, '..'))
+#                 if exclude and Path(fp).match(exclude):
+#                     continue
+#                 zipf.write(fp, zp)
