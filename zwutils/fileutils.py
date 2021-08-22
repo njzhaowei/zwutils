@@ -4,10 +4,6 @@ import codecs
 import json
 import csv
 import hashlib
-import zipfile
-import lzma
-import tarfile
-import shutil
 import subprocess
 from pathlib import Path
 
