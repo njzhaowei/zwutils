@@ -30,3 +30,13 @@ def test_image_concate():
     util.image_concate('data/20436218_1024524228.jpg', 'data/20436312_1683447152.jpg', outpth=outpth, direction=util.VERTICAL)
     s = fileutils.md5(outpth)
     assert s == 'c9301931876cd476c587ae812b6b3a5a'
+
+def test_image_list_concate():
+    outpth = 'data/out.jpg'
+    imgs = ['data/20436218_1024524228.jpg', 'data/20436312_1683447152.jpg']
+    util.image_list_concate(imgs, outpth=outpth, direction=util.HORIZONTAL)
+    s = fileutils.md5(outpth)
+    assert s == '177d7283c01434dbb4252b4e4c4f66ce'
+    util.image_list_concate(imgs, outpth=outpth, direction=util.VERTICAL)
+    s = fileutils.md5(outpth)
+    assert s == 'c9301931876cd476c587ae812b6b3a5a'
