@@ -1,0 +1,1 @@
+rd /s /Q _build\html & make html & pause

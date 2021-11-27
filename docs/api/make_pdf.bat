@@ -1,0 +1,1 @@
+rd /s /Q _build\pdf & make pdf & pause
