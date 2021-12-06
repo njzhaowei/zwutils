@@ -4,7 +4,8 @@ dict list set object utils
 import collections
 
 class ZWObject(object):
-    pass
+    def as_dict(self):
+        return obj2dict(self)
 
 def dict2obj(kv):
     kv = kv or {}
@@ -18,7 +19,7 @@ def obj2dict(o):
     # o = o or type('', (), {})()
     o = o or ZWObject()
     r = {}
-    attrs = [a for a in dir(o) if not a.startswith('_')]
+    attrs = [a for a in dir(o) if not a.startswith('_') and a not in ['as_dict']]
     for attr in attrs:
         r[attr] = getattr(o, attr)
     return r

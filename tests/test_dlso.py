@@ -71,3 +71,9 @@ def test_list_split():
 def test_list_compare():
     assert False == dlso.list_compare([1,2,3,3], [1,2,2,3])
     assert True == dlso.list_compare([1,2,3], [2,1,3])
+
+def test_as_dict():
+    o = dlso.ZWObject()
+    setattr(o, 'mykey', 'myval')
+    r = dlso.obj2dict(o)
+    assert r['mykey'] == 'myval'
