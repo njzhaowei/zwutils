@@ -30,6 +30,9 @@ def test_urlutils():
     d = ('http://a.com/b/c?p1=1', 'http://a.com')
     assert get_base(d[0]) == d[1]
 
+    d = ('http://www.example.org/default.html?ct=32&op=92&item=98', {'item': '98', 'op': '92', 'ct': '32'})
+    assert get_params(d[0]) == d[1]
+
     d = ('http://example.com/../thing///wrong/../multiple-slashes-yeah/.', 'http://example.com/thing///multiple-slashes-yeah/')
     assert resolve_url(d[0]) == d[1]
 

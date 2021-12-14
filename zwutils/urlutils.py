@@ -2,7 +2,7 @@
 import re
 import socket
 import mimetypes
-from urllib.parse import parse_qs, urljoin, urlparse, urlsplit, urlunsplit
+from urllib.parse import parse_qs, parse_qsl, urljoin, urlparse, urlsplit, urlunsplit
 import unicodedata
 import logging
 
@@ -75,6 +75,7 @@ def get_domain(abs_url, **kwargs):
 
 def get_scheme(abs_url, **kwargs):
     """
+    return url scheme
     """
     if abs_url is None:
         return None
@@ -82,13 +83,20 @@ def get_scheme(abs_url, **kwargs):
 
 def get_path(abs_url, **kwargs):
     """
+    return url path
     """
     if abs_url is None:
         return None
     return urlparse(abs_url, **kwargs).path
 
 def get_base(abs_url, **kwargs):
+    """
+    return scheme://domain
+    """
     return '%s://%s' % ( get_scheme(abs_url, **kwargs),get_domain(abs_url, **kwargs) )
+
+def get_params(url):
+    return dict(parse_qsl(urlsplit(url).query))
 
 def is_abs_url(url):
     """
