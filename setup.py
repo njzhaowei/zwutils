@@ -34,13 +34,15 @@ with open(pth, 'r+', 'utf-8') as f:
     verarr = about['__version__'].split('.') if '__version__' in about else '0.0.0'.split('.')
     verarr[2] = str(int(verarr[2])+1)
     about['__version__'] = '.'.join(verarr)
-    f.seek(0)
 
     lines = ["%s = '%s'\n"%(pkg_info[i],pkg_info[i+1]) for i in range(0, len(pkg_info), 2)]
     lines.insert(0, "__version__ = '%s'\n"%about['__version__'])
     for i in range(0, len(pkg_info), 2):
         about[pkg_info[i]] = pkg_info[i+1]
+    
+    f.seek(0)
     f.writelines(lines)
+    f.flush()
 
 with open('README.md', 'r') as f:
     readme = f.read()

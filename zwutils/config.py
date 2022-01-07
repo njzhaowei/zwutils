@@ -24,6 +24,9 @@ class Config():
             Path(self.path).parent.mkdir(parents=True, exist_ok=True)
         with codecs.open(self.path, 'w', 'utf-8') as f:
             json.dump(self.data, f, sort_keys=True, indent=4, separators=(',', ': '))
+    
+    def set(self, key, val):
+        self.data[key] = val
 
     def __getattr__(self, key):
          # Support for attr-based lookup.
@@ -37,3 +40,6 @@ class Config():
             del self.data[key]
         except KeyError as e:
             raise AttributeError(e)
+    
+    def __contains__(self, key):
+        return key in self.data
