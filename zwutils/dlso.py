@@ -2,6 +2,8 @@
 dict list set object utils
 '''
 import collections
+from operator import itemgetter
+from itertools import groupby
 
 class ZWObject(object):
     def as_dict(self):
@@ -25,8 +27,8 @@ def obj2dict(o):
     return r
 
 def tbl2dict(h, rs):
-    '''h：表头list，rs：数据二维list。
-    将每条数据（r）与表头按顺序匹配，形成dict list
+    '''h:表头list,rs:数据二维list。
+    将每条数据(r)与表头按顺序匹配,形成dict list
     '''
     return [dict(zip(h, r)) for r in rs]
 
@@ -117,3 +119,9 @@ def list_uniqify(arr):
 def list_compare(a, b):
     compare = lambda x, y: collections.Counter(x) == collections.Counter(y)
     return compare(a, b)
+
+def list_groupby(arr, keyfunc, copy=False):
+    arr = arr[:] if copy else arr
+    arr.sort(key=itemgetter(keyfunc))
+    grp = groupby(arr, itemgetter(keyfunc))
+    return grp

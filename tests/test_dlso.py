@@ -77,3 +77,16 @@ def test_as_dict():
     setattr(o, 'mykey', 'myval')
     r = dlso.obj2dict(o)
     assert r['mykey'] == 'myval'
+
+def test_list_groupby():
+    arr = [
+        {'flda':'a', 'fld':'a'},
+        {'flda':'b', 'fld':'a'},
+        {'flda':'b', 'fld':'b'},
+    ]
+    grp = dlso.list_groupby(arr, 'fld')
+    for key, group in grp:
+        print('\nkey: %s, group: %s'%(key,list(group)) )
+        for o in group:  # group是一个迭代器，包含了所有的分组列表
+            # print(key, o)
+            assert key == o['fld']
