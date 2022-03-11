@@ -4,6 +4,3 @@ wheel
 twine
 pytest
 pytest-xdist
-sphinx
-sphinx_rtd_theme
-rst2pdf==0.98
