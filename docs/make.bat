@@ -3,13 +3,13 @@
 pushd %~dp0
 
 REM Command file for Sphinx documentation
-set SPHINXBUILD="../../.venv/Scripts/sphinx-build.exe"
+set SPHINXBUILD="../.venv/Scripts/sphinx-build.exe"
 
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
-set SOURCEDIR=.
-set BUILDDIR=_build
+set SOURCEDIR=source
+set BUILDDIR=build
 
 if "%1" == "" goto help
 

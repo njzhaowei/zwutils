@@ -4,7 +4,7 @@ zwutils
 
 安装说明
 ----------------------------------------
-pip安装方法：
+pip安装方法:
 
 ::
 
@@ -15,8 +15,8 @@ pip安装方法：
 
 ::
 
-    Python版本: 3.6+
-    操作系统: Win/Linux/Mac
+    Python版本3.6+
+    操作系统Win/Linux/Mac
 
 .. toctree::
     :glob:

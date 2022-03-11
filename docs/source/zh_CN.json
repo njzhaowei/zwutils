@@ -1,10 +1,10 @@
 {
     "embeddedFonts": [
-        "simsun"
+        "simsun", "simhei"
     ],
     "fontsAlias": {
         "stdFont": "simsun",
-        "stdBold": "simsun",
+        "stdBold": "simhei",
         "stdItalic": "simsun",
         "stdBoldItalic": "simsun",
         "stdMono": "simsun",
