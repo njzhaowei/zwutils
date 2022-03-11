@@ -73,11 +73,11 @@ latex_elements = {
 #'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
-'preamble': '''
-\\hypersetup{unicode=true}
-\\usepackage{CJKutf8}
-\\AtBeginDocument{\\begin{CJK}{UTF8}{gbsn}}
-\\AtEndDocument{\\end{CJK}}
+# 'preamble': ''
+
+# Using Package for ZH
+'preamble' : r'''
+\usepackage{ctex}
 ''',
 }
 
@@ -85,8 +85,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'PythonManual.tex', 'PYTHONDocumentation',
-     'xxxx', 'manual'),
+    ('index', '%s.tex'%project, project,
+     author, 'manual'),
 ]
 
 # -- Options for PDF output --------------------------------------------------
