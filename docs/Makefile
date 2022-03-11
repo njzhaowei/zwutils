@@ -12,6 +12,14 @@ BUILDDIR      = build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
+.PHONY: latexpdf
+latexpdf:
+    $(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
+    @echo "Running LaTeX files through pdflatex..."
+    sed -i s/pdflatex/xelatex/ $(BUILDDIR)/latex/Makefile
+    $(MAKE) -C $(BUILDDIR)/latex all-pdf
+    @echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
+
 .PHONY: help Makefile
 
 # Catch-all target: route all unknown targets to Sphinx using the new
