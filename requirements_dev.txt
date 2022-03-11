@@ -6,4 +6,4 @@ pytest
 pytest-xdist
 sphinx
 sphinx_rtd_theme
-rst2pdf
+rst2pdf==0.98
