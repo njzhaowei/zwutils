@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import pytest
-
+from pathlib import Path
 import zwutils.encode as enc
 
-GBK_FILEPATH = './data/encode_gb2312.txt'
-UTF_FILEPATH = './data/encode_utf8.txt'
+GBK_FILEPATH = './tests/data/encode_gb2312.txt'
+UTF_FILEPATH = './tests/data/encode_utf8.txt'
 
 def test_detect_file_encode():
     r = enc.detect_file_encode(GBK_FILEPATH)

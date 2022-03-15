@@ -1,17 +1,18 @@
 import time
 
 def print_duration(method):
-    '''Prints out the runtime duration of a method in seconds
-    usage:
+    """Prints out the runtime duration of a method in seconds
 
-    from zwutils.comm import print_duration
+    .. code-block:: python
+        :linenos:
 
-    @print_duration
-    def test_func():
-        pass
+        @print_duration
+        def test_func():
+            pass
 
-    test_func()
-    '''
+        test_func()
+
+    """
     def timed(*args, **kw):
         ts = time.time()
         result = method(*args, **kw)

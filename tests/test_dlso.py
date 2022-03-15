@@ -1,82 +1,89 @@
 # -*- coding: utf-8 -*-
+from attr import has
 import pytest
-import time
-
 import zwutils.dlso as dlso
 
 # pylint: disable=no-member
 def test_dict2obj():
     r = dlso.dict2obj({
-        'ks': 'v1',
-        'kn': 2,
-        'ka': [1, '2'],
-        'kd': {'1':1, '2':2},
-        'knone': None
+        's': 's',
+        'n': 1,
+        'list': [1, '2'],
+        'dict': {'a1':'a1', 'a2':'a2', 'sub1':{'b1':'b1'}},
+        'none': None,
+        'obj': type('', (), {'a3': 'a3', 'sub2': type('', (),{'b2':'b2'})()})(),
+        'zwo': dlso.ZWObject.from_dict({'a4':'a4'}),
     })
-    r2 = dlso.dict2obj(None)
-    assert r.ks == 'v1'
+    assert r.s == 's' and r.none == None
+    assert r.dict.a1 == 'a1' and r.dict.sub1.b1 == 'b1'
+    assert r.obj.a3 == 'a3' and r.obj.sub2.b2 == 'b2'
+
+    r = dlso.dict2obj(None)
+    zwo = dlso.ZWObject()
+    assert dlso.getflds(r) == dlso.getflds(zwo)
 
 def test_obj2dict():
-    o = type('', (), {})()
-    o.a1 = 'a'
-    o.a2 = 'b'
-    r = dlso.obj2dict(o)
-    assert r['a1'] == 'a'
+    r = dlso.obj2dict(type('', (), {
+        's': 's',
+        'n': 1,
+        'list': [1, '2'],
+        'dict': {'a1':'a1', 'a2':'a2', 'sub1':{'b1':'b1'}},
+        'none': None,
+        'obj': type('', (), {'a3': 'a3', 'sub2': type('', (),{'b2':'b2'})()})(),
+        'zwo': dlso.ZWObject.from_dict({'a4':'a4'}),
+    })())
+    assert r['s'] == 's' and r['none'] == None
+    assert r['dict']['a1'] == 'a1' and r['dict']['sub1']['b1'] == 'b1'
+    assert r['obj']['a3'] == 'a3' and r['obj']['sub2']['b2'] == 'b2'
 
-def test_extend_attr():
-    b = {'a':'a', 'b':'b'}
-    e = {'b':'bb', 'c':'c', 'd':1}
-    o = dlso.extend_attrs(dlso.dict2obj(b), e)
-    assert o.b == 'bb' and o.c == 'c' and o.d == 1
-    o = dlso.extend_attrs(b, e)
-    assert o.b == 'bb' and o.c == 'c' and o.d == 1
-    o = dlso.extend_attrs(dlso.dict2obj(b), dlso.dict2obj(e))
-    assert o.b == 'bb' and o.c == 'c' and o.d == 1
+def test_arrs2recs():
+    recs = dlso.arrs2recs(['hdr_a','hdr_b'], [['a', 'b'], ['c', 'd']])
+    assert recs == [{'hdr_a':'a', 'hdr_b':'b'}, {'hdr_a':'c', 'hdr_b':'d'}]
 
-    o = dlso.extend_attrs(None, e)
-    assert o.b == 'bb' and o.c == 'c' and o.d == 1
-    o = dlso.extend_attrs(dlso.dict2obj(b), None)
-    assert o.a == 'a' and o.b == 'b'
+def test_extend_attrs():
+    o = type('', (), {'a1':'a1', 'a2':'a2'})()
+    o = dlso.extend_attrs(o, {'a2':'n2', 'b1':'b1', 'sub1': {'c1': 'c1'}})
+    assert o.a1 == 'a1' and o.a2 == 'n2' and o.b1 == 'b1' and o.sub1.c1 == 'c1'
+
+    o = dlso.extend_attrs(o, type('', (), {'b1':'nb1'})())
+    assert o.b1 == 'nb1'
 
 def test_update_attrs():
-    b = {'a':'a', 'b':'b'}
-    e = {'b':'bb', 'c':'c'}
-    o = dlso.update_attrs(dlso.dict2obj(b), e)
-    assert o.b == 'bb' and not hasattr(o, 'c')
-    o = dlso.update_attrs(b, e)
-    assert o.b == 'bb' and not hasattr(o, 'c')
-    o = dlso.update_attrs(dlso.dict2obj(b), dlso.dict2obj(e))
-    assert o.b == 'bb' and not hasattr(o, 'c')
+    o = type('', (), {'a1':'a1', 'a2':'a2'})()
+    o = dlso.update_attrs(o, {'a2':'n2', 'b1':'b1', 'sub1': {'c1': 'c1'}})
+    assert o.a1 == 'a1' and o.a2 == 'n2' and not hasattr(o, 'b1') and not hasattr(o, 'sub1')
 
-    o = dlso.update_attrs(None, e)
-    assert not hasattr(o, 'b') and not hasattr(o, 'c')
-    o = dlso.update_attrs(dlso.dict2obj(b), None)
-    assert o.a == 'a' and o.b == 'b'
+    o = dlso.update_attrs(o, type('', (), {'a1':'n1', 'b1':'nb1'})())
+    assert o.a1 == 'n1' and not hasattr(o, 'b1')
 
 def test_upsert_config():
-    pcfg = type('', (), {})()
-    pcfg.a = 'o'
-    dcfg = {'a': 'd', 'da':'da', 'n1':{'nn1': {'nnn1': 'nnn1'}, 'nn2': 'nn2' } }
-    ncfg = {'a': 'n', 'na':'na'}
-    pmcfg = {'a': 'p','pa':'pa'}
-    cfg = dlso.upsert_config(pcfg, dcfg, ncfg, pmcfg)
-    assert id(cfg) == id(pcfg) and cfg.a == 'p' and hasattr(cfg, 'pa') and cfg.n1.nn1.nnn1 == 'nnn1'
+    pcfg = dlso.ZWObject.from_dict({'p1': 'p1', 'p2':'p2'})
+    dcfg = {'p1': 'dp1', 'd1': 'd1', 'sub1': {'c1': 'c1'}}
+    ncfg = {'p2': 'np2', 'd1': 'nd1', 'n1': 'n1'}
+    acfg = {'a1': 'a1', 'n1': 'an1'}
+    o = dlso.upsert_config(pcfg, dcfg, ncfg, acfg)
+    assert id(o) == id(pcfg) and o.p1 == 'dp1' and o.p2 == 'np2' and o.d1 == 'nd1' and o.n1 == 'an1'
+    assert o.sub1.c1 == 'c1'
 
-def test_list_split():
-    r = dlso.list_split(list(range(11)), 3)
-    assert len(r) == 3
-    r = dlso.list_split(list(range(5)), 6)
-    assert len(r) == 5
+def test_listinter():
+    r = dlso.listinter([0,1,3,2], [2,3,4,5])
+    assert set(r) == set([3,2])
 
-def test_list_compare():
-    assert False == dlso.list_compare([1,2,3,3], [1,2,2,3])
-    assert True == dlso.list_compare([1,2,3], [2,1,3])
+def test_listsplit():
+    r = dlso.listsplit(list(range(7)), 3)
+    assert r == [ [0,1,2], [3,4,5], [6] ]
+
+def test_listunify():
+    r = dlso.listunify([{'a': 1}, {'a': 1}, {'a': 3}, {'b': 4}])
+    assert r == [{'a': 1}, {'a': 3}, {'b': 4}]
+
+def test_listcmp():
+    assert False == dlso.listcmp([1,2,3,3], [1,2,2,3])
+    assert True == dlso.listcmp([1,2,3], [2,1,3])
 
 def test_as_dict():
-    o = dlso.ZWObject()
-    setattr(o, 'mykey', 'myval')
-    r = dlso.obj2dict(o)
-    assert r['mykey'] == 'myval'
+    o = dlso.ZWObject.from_dict({'a1': 'a1', 'a2': 2})
+    assert o.as_dict() == {'a1': 'a1', 'a2': 2}
 
 def test_list_groupby():
     arr = [
@@ -84,9 +91,6 @@ def test_list_groupby():
         {'flda':'b', 'fld':'a'},
         {'flda':'b', 'fld':'b'},
     ]
-    grp = dlso.list_groupby(arr, 'fld')
-    for key, group in grp:
-        print('\nkey: %s, group: %s'%(key,list(group)) )
-        for o in group:  # group是一个迭代器，包含了所有的分组列表
-            # print(key, o)
-            assert key == o['fld']
+    r = dlso.listgroupby(arr, 'fld')
+    assert r['a'] == [{'flda': 'a', 'fld': 'a'}, {'flda': 'b', 'fld': 'a'}]
+    assert r['b'] == [{'flda': 'b', 'fld': 'b'}]

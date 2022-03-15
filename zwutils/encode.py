@@ -6,7 +6,7 @@ def detect_file_encode(pth):
 
     :param str pth: file path
     :return: {'encoding': 'UTF-8', 'confidence': 0.99}
-    :rtype: list
+    :rtype: dict
     """
     detector = UniversalDetector()
     detector.reset()
@@ -21,6 +21,6 @@ def detect_data_encode(rawdata):
 
     :param bytes rawdata: file path
     :return: {'encoding': 'UTF-8', 'confidence': 0.99}
-    :rtype: list
+    :rtype: dict
     """
     return chardet.detect(rawdata)

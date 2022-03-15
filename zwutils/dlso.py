@@ -1,127 +1,274 @@
 '''
-dict list set object utils
+(d)ict (l)ist (s)et (o)bject) utils
 '''
 import collections
 from operator import itemgetter
 from itertools import groupby
+from inspect import ismethod, isbuiltin
+from functools import reduce
 
 class ZWObject(object):
     def as_dict(self):
         return obj2dict(self)
+    
+    @classmethod
+    def from_dict(cls, kv):
+        return extend_attrs(None, kv)
+
+_builtin_types = [type(None), bool, int, float, complex, list, tuple, range, str, bytes, bytearray, memoryview, set, frozenset, dict]
+def _ismethod(o):
+    return ismethod(o) or isbuiltin(o)
+
+def getflds(o):
+    return [s for s in dir(o) if \
+        not s.startswith('_') and \
+        not _ismethod(getattr(o, s))
+    ]
 
 def dict2obj(kv):
+    """Transfer dict to ZWObject,  dict will be transfer iterately.
+
+    :param dict kv: dict object
+    :return: object
+    :rtype: ZWObject
+
+    .. code-block:: python
+        :linenos:
+
+        r = dlso.dict2obj({
+            's': 's',
+            'n': 1,
+            'list': [1, '2'],
+            'dict': {'a1':'a1', 'a2':'a2', 'sub1':{'b1':'b1'}},
+            'none': None,
+            'obj': type('', (), {'a3': 'a3', 'sub2': type('', (),{'b2':'b2'})()})(),
+            'zwo': dlso.ZWObject({'a4':'a4'}),
+        })
+        assert r.s == 's' and r.none == None
+        assert r.dict.a1 == 'a1' and r.dict.sub1.b1 == 'b1'
+        assert r.obj.a3 == 'a3' and r.obj.sub2.b2 == 'b2'
+    """
     kv = kv or {}
-    # o = type('', (), {})()
     o = ZWObject()
-    for key, val in kv.items():
-        setattr(o, key, val)
+    for k, v in kv.items():
+        if isinstance(kv[k], dict):
+            setattr(o, k, dict2obj(kv[k]))
+        elif not _ismethod(kv[k]):
+            setattr(o, k, v)
     return o
 
 def obj2dict(o):
-    # o = o or type('', (), {})()
+    """Transfer object to dict and ignore hidden/method attribute. Object will be transfer iterately.
+
+    :param object o: object
+    :return: dict
+    :rtype: dict
+
+    .. code-block:: python
+        :linenos:
+
+        r = dlso.obj2dict(type('', (), {
+            's': 's',
+            'n': 1,
+            'list': [1, '2'],
+            'dict': {'a1':'a1', 'a2':'a2', 'sub1':{'b1':'b1'}},
+            'none': None,
+            'obj': type('', (), {'a3': 'a3', 'sub2': type('', (),{'b2':'b2'})()})(),
+            'zwo': dlso.ZWObject({'a4':'a4'}),
+        })())
+        assert r['s'] == 's' and r['none'] == None
+        assert r['dict']['a1'] == 'a1' and r['dict']['sub1']['b1'] == 'b1'
+        assert r['obj']['a3'] == 'a3' and r['obj']['sub2']['b2'] == 'b2'
+    """
     o = o or ZWObject()
     r = {}
-    attrs = [a for a in dir(o) if not a.startswith('_') and a not in ['as_dict']]
+    attrs = getflds(o)
     for attr in attrs:
-        r[attr] = getattr(o, attr)
+        val = getattr(o, attr)
+        if any([isinstance(val, t) for t in _builtin_types]):
+            r[attr] = val
+        else:
+            r[attr] = obj2dict(val)
     return r
 
-def tbl2dict(h, rs):
-    '''h:表头list,rs:数据二维list。
-    将每条数据(r)与表头按顺序匹配,形成dict list
-    '''
+def arrs2recs(h, rs):
+    """Transfer Header list and Data list to Dict list(Record list).
+    
+    :param list h: Header list
+    :param list[list] rs: Data list
+    :return: list[dict]: Dict list
+    :rtype: list
+
+    .. code-block:: python
+        :linenos:
+
+        recs = dlso.arrs2recs(['hdr_a','hdr_b'], [['a', 'b'], ['c', 'd']])
+        assert recs == [{'hdr_a':'a', 'hdr_b':'b'}, {'hdr_a':'c', 'hdr_b':'d'}]
+    """
     return [dict(zip(h, r)) for r in rs]
 
-def extend_attrs(o, kv):
-    '''
-    Extend num of o's attrs, update o's attr's value by kv
-    kv: dict/obj
-    '''
-    # o = o or type('', (), {})()
+def extend_attrs(o, dat):
+    """Extend/Update attrs of object by dict/object if attr not exist/exist in object.
+    
+    :param object o: dest object
+    :param dict/object dat: value to extend/update
+    :return: object
+    :rtype: object/ZWObject
+
+    .. code-block:: python
+        :linenos:
+
+        o = type('', (), {'a1':'a1', 'a2':'a2'})()
+        o = dlso.extend_attrs(o, {'a2':'n2', 'b1':'b1', 'sub1': {'c1': 'c1'}})
+        assert o.a1 == 'a1' and o.a2 == 'n2' and o.b1 == 'b1' and o.sub1.c1 == 'c1'
+    """
     o = o or ZWObject()
-    kv = kv or {}
+    d = dat or ZWObject()
     o = dict2obj(o) if isinstance(o, dict) else o
-    kv = obj2dict(kv) if not isinstance(kv, dict) else kv
-    for key, val in kv.items():
-        setattr(o, key, val)
+    d = dict2obj(d) if isinstance(d, dict) else d
+    attrs = getflds(d)
+    for attr in attrs:
+        setattr(o, attr, getattr(d, attr))
     return o
 
-def update_attrs(o, kv):
-    '''
-    Update o's attr's value by kv without add new attrs into o
-    kv: dict/obj
-    '''
-    # o = o or type('', (), {})()
+def update_attrs(o, dat):
+    """Update attrs of object by dict/object without adding new attrs.
+    
+    :param object o: dest object
+    :param dict/object dat: value to update
+    :return: object
+    :rtype: object/ZWObject
+
+    .. code-block:: python
+        :linenos:
+
+        o = type('', (), {'a1':'a1', 'a2':'a2'})()
+        o = dlso.update_attrs(o, {'a2':'n2', 'b1':'b1', 'sub1': {'c1': 'c1'}})
+        assert o.a1 == 'a1' and o.a2 == 'n2' and not hasattr(o, 'b1') and not hasattr(o, 'sub1')
+    """
     o = o or ZWObject()
-    kv = kv or {}
+    d = dat or ZWObject()
     o = dict2obj(o) if isinstance(o, dict) else o
-    kv = obj2dict(kv) if not isinstance(kv, dict) else kv
-    for key, val in kv.items():
-        if hasattr(o, key):
-            setattr(o, key, val)
+    d = dict2obj(d) if isinstance(d, dict) else d
+    attrs = getflds(d)
+    for attr in attrs:
+        if hasattr(o, attr):
+            setattr(o, attr, getattr(d, attr))
     return o
 
-def upsert_config(parent_cfg, default_cfg, new_cfg, param_cfg):
-    '''
-    param_cfg overwirte new_cfg overwirte default_cfg overwirte parent_cfg
-    '''
+def upsert_config(pcfg, dcfg, ncfg, acfg):
+    """acfg overwirte ncfg overwirte dcfg overwirte pcfg
+    
+    :param dict/object pcfg: parent cfg
+    :param dict/object dcfg: default cfg
+    :param dict/object ncfg: new cfg
+    :param dict/object acfg: param cfg
+    :return: pcfg updated
+    :rtype: object/ZWObject
+
+    .. code-block:: python
+        :linenos:
+
+        pcfg = dlso.ZWObject.from_dict({'p1': 'p1', 'p2':'p2'})
+        dcfg = {'p1': 'dp1', 'd1': 'd1', 'sub1': {'c1': 'c1'}}
+        ncfg = {'p2': 'np2', 'd1': 'nd1', 'n1': 'n1'}
+        acfg = {'a1': 'a1', 'n1': 'an1'}
+        o = dlso.upsert_config(pcfg, dcfg, ncfg, acfg)
+        assert id(o) == id(pcfg) and o.p1 == 'dp1' and o.p2 == 'np2' and o.d1 == 'nd1' and o.n1 == 'an1'
+        assert o.sub1.c1 == 'c1'
+    """
     # pcfg = parent_cfg or type('', (), {})()
-    pcfg = parent_cfg or ZWObject()
-    dcfg = default_cfg or {}
-    ncfg = new_cfg or {}
-    pmcfg = param_cfg or {}
-    pcfg = extend_attrs(pcfg, dcfg)
-    pcfg = extend_attrs(pcfg, ncfg)
-    pcfg = extend_attrs(pcfg, pmcfg)
-
-    def change_nest_dict_to_obj(o):
-        attrs = dir(o)
-        attrs = [a for a in attrs if not a.startswith('_')]
-        for attr in attrs:
-            val = getattr(o, attr)
-            if isinstance(val, dict):
-                new_val = dict2obj(val)
-                new_val = change_nest_dict_to_obj(new_val)
-                setattr(o, attr, new_val)
-        return o
-    change_nest_dict_to_obj(pcfg)
+    pcfg = pcfg or ZWObject()
+    dcfg = dcfg or ZWObject()
+    ncfg = ncfg or ZWObject()
+    acfg = acfg or {}
+    pcfg = extend_attrs(extend_attrs(extend_attrs(pcfg, dcfg), ncfg), acfg)
     return pcfg
 
-def list_intersection(a, b, ordered=False):
-    if ordered:
-        return [i for i, j in zip(a, b) if i == j]
-    else:
-        return list(set(a).intersection(b)) # choose smaller to a or b?
+def listinter(a, b):
+    """Get intersection from two list
 
-def list_split(arr, num):
-    ''' split list into several parts
-    '''
-    rtn = []
+    :param list a: left list
+    :param list b: right list
+    :return: result list
+    :rtype: list
+
+    .. code-block:: python
+        :linenos:
+
+        >>> listinter([0,1,3,2], [2,3,4,5])
+        [3,2]
+    """
+    return list(set(a).intersection(b)) # choose smaller to a or b?
+
+def listsplit(arr, siz):
+    """Split list into several parts.
+
+    :param list arr: list to split
+    :param int siz: sublist size
+    :return: 2D list
+    :rtype: list
+
+    .. code-block:: python
+        :linenos:
+
+        >>> listsplit([0,1,2,3,4,5,6], 3)
+        [ [0,1,2], [3,4,5], [6] ]
+    """
     arrlen = len(arr)
-    step = int(arrlen / num) + 1
-    for i in range(0, arrlen, step):
-        rtn.append(arr[i:i+step])
+    step = int(arrlen / siz) + 1
+    rtn = [arr[i:i+step] for i in range(0, arrlen, step)]
     return rtn
 
-def list_uniqify(arr):
-    '''Remove duplicates from provided list but maintain original order.
-        Derived from http://www.peterbe.com/plog/uniqifiers-benchmark
-    '''
-    seen = {}
-    result = []
-    for item in arr:
-        if item.lower() in seen:
-            continue
-        seen[item.lower()] = 1
-        result.append(item.title())
-    return result
+def listunify(arr):
+    """Unify dict list,
 
-def list_compare(a, b):
+    :param list[dict] arr: dict list to unify
+    :return: unified list
+    :rtype: list[dict]
+
+    .. code-block:: python
+        :linenos:
+
+        >>> listsplit([0,1,2,3,4,5,6], 3)
+        [ [0,1,2], [3,4,5], [6] ]
+    """
+    return reduce(lambda x, y: x + [y] if y not in x else x, [[], ] + arr)
+
+def listcmp(a, b):
+    """
+        .. code-block:: python
+            :linenos:
+
+            assert False == dlso.listcmp([1,2,3,3], [1,2,2,3])
+            assert True == dlso.listcmp([1,2,3], [2,1,3])
+    """
     compare = lambda x, y: collections.Counter(x) == collections.Counter(y)
     return compare(a, b)
 
-def list_groupby(arr, keyfunc, copy=False):
+def listgroupby(arr, key, copy=False):
+    """Group by dict list by fld/keyfunc
+
+    :param list[dict] arr: dict list to group
+    :param function/fieldname key: 
+    :param bool copy: return new list or not
+    :return: result list
+    :rtype: list[dict]
+
+    .. code-block:: python
+        :linenos:
+
+        arr = [
+            {'flda':'a', 'fld':'a'},
+            {'flda':'b', 'fld':'a'},
+            {'flda':'b', 'fld':'b'},
+        ]
+        r = dlso.listgroupby(arr, 'fld')
+        assert r['a'] == [{'flda': 'a', 'fld': 'a'}, {'flda': 'b', 'fld': 'a'}]
+        assert r['b'] == [{'flda': 'b', 'fld': 'b'}]
+
+    """
     arr = arr[:] if copy else arr
-    arr.sort(key=itemgetter(keyfunc))
-    grp = groupby(arr, itemgetter(keyfunc))
-    return grp
+    arr.sort(key=itemgetter(key))
+    grp = groupby(arr, itemgetter(key))
+    return {key: list(group) for key, group in grp}
