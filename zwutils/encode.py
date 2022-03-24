@@ -2,10 +2,10 @@ import chardet
 from chardet.universaldetector import UniversalDetector
 
 def detect_file_encode(pth):
-    """Guess file content encode by chardet
+    """Guess file content encode by chardet. Encoding string is in lower case.
 
     :param str pth: file path
-    :return: {'encoding': 'UTF-8', 'confidence': 0.99}
+    :return: {'encoding': 'utf-8', 'confidence': 0.99}
     :rtype: dict
     """
     detector = UniversalDetector()
@@ -14,13 +14,17 @@ def detect_file_encode(pth):
         detector.feed(line)
         if detector.done: break
     detector.close()
-    return detector.result
+    r = detector.result
+    r['encoding'] = r['encoding'].lower()
+    return r
 
 def detect_data_encode(rawdata):
-    """Guess rawdata encode by chardet
+    """Guess rawdata encode by chardet. Encoding string is in lower case.
 
     :param bytes rawdata: file path
-    :return: {'encoding': 'UTF-8', 'confidence': 0.99}
+    :return: {'encoding': 'utf-8', 'confidence': 0.99}
     :rtype: dict
     """
-    return chardet.detect(rawdata)
+    r = chardet.detect(rawdata)
+    r['encoding'] = r['encoding'].lower()
+    return r
