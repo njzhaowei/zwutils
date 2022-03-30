@@ -1,4 +1,4 @@
-__version__ = '0.2.1'
+__version__ = '0.2.2'
 __title__ = 'zwutils'
 __description__ = 'Personal Python Utilities'
 __url__ = 'https://github.com/njzhaowei/zwutils'

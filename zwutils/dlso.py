@@ -264,11 +264,11 @@ def listgroupby(arr, key, copy=False):
             {'flda':'b', 'fld':'b'},
         ]
         r = dlso.listgroupby(arr, 'fld')
-        assert r['a'] == [{'flda': 'a', 'fld': 'a'}, {'flda': 'b', 'fld': 'a'}]
-        assert r['b'] == [{'flda': 'b', 'fld': 'b'}]
+        assert r[0] == ('a', [{'flda': 'a', 'fld': 'a'}, {'flda': 'b', 'fld': 'a'}])
+        assert r[1] == ('b', [{'flda': 'b', 'fld': 'b'}])
 
     """
     arr = arr[:] if copy else arr
     arr.sort(key=itemgetter(key))
     grp = groupby(arr, itemgetter(key))
-    return {key: list(group) for key, group in grp}
+    return [(key, list(group)) for key, group in grp]
