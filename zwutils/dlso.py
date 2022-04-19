@@ -220,7 +220,7 @@ def listsplit(arr, siz):
     rtn = [arr[i:i+step] for i in range(0, arrlen, step)]
     return rtn
 
-def listunify(arr):
+def listunify(arr, keyfunc=None):
     """Unify dict list,
 
     :param list[dict] arr: dict list to unify
@@ -230,10 +230,14 @@ def listunify(arr):
     .. code-block:: python
         :linenos:
 
-        >>> listsplit([0,1,2,3,4,5,6], 3)
-        [ [0,1,2], [3,4,5], [6] ]
+        >>> dlso.listunify([{'a': 1}, {'a': 1}, {'a': 3}, {'b': 4}])
+        [{'a': 1}, {'a': 3}, {'b': 4}]
+
+        >>> dlso.listunify([{'a': 1, 'b': 3}, {'a': 2, 'b': 3}, {'a': 3}, {'b': 4}], keyfunc=lambda x, y: 'b' in y and y['b'] not in {o['b'] for o in x} )
+        [{'a': 1, 'b': 3}, {'b': 4}]
     """
-    return reduce(lambda x, y: x + [y] if y not in x else x, [[], ] + arr)
+    keyfunc = keyfunc or (lambda x, y: y not in x)
+    return reduce(lambda x, y: x + [y] if keyfunc(x, y) else x, [[], ] + arr)
 
 def listcmp(a, b):
     """

@@ -12,10 +12,11 @@ BASEPATH = Path('./tests/data/fileutils')
 TEMPPATH = BASEPATH / 'tmp'
 
 def setup_module():
-    shutil.rmtree(TEMPPATH, ignore_errors=True)
+    teardown_module()
+    TEMPPATH.mkdir(parents=True, exist_ok=True)
 
 def teardown_module():
-    setup_module()
+    shutil.rmtree(TEMPPATH, ignore_errors=True)
 
 def test_binfile():
     pth = TEMPPATH / 'binfile'
@@ -36,7 +37,11 @@ def test_zip():
     assert r and Path(TEMPPATH / 'file1.zip').stat().st_size > 0
     r = fileutils.zip(BASEPATH / 'dir1', TEMPPATH / 'dir1.zip', pwd='123')
     assert r and Path(TEMPPATH / 'dir1.zip').stat().st_size > 0
+    r = fileutils.zip(BASEPATH / 'dir1', TEMPPATH / 'dir1 .zip', pwd='123')
+    assert r and Path(TEMPPATH / 'dir1 .zip').stat().st_size > 0
 
 def test_unzip():
-    fileutils.unzip(TEMPPATH / 'dir1.zip', TEMPPATH / 'unzip', pwd='123')
-    assert os.listdir(TEMPPATH / 'unzip')
+    r = fileutils.unzip(TEMPPATH / 'dir1.zip', TEMPPATH / 'unzip', pwd='123')
+    assert r and os.listdir(TEMPPATH / 'unzip')
+    r = fileutils.unzip(TEMPPATH / 'dir1 .zip', TEMPPATH / 'dir1 ', pwd='123')
+    assert r and os.listdir(TEMPPATH / 'dir1 ')

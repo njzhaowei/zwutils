@@ -38,3 +38,4 @@ nosetests.xml
 
 # mac
 .DS_Store
+tests/data/fileutils/tmp

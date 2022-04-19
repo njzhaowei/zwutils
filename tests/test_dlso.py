@@ -76,6 +76,8 @@ def test_listsplit():
 def test_listunify():
     r = dlso.listunify([{'a': 1}, {'a': 1}, {'a': 3}, {'b': 4}])
     assert r == [{'a': 1}, {'a': 3}, {'b': 4}]
+    r = dlso.listunify([{'a': 1, 'b': 3}, {'a': 2, 'b': 3}, {'a': 3}, {'b': 4}], keyfunc=lambda x, y: 'b' in y and y['b'] not in {o['b'] for o in x} )
+    assert r == [{'a': 1, 'b': 3}, {'b': 4}]
 
 def test_listcmp():
     assert False == dlso.listcmp([1,2,3,3], [1,2,2,3])

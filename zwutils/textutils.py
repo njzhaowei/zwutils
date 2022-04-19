@@ -134,3 +134,9 @@ def find_datestr(s):
 
 def similarity(a, b):
     return SequenceMatcher(None, a, b).ratio()
+
+def unicode_represent(s):
+    u = ''
+    for c in s:
+        u += r'\u{}'.format(ord(c))
+    return u

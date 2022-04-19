@@ -27,6 +27,9 @@ class Config():
     
     def set(self, key, val):
         self.data[key] = val
+    
+    def get(self, key, default):
+        return self.data[key] if key in self.data else default
 
     def __getattr__(self, key):
          # Support for attr-based lookup.
