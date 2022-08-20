@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-from os import read
 import pytest
-
+from pathlib import Path
 from zwutils.fileutils import readjson
 from zwutils.geoutils import *
+
+BASEPTH = Path('./tests/data/geoutils')
+TEMPPTH = Path('./tests/data/geoutils/tmp')
 
 @pytest.mark.parametrize(
     's, r', (
@@ -16,6 +18,6 @@ from zwutils.geoutils import *
     )
 )
 def test_address2adcode(s, r):
-    codes = readjson('./data/codetree.json')
+    codes = readjson( BASEPTH/'codetree.json' )
     o = address2adcode(s, codes)
     assert o == r

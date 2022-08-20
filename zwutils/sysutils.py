@@ -3,6 +3,7 @@ import re
 import psutil
 import subprocess
 import platform
+from pathlib import Path
 from .fileutils import writefile
 
 def ismac():
@@ -16,7 +17,8 @@ def islinux():
 
 def write_pidfile(dir='.'):
     pid = os.getpid()
-    pth = os.path.join(dir, '%s.pid'%pid)
+    pth = Path(dir) / ('%s.pid'%pid)
+    Path(pth).parent.mkdir(parents=True, exist_ok=True)
     writefile(pth, pid)
     return pth
 

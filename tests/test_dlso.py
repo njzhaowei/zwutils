@@ -1,7 +1,19 @@
 # -*- coding: utf-8 -*-
-from attr import has
 import pytest
+import collections
 import zwutils.dlso as dlso
+
+def test_zwobject():
+    o = dlso.ZWObject.from_dict({
+        'flda': 'a',
+        'fldb': 'b'
+    })
+    assert isinstance(o, collections.Iterable)
+    arr = []
+    for v in o:
+        arr.append(v)
+    assert sorted(arr) == ['a', 'b']
+    assert 'a' in o
 
 # pylint: disable=no-member
 def test_dict2obj():

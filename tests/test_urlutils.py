@@ -2,6 +2,7 @@
 import pytest
 
 from zwutils.urlutils import *
+from zwutils.network import ping
 
 def test_urlutils():
     d = ('http://a.com/b?p1=1&p2=2', 'http://a.com/b')
@@ -42,10 +43,11 @@ def test_urlutils():
     d = ( ['http://abc.yew.com', 'http://abc.def.yew.com'], 2)
     assert subdomain_compare(d[0][0], d[0][1]) == d[1]
 
-    d = ( 'http://scjg.taizhou.gov.cn/', '47.96.196.4')
-    assert domain2ip(d[0]) == d[1]
-    d = ( 'scjg.taizhou.gov.cn', '47.96.196.4')
-    assert domain2ip(d[0]) == d[1]
+    # hostip = ping('baidu.com')
+    # d = ( 'https://www.baidu.com/', hostip)
+    # assert domain2ip(d[0]) == d[1]
+    # d = ( 'baidu.com', hostip)
+    # assert domain2ip(d[0]) == d[1]
 
 def test_slugify():
     s = slugify('UK vows action after record-high migrant crossing of Channel')

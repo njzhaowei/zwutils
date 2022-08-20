@@ -14,8 +14,19 @@ class ZWObject(object):
     @classmethod
     def from_dict(cls, kv):
         return extend_attrs(None, kv)
+    
+    def __iter__(self):
+        self._keys = list(obj2dict(self).keys())
+        self._keycur = 0 if self._keys else None
+        return self
+    
+    def __next__(self):
+        if self._keycur is None or self._keycur > len(self._keys)-1:
+            raise StopIteration
+        val = getattr(self, self._keys[self._keycur])
+        self._keycur += 1
+        return val
 
-_builtin_types = [type(None), bool, int, float, complex, list, tuple, range, str, bytes, bytearray, memoryview, set, frozenset, dict]
 def _ismethod(o):
     return ismethod(o) or isbuiltin(o)
 
@@ -57,6 +68,7 @@ def dict2obj(kv):
             setattr(o, k, v)
     return o
 
+_builtin_types = [type(None), bool, int, float, complex, list, tuple, range, str, bytes, bytearray, memoryview, set, frozenset, dict]
 def obj2dict(o):
     """Transfer object to dict and ignore hidden/method attribute. Object will be transfer iterately.
 

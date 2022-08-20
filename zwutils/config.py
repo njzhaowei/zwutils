@@ -6,17 +6,18 @@ from pathlib import Path
 
 class Config():
     def __init__(self, fp=None, default=None):
-        self.path = fp or './config.json'
+        self.path = fp
         self.data = default or {}
-        if not os.path.isfile(self.path):
+        if self.path is not None and not os.path.isfile(self.path):
             self.save()
         self.load()
 
     def load(self):
-        with codecs.open(self.path, 'r', 'utf-8') as f:
-            kv = json.load(f)
-            for key, val in kv.items():
-                self.data[key] = val
+        if self.path:
+            with codecs.open(self.path, 'r', 'utf-8') as f:
+                kv = json.load(f)
+                for key, val in kv.items():
+                    self.data[key] = val
         return self
 
     def save(self):

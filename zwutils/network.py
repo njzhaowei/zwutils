@@ -3,12 +3,24 @@ import time
 import logging
 import requests
 import chardet
+import platform
+import subprocess
 from pathlib import Path
 from .mthreading import ThreadPool
 from .dlso import update_attrs
 
 FAIL_ENCODING = 'ISO-8859-1'
 DEFAULT_USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36'
+
+def ping(host):
+    """Returns True if host (str) responds to a ping request.
+    Remember that a host may not respond to a ping (ICMP) request even if the host name is valid.
+    """
+    param = '-n' if platform.system().lower()=='windows' else '-c'
+    cmd = ['ping', param, '1', host]
+    r = subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode('latin')
+    arr = re.findall(r'Ping.+\[(.*)\]', r)
+    return arr[0] if arr else None
 
 def get_request_kwargs(useragent, **kwargs):
     """This Wrapper method exists b/c some values in req_kwargs dict
