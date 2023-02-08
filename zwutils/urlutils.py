@@ -184,7 +184,7 @@ def subdomain_compare(urla, urlb):
 
 def domain2ip(domain):
     rtn = None
-    if domain.startswith('http'):
+    if re.match(r'http(s)?:', domain):
         url = urlparse(domain)
         domain = url.netloc
     try:

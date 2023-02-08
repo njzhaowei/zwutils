@@ -33,6 +33,7 @@ def image_concate(imgpth1, imgpth2, outpth=None, direction=HORIZONTAL):
         out.paste(img1, loc1)
         out.paste(img2, loc2)
     if out and outpth:
+        Path(outpth).parent.mkdir(parents=True, exist_ok=True)
         out.save(outpth)
     return out
 

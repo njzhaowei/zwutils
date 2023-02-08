@@ -142,6 +142,8 @@ def unzip(srcpth, destpth=None, pwd=None, pth7z=None):
     iswin = True if sys.platform == 'win32' else False
     cmd = pth7z or ( './bin/7z.exe' if iswin else 'unzip' )    
     cmds = [str(cmd)]
+    destfile = Path(destpth)
+    destfile.parent.mkdir(parents=True, exist_ok=True)
     if iswin:
         cmds.extend(['x', str(srcpth), '-y', '-aoa', '-o%s'%destpth])
         if pwd:
@@ -151,7 +153,6 @@ def unzip(srcpth, destpth=None, pwd=None, pth7z=None):
         if pwd:
             cmds.append('-P %s'%pwd)
     subprocess.run(cmds)
-    destfile = Path(destpth)
     return destfile.exists()
 
 # def tar(pth, outpath=None, flag='w:gz'):
