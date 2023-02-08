@@ -37,26 +37,27 @@ def hasdigit(s):
     m = re.compile(r'\d')
     return bool(m.search(s))
 
-def remove_space_in_sentence(sentence):
-    s = sentence.strip()
-    rtn = ''
+def rmexblank(txt):
+    '''
+    删除多余空格, 英文保留一个空格, 中文则不保留空格
+    '''
+    s = txt.strip()
+    rtn = []
     for i,c in enumerate(s):
-        if c.isspace() and i == len(s)-1:
-            continue
         if c.isspace():
             prev_char = rtn[-1] if len(rtn)>0 else ''
             next_char = s[i+1]
-            if next_char.isspace():
+            if any([next_char.isspace(), is_chinese(next_char), is_chinese_punctuation(next_char)]):
+                # 当前是空格，若后接空格或中文则不留
                 continue
-            elif is_chinese(next_char) or is_chinese_punctuation(next_char):
-                continue
-            elif (is_chinese(prev_char) or is_chinese_punctuation(prev_char)) and not is_chinese(next_char):
+            elif not is_chinese(next_char) and any([is_chinese(prev_char), is_chinese_punctuation(prev_char)]):
+                # 当前是空格，若前接非中文且后接中文则不留
                 continue
             else:
-                rtn += c
+                rtn.append(c)
         else:
-            rtn += c
-    return rtn
+            rtn.append(c)
+    return ''.join(rtn)
 
 def inner_trim(value, replace=''):
     if isinstance(value, str):
