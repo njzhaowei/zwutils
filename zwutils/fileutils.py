@@ -15,6 +15,9 @@ def rmfile(pth):
 def rmdir(pth):
     shutil.rmtree(str(pth), ignore_errors=True)
 
+def move(src, dst):
+    shutil.move(src, dst)
+
 def writefile(path, txt, enc='utf-8'):
     """Write string to file and create parent dirs automatically.
     """

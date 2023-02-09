@@ -26,6 +26,9 @@ class ZWObject(object):
         val = getattr(self, self._keys[self._keycur])
         self._keycur += 1
         return val
+    
+    def get(self, key, val):
+        return obj2dict(self).get(key, val)
 
 def _ismethod(o):
     return ismethod(o) or isbuiltin(o)
