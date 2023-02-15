@@ -13,7 +13,13 @@ def test_zwobject():
     for v in o:
         arr.append(v)
     assert sorted(arr) == ['a', 'b']
+    # TODO
+    # in will invoke __iter__ but not __next__, 
+    # this will leave _keys and _keycur not cleaned which should
     assert 'a' in o
+    assert 'c' not in o # _keys and _keycur will cleaned (StopIteration raised)
+    assert o.get('flda', 'c') == 'a' and o.get('fldc', 'c') == 'c'
+    assert sorted(o.keys()) == ['flda', 'fldb']
 
 # pylint: disable=no-member
 def test_dict2obj():
@@ -96,8 +102,16 @@ def test_listcmp():
     assert True == dlso.listcmp([1,2,3], [2,1,3])
 
 def test_as_dict():
-    o = dlso.ZWObject.from_dict({'a1': 'a1', 'a2': 2})
-    assert o.as_dict() == {'a1': 'a1', 'a2': 2}
+    obj = {
+        'a1': 'a1',
+        'a2': 2,
+        'dictobj': {
+            'df1': 1,
+            'df2': 'b'
+        }
+    }
+    o = dlso.ZWObject.from_dict(obj)
+    assert o.as_dict() == obj
 
 def test_list_groupby():
     arr = [

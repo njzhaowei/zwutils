@@ -16,19 +16,24 @@ class ZWObject(object):
         return extend_attrs(None, kv)
     
     def __iter__(self):
-        self._keys = list(obj2dict(self).keys())
+        self._keys = getflds(self)
         self._keycur = 0 if self._keys else None
         return self
     
     def __next__(self):
         if self._keycur is None or self._keycur > len(self._keys)-1:
+            del self._keys
+            del self._keycur
             raise StopIteration
         val = getattr(self, self._keys[self._keycur])
         self._keycur += 1
         return val
     
-    def get(self, key, val):
-        return obj2dict(self).get(key, val)
+    def get(self, key, val=None):
+        return getattr(self, key) if hasattr(self, key) else val
+
+    def keys(self):
+        return getflds(self)
 
 def _ismethod(o):
     return ismethod(o) or isbuiltin(o)
