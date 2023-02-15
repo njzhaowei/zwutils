@@ -1,4 +1,4 @@
-fileutils
+httputils
 ========================================
 
 .. automodule:: zwutils.httputils

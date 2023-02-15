@@ -14,10 +14,10 @@ def test_zwobject():
         arr.append(v)
     assert sorted(arr) == ['a', 'b']
     # TODO
-    # in will invoke __iter__ but not __next__, 
-    # this will leave _keys and _keycur not cleaned which should
     assert 'a' in o
-    assert 'c' not in o # _keys and _keycur will cleaned (StopIteration raised)
+    assert not hasattr(o, '_keys')
+    assert 'c' not in o
+    assert not hasattr(o, '_keys')
     assert o.get('flda', 'c') == 'a' and o.get('fldc', 'c') == 'c'
     assert sorted(o.keys()) == ['flda', 'fldb']
 

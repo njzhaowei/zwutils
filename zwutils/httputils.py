@@ -193,6 +193,8 @@ def get_html_from_response(response):
     return html or ''
 
 def get_soup(url, cfg=None, **kwargs):
+    """ Get soup object from get_html
+    """
     html = get_html(url, cfg, **kwargs)
     return BeautifulSoup(html, features='html.parser')
 

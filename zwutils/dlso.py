@@ -14,7 +14,13 @@ class ZWObject(object):
     @classmethod
     def from_dict(cls, kv):
         return extend_attrs(None, kv)
-    
+
+    def get(self, key, val=None):
+        return getattr(self, key) if hasattr(self, key) else val
+
+    def keys(self):
+        return getflds(self)
+
     def __iter__(self):
         self._keys = getflds(self)
         self._keycur = 0 if self._keys else None
@@ -28,12 +34,17 @@ class ZWObject(object):
         val = getattr(self, self._keys[self._keycur])
         self._keycur += 1
         return val
-    
-    def get(self, key, val=None):
-        return getattr(self, key) if hasattr(self, key) else val
 
-    def keys(self):
-        return getflds(self)
+    def __contains__(self, val):
+        rtn = False
+        for v in self:
+            if v == val:
+                rtn = True
+                break
+        if hasattr(self, '_keys'):
+            del self._keys
+            del self._keycur
+        return rtn
 
 def _ismethod(o):
     return ismethod(o) or isbuiltin(o)
