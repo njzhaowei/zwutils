@@ -76,7 +76,7 @@ def head(url, cfg=None, params=None, json=None, data=None, **kwargs):
     :return: :class:`Response <Response>` object
     :rtype: requests.Response
 
-    .. literalinclude:: /../../zwdata/utils/httputils.py
+    .. literalinclude:: /../../zwutils/httputils.py
         :caption: Default config value
         :language: python
         :start-after: [REQUEST_OPTION]
@@ -97,7 +97,7 @@ def request(url, cfg=None, params=None, json=None, data=None, **kwargs):
     :return: :class:`Response <Response>` object
     :rtype: requests.Response
 
-    .. literalinclude:: /../../zwdata/utils/httputils.py
+    .. literalinclude:: /../../zwutils/httputils.py
         :caption: Default config value
         :language: python
         :start-after: [REQUEST_OPTION]
@@ -118,7 +118,7 @@ def request(url, cfg=None, params=None, json=None, data=None, **kwargs):
 def get(url, cfg=None, **kwargs):
     """Raw GET method request
 
-    .. literalinclude:: /../../zwdata/utils/httputils.py
+    .. literalinclude:: /../../zwutils/httputils.py
         :caption: Default config value
         :language: python
         :start-after: [REQUEST_OPTION]
@@ -135,7 +135,7 @@ def get(url, cfg=None, **kwargs):
 def post(url, cfg=None, **kwargs):
     """Raw POST method request
 
-    .. literalinclude:: /../../zwdata/utils/httputils.py
+    .. literalinclude:: /../../zwutils/httputils.py
         :caption: Default config value
         :language: python
         :start-after: [REQUEST_OPTION]
@@ -155,13 +155,12 @@ def get_html(url, cfg=None, **kwargs):
     - Attempt to find encoding of the html by using HTTP header. Fallback to 'ISO-8859-1' if not provided.
     - Error out if a non 2XX HTTP response code is returned.
 
-    .. literalinclude:: /../../zwdata/utils/httputils.py
+    .. literalinclude:: /../../zwutils/httputils.py
         :caption: Default config value
         :language: python
         :start-after: [REQUEST_OPTION]
         :end-before: [REQUEST_OPTION]
     """
-
     cfg = update_attrs(DEFAULT_CONFIG, cfg or {})
     kwargs = get_request_kwargs(cfg, **kwargs)
     method  = 'get'
@@ -241,7 +240,7 @@ def multithread_request(urls, cfg=None, method='get', params_list=None, json_lis
     :return: object
     :rtype: list[MRequest]
 
-    .. literalinclude:: /../../zwdata/utils/httputils.py
+    .. literalinclude:: /../../zwutils/httputils.py
         :caption: Default config value
         :name: HTTPUTILS_DEFAULT_CONFIG
         :language: python
@@ -253,7 +252,6 @@ def multithread_request(urls, cfg=None, method='get', params_list=None, json_lis
         :language: python
         :pyobject: test_multithread_request
     """
-
     cfg = update_attrs(DEFAULT_CONFIG, cfg or {})
     kwargs = get_request_kwargs(cfg, **kwargs)
     thread_num = cfg.thread_num
@@ -282,7 +280,7 @@ def download(url, cfg=None, outpath=None, isdir=False, **kwargs):
     :param bool isdir: outpath is dir or not.
     :return: output file path
 
-    .. literalinclude:: /../../zwdata/utils/httputils.py
+    .. literalinclude:: /../../zwutils/httputils.py
         :caption: Default config value
         :language: python
         :start-after: [REQUEST_OPTION]
@@ -367,9 +365,7 @@ def load_cookies(pth):
     :param pth: cookies file path.
     :return: cookies jar or None
     :rtype: requests.cookies.RequestsCookieJar
-
     """
-
     jar = None
     cpth = Path(pth) if pth else None
     if cpth and cpth.exists():
@@ -381,7 +377,7 @@ def save_cookies(resp, pth):
     """Save cookies to json file
 
     :param dict resp: request response.
-    :param pth:cookies file path.
+    :param pth: cookies file path.
     :return: True if save success
     :rtype: bool
     """
