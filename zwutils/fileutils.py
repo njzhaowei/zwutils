@@ -158,6 +158,12 @@ def unzip(srcpth, destpth=None, pwd=None, pth7z=None):
     subprocess.run(cmds)
     return destfile.exists()
 
+def dirsize(pth):
+    size = 0
+    for root, dirs, files in os.walk(pth):
+        size += sum([os.path.getsize(os.path.join(root, file)) for file in files])
+    return size
+
 # def tar(pth, outpath=None, flag='w:gz'):
 #     p = Path(pth)
 #     outext = '.' + flag.split(':')[1] if len(flag.split(':'))==2 else '.gz'
